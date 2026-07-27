@@ -29,6 +29,17 @@ const bookJsonLd = {
   inLanguage: 'en',
 }
 
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Sage Publishers Ltd',
+  url: 'https://sagepublishersltd.com',
+  description:
+    'Sage Publishers Ltd publishes educational and entertaining books for children, including The Breeze of the Forest.',
+  email: 'mailto:Mugaboan@gmail.com',
+  telephone: '+250781087745',
+}
+
 export default function Page() {
   return (
     <>
@@ -36,6 +47,13 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(bookJsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationJsonLd).replace(/</g, '\\u003c'),
         }}
       />
 
