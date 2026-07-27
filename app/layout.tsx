@@ -16,7 +16,7 @@ const inter = Inter({
   display: 'swap',
 })
 
-const siteUrl = 'https://breeze-of-the-forest.vercel.app'
+const siteUrl = "https://sagepublishersltd.com"
 const description =
   'The Breeze of the Forest is a magical collection of heartwarming animal tales for children that inspire bravery, kindness, friendship and imagination. Published by Sage Publishers Ltd.'
 
