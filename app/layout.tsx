@@ -1,20 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Inter } from 'next/font/google'
 import './globals.css'
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-cormorant',
-  display: 'swap',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
 
 const siteUrl = 'https://sagepublishersltd.com'
 
@@ -109,10 +95,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${inter.variable} bg-background`}
+      className="bg-background"
+      style={
+        {
+          '--font-cormorant': 'Georgia, serif',
+          '--font-inter': 'Arial, Helvetica, sans-serif',
+        } as React.CSSProperties
+      }
     >
       <body className="font-sans antialiased">
         {children}
+
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
