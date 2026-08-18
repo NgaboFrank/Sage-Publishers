@@ -2,7 +2,12 @@
 
 import { useState } from 'react'
 import { motion } from 'motion/react'
-import { CreditCard, Loader2, ShieldCheck } from 'lucide-react'
+import {
+  ArrowLeft,
+  CreditCard,
+  Loader2,
+  ShieldCheck,
+} from 'lucide-react'
 
 export default function PaymentPage() {
   const [form, setForm] = useState({
@@ -22,7 +27,13 @@ export default function PaymentPage() {
     }))
   }
 
-  async function handlePayment(e: React.FormEvent<HTMLFormElement>) {
+  function handleBack() {
+    window.history.back()
+  }
+
+  async function handlePayment(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
     e.preventDefault()
 
     setLoading(true)
@@ -66,6 +77,21 @@ export default function PaymentPage() {
   return (
     <main className="min-h-screen bg-background px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-2xl">
+
+        {/* Back button */}
+        <div className="mb-8">
+          <motion.button
+            type="button"
+            onClick={handleBack}
+            disabled={loading}
+            whileHover={loading ? undefined : { x: -3 }}
+            whileTap={loading ? undefined : { scale: 0.97 }}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-forest transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back
+          </motion.button>
+        </div>
 
         <div className="mb-10 text-center">
 
