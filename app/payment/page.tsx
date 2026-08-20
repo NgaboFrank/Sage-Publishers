@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { motion } from 'motion/react'
 import {
   ArrowLeft,
+  CheckCircle2,
+  MessageCircle,
   CreditCard,
   Loader2,
   ShieldCheck,
@@ -75,8 +77,8 @@ export default function PaymentPage() {
   }
 
   return (
-    <main className="min-h-screen bg-background px-5 py-20 md:px-8 md:py-28">
-      <div className="mx-auto max-w-2xl">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_50%_0%,_rgba(82,200,120,0.10),_transparent_35%)] px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-3xl">
 
         {/* Back button */}
         <div className="mb-8">
@@ -93,7 +95,7 @@ export default function PaymentPage() {
           </motion.button>
         </div>
 
-        <div className="mb-10 text-center">
+        <div className="mb-10 text-center md:mb-12">
 
           <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
             <CreditCard className="h-8 w-8" />
@@ -107,6 +109,11 @@ export default function PaymentPage() {
             Pay for Your Order
           </h1>
 
+          <div className="mx-auto mt-5 flex max-w-xl flex-wrap justify-center gap-2 text-xs text-muted-foreground">
+            <span className="inline-flex items-center gap-1 rounded-full bg-emerald/10 px-3 py-1.5 text-forest"><CheckCircle2 className="h-3.5 w-3.5 text-emerald" /> Secure Pesapal checkout</span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-muted px-3 py-1.5 text-forest"><ShieldCheck className="h-3.5 w-3.5 text-emerald" /> Your details stay private</span>
+          </div>
+
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-muted-foreground">
             Enter your details below to continue to Pesapal.
             You will be redirected to Pesapal to complete your payment securely.
@@ -116,7 +123,7 @@ export default function PaymentPage() {
 
         <form
           onSubmit={handlePayment}
-          className="rounded-3xl border border-border bg-card p-7 shadow-xl shadow-forest/10 md:p-10"
+          className="rounded-[2rem] border border-border bg-card/95 p-7 shadow-2xl shadow-forest/10 backdrop-blur md:p-10"
         >
 
           <div className="space-y-6">
@@ -218,7 +225,7 @@ export default function PaymentPage() {
               disabled={loading}
               whileHover={loading ? undefined : { scale: 1.02 }}
               whileTap={loading ? undefined : { scale: 0.98 }}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald px-8 py-4 font-semibold text-forest-deep shadow-lg shadow-emerald/30 transition-opacity disabled:cursor-not-allowed disabled:opacity-70"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald px-8 py-4 font-semibold text-forest-deep shadow-lg shadow-emerald/30 transition-opacity disabled:cursor-not-allowed disabled:opacity-70"
             >
 
               {loading ? (
@@ -229,7 +236,7 @@ export default function PaymentPage() {
               ) : (
                 <>
                   <CreditCard className="h-5 w-5" />
-                  CONTINUE TO PESAPAL
+                  CONTINUE TO SECURE CHECKOUT
                 </>
               )}
 
