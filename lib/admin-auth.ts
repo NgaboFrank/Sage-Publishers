@@ -18,7 +18,7 @@ export async function getAdmin() {
   const token = store.get('sage_admin')?.value
   if (!adminId || !token) return null
   const expected = makeAdminToken(adminId)
-  if (!crypto.timingSafeEqual(Buffer.from(token), Buffer.from(expected))) return null
+  if (token.length !== expected.length || !crypto.timingSafeEqual(Buffer.from(token), Buffer.from(expected))) return null
   const rows = await supabaseAdmin<Array<{id:string;email:string;name:string}>>(`admins?select=id,email,name&id=eq.${encodeURIComponent(adminId)}&limit=1`)
   return rows[0] || null
 }
