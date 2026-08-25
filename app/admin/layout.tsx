@@ -34,6 +34,21 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     ].join(' ')
     document.head.appendChild(style)
 
+    const sidebar = document.querySelector('main > div.mx-auto > aside > div')
+    if (sidebar && !sidebar.querySelector('[data-view-website]')) {
+      const divider = document.createElement('div')
+      divider.className = 'my-3 border-t border-white/10'
+      const link = document.createElement('a')
+      link.href = '/'
+      link.target = '_blank'
+      link.rel = 'noreferrer'
+      link.dataset.viewWebsite = 'true'
+      link.className = 'mt-2 flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white'
+      link.innerHTML = '<span style="font-size:16px;line-height:1">↗</span><span>View website</span>'
+      sidebar.appendChild(divider)
+      sidebar.appendChild(link)
+    }
+
     document.addEventListener('click', handleAdminNavigation)
     return () => {
       document.removeEventListener('click', handleAdminNavigation)
