@@ -29,6 +29,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       'main > div.mx-auto > aside > div { position: static !important; width: 100% !important; height: 100vh !important; min-height: 100vh !important; border-radius: 0 !important; border: 0 !important; box-shadow: none !important; padding: 32px 16px !important; overflow-y: auto !important; }',
       'main > div.mx-auto > div.min-w-0 { width: 100% !important; max-width: none !important; padding-top: 32px !important; }',
       '}',
+      '[class*="bg-[#e7f1eb]"] { width: 46px !important; height: 46px !important; display: flex !important; align-items: center !important; justify-content: center !important; border: 1px solid #d4e7dc !important; border-radius: 14px !important; background: #edf6f0 !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 2px 7px rgba(16,61,43,.06) !important; }',
+      '[class*="bg-[#e7f1eb]"] svg { width: 20px !important; height: 20px !important; stroke-width: 2.15 !important; }',
     ].join(' ')
     document.head.appendChild(style)
 
