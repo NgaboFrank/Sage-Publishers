@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { BookOpen, CheckCircle2, ClipboardList, ExternalLink, Image as ImageIcon, LayoutDashboard, LogOut, Package, Pencil, Plus, Trash2, Upload, X } from 'lucide-react'
+import { BookOpen, CheckCircle2, ChevronLeft, ClipboardList, ExternalLink, Image as ImageIcon, LayoutDashboard, LogOut, Package, Pencil, Plus, Trash2, Upload, UserRound, X } from 'lucide-react'
 
 const tabs = ['Dashboard', 'Books', 'Images', 'Orders', 'Content'] as const
 type Book = { id:string; title:string; author:string|null; description:string|null; price:number; currency:string; cover_url:string|null; gallery_urls:string[]; published:boolean }
@@ -50,16 +50,38 @@ export default function AdminPage() {
   const published=books.filter(b=>b.published)
 
   return <main className="min-h-screen bg-[#f6f8f7] text-[#10251b]">
-    <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
-      <div className="mx-auto flex h-[76px] max-w-[1500px] items-center justify-between px-5 lg:px-8">
-        <div className="flex items-center gap-3"><div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#103d2b] text-white shadow-sm"><BookOpen className="h-5 w-5"/></div><div><div className="text-lg font-bold tracking-tight text-[#103d2b]">Sage Publishers</div><div className="text-xs font-medium text-slate-500">Management Portal</div></div></div>
-        <div className="flex items-center gap-3"><a href="/" target="_blank" rel="noreferrer" className="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 sm:flex"><ExternalLink className="h-4 w-4"/>View website</a><div className="hidden h-8 w-px bg-slate-200 sm:block"/><div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#e7f1eb] text-sm font-bold text-[#14532d]">SA</div></div>
+    <aside className="fixed inset-y-0 left-0 z-50 hidden w-[235px] flex-col bg-[#111827] text-white shadow-2xl lg:flex">
+      <div className="flex h-[78px] items-center gap-3 border-b border-white/10 px-5">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#2563eb] text-white shadow-lg shadow-blue-900/30"><BookOpen className="h-5 w-5"/></div>
+        <div className="min-w-0"><div className="truncate text-[16px] font-bold tracking-tight">Sage Publishers</div><div className="text-[11px] text-slate-400">Management System</div></div>
       </div>
-    </header>
-    <div className="mx-auto flex max-w-[1500px] gap-7 px-4 py-6 lg:px-8 lg:py-8">
-      <aside className="hidden w-[235px] shrink-0 lg:block"><div className="sticky top-[100px] rounded-3xl border border-slate-200 bg-white p-3 shadow-sm"><div className="px-3 pb-3 pt-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">Workspace</div>{tabs.map(t=><NavButton key={t} active={tab===t} label={t} onClick={()=>setTab(t)} />)}<div className="my-3 border-t border-slate-100"/><div className="px-3 py-2 text-xs text-slate-400">Sage Publishers Ltd.</div></div></aside>
-      <div className="min-w-0 flex-1">
-        <div className="mb-6 flex gap-2 overflow-x-auto rounded-2xl border border-slate-200 bg-white p-2 shadow-sm lg:hidden">{tabs.map(t=><button key={t} onClick={()=>setTab(t)} className={`whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-semibold ${tab===t?'bg-[#103d2b] text-white':'text-slate-600 hover:bg-slate-50'}`}>{t}</button>)}</div>
+      <div className="flex-1 overflow-y-auto px-3 py-5">
+        <div className="mb-3 px-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Main menu</div>
+        {tabs.map(t=><NavButton key={t} active={tab===t} label={t} onClick={()=>setTab(t)} />)}
+      </div>
+      <div className="border-t border-white/10 p-3">
+        <a href="/" target="_blank" rel="noreferrer" className="mb-2 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-white"><ExternalLink className="h-4 w-4"/>View website</a>
+        <div className="my-2 border-t border-white/10"/>
+        <div className="flex items-center gap-3 rounded-xl px-3 py-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2563eb] text-white"><UserRound className="h-5 w-5"/></div>
+          <div className="min-w-0 flex-1"><div className="truncate text-sm font-bold">Sage Admin</div><div className="truncate text-[11px] text-slate-400">Administrator</div><span className="mt-1 inline-flex rounded-md bg-[#2563eb]/20 px-2 py-0.5 text-[10px] font-semibold text-blue-300">Admin</span></div>
+          <ChevronLeft className="h-4 w-4 rotate-180 text-slate-500"/>
+        </div>
+        <button type="button" className="mt-1 flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-white"><LogOut className="h-4 w-4"/>Logout</button>
+      </div>
+      <button type="button" aria-label="Collapse sidebar" className="absolute -right-3 top-[290px] flex h-7 w-7 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-md"><ChevronLeft className="h-4 w-4"/></button>
+    </aside>
+
+    <div className="lg:ml-[235px]">
+      <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+        <div className="mx-auto flex h-[76px] max-w-[1500px] items-center justify-between px-5 lg:px-8">
+          <div><div className="text-sm font-semibold text-[#5b806b]">Sage Publishers / {tab}</div><div className="text-xs text-slate-400">Management Portal</div></div>
+          <div className="flex items-center gap-3"><a href="/" target="_blank" rel="noreferrer" className="hidden items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 sm:flex"><ExternalLink className="h-4 w-4"/>View website</a><div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#e7f1eb] text-sm font-bold text-[#14532d]">SA</div></div>
+        </div>
+      </header>
+
+      <div className="mx-auto max-w-[1500px] px-4 py-6 lg:px-8 lg:py-8">
+        <div className="mb-6 flex gap-2 overflow-x-auto rounded-2xl border border-slate-200 bg-white p-2 shadow-sm lg:hidden">{tabs.map(t=><button key={t} onClick={()=>setTab(t)} className={`whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-semibold ${tab===t?'bg-[#2563eb] text-white':'text-slate-600 hover:bg-slate-50'}`}>{t}</button>)}</div>
         <div className="mb-7 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><div className="mb-2 text-sm font-semibold text-[#5b806b]">Sage Publishers / {tab}</div><h1 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">{tab==='Dashboard'?'Good day, Administrator.':tab}</h1><p className="mt-2 text-sm text-slate-500">{tab==='Dashboard'?'Here is an overview of your publishing business.':'Manage your Sage Publishers content and operations.'}</p></div>{tab==='Books'&&<button onClick={()=>{setEditing(null);setBook(emptyBook)}} className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#103d2b] px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#14532d]"><Plus className="h-4 w-4"/>Add new book</button>}</div>
         {message&&<div className="mb-6 flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800"><CheckCircle2 className="h-5 w-5"/>{message}</div>}
         {tab==='Dashboard'&&<Dashboard books={books} orders={orders} paid={paid.length} published={published.length} onBooks={()=>setTab('Books')} onOrders={()=>setTab('Orders')} />}
@@ -72,7 +94,7 @@ export default function AdminPage() {
   </main>
 }
 
-function NavButton({active,label,onClick}:{active:boolean;label:string;onClick:()=>void}){const icons={Dashboard:LayoutDashboard,Books:BookOpen,Images:ImageIcon,Orders:ClipboardList,Content:Package};const Icon=icons[label as keyof typeof icons];return <button onClick={onClick} className={`mb-1 flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-left text-sm font-semibold transition ${active?'bg-[#103d2b] text-white shadow-sm':'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}><Icon className="h-4 w-4"/>{label}</button>}
+function NavButton({active,label,onClick}:{active:boolean;label:string;onClick:()=>void}){const icons={Dashboard:LayoutDashboard,Books:BookOpen,Images:ImageIcon,Orders:ClipboardList,Content:Package};const Icon=icons[label as keyof typeof icons];return <button onClick={onClick} className={`mb-1 flex w-full items-center gap-3 rounded-lg px-3.5 py-3 text-left text-sm font-medium transition ${active?'bg-[#2563eb] text-white shadow-lg shadow-blue-900/20':'text-slate-300 hover:bg-white/5 hover:text-white'}`}><Icon className="h-[18px] w-[18px]"/>{label}</button>}
 
 function Dashboard({books,orders,paid,published,onBooks,onOrders}:{books:Book[];orders:Order[];paid:number;published:number;onBooks:()=>void;onOrders:()=>void}){const revenue=orders.filter(o=>o.payment_status==='COMPLETED').reduce((sum,o)=>sum+Number(o.amount||0),0);return <div className="space-y-7"><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"><StatCard icon={BookOpen} label="Total books" value={books.length.toString()} detail={`${published} published`} onClick={onBooks}/><StatCard icon={ClipboardList} label="Total orders" value={orders.length.toString()} detail={`${paid} paid`} onClick={onOrders}/><StatCard icon={CheckCircle2} label="Paid orders" value={paid.toString()} detail="Completed payments" onClick={onOrders}/><StatCard icon={Package} label="Revenue" value={`${revenue.toLocaleString()} RWF`} detail="From completed orders" onClick={onOrders}/></div><div className="grid gap-6 xl:grid-cols-[1.35fr_.65fr]"><section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"><div className="flex items-center justify-between"><div><h2 className="font-bold text-slate-900">Books</h2><p className="mt-1 text-sm text-slate-500">Your current catalogue.</p></div><button onClick={onBooks} className="text-sm font-bold text-[#14532d] hover:underline">Manage books →</button></div><div className="mt-5 space-y-2">{books.slice(0,5).map(b=><div key={b.id} className="flex items-center gap-4 rounded-2xl border border-slate-100 p-3"><div className="h-14 w-10 shrink-0 overflow-hidden rounded-lg bg-slate-100">{b.cover_url&&<img src={b.cover_url} alt="" className="h-full w-full object-cover"/>}</div><div className="min-w-0 flex-1"><div className="truncate font-semibold text-slate-900">{b.title}</div><div className="text-xs text-slate-500">{b.author||'No author'}</div></div><div className="text-right"><div className="font-bold text-slate-900">{Number(b.price).toLocaleString()} {b.currency}</div><div className={`text-xs font-semibold ${b.published?'text-emerald-600':'text-slate-400'}`}>{b.published?'Published':'Hidden'}</div></div></div>)}{books.length===0&&<div className="rounded-2xl bg-slate-50 p-6 text-center text-sm text-slate-500">No books added yet.</div>}</div></section><section className="rounded-3xl border border-slate-200 bg-[#103d2b] p-6 text-white shadow-sm"><div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10"><ClipboardList className="h-5 w-5"/></div><h2 className="mt-5 text-xl font-bold">Recent activity</h2><p className="mt-2 text-sm leading-6 text-white/70">Stay on top of your latest customer orders and payment activity.</p><button onClick={onOrders} className="mt-6 rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-[#103d2b]">View orders</button></section></div></div>}
 
