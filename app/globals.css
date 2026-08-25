@@ -95,6 +95,24 @@
 html { scroll-behavior: smooth; }
 body { overflow-x: hidden; }
 
+/* Sage Publishers admin sidebar override */
+main > aside,
+main > div > aside {
+  background-color: #103D2B !important;
+  border-color: #103D2B !important;
+}
+main > aside [class*="bg-[#2563eb]"],
+main > div > aside [class*="bg-[#2563eb]"] {
+  background-color: #103D2B !important;
+}
+main > aside [class*="text-blue-300"],
+main > div > aside [class*="text-blue-300"] {
+  color: #d9eee4 !important;
+}
+main > aside button[aria-label="Collapse sidebar"],
+main > div > aside button[aria-label="Collapse sidebar"] {
+  display: none !important;
+}
 
 /* Conversion-focused responsive polish */
 @media (max-width: 640px) {
