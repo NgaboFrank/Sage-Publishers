@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
-import { ArrowLeft, CheckCircle2, CreditCard, Loader2, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, ChevronDown, CreditCard, Loader2, ShieldCheck } from 'lucide-react'
 
 type Book = { id:string; title:string; author:string|null; price:number; currency:string; cover_url:string|null }
 
@@ -50,7 +50,7 @@ export default function PaymentPage() {
         </div>
         <form onSubmit={handlePayment} className="rounded-[2rem] border border-border bg-card/95 p-7 shadow-2xl shadow-forest/10 backdrop-blur md:p-10">
           <div className="space-y-6">
-            <div className="flex flex-col gap-2"><label htmlFor="book" className="text-sm font-medium text-forest">Book</label><select id="book" required value={form.bookId} onChange={e=>selectBook(e.target.value)} disabled={loadingBooks || loading} className="rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-emerald focus:ring-2 focus:ring-emerald/30"><option value="">{loadingBooks ? 'Loading books...' : 'Select a book'}</option>{books.map(book=><option key={book.id} value={book.id}>{book.title}</option>)}</select></div>
+            <div className="flex flex-col gap-2"><label htmlFor="book" className="text-sm font-medium text-forest">Book</label><div className="relative"><select id="book" required value={form.bookId} onChange={e=>selectBook(e.target.value)} disabled={loadingBooks || loading} className="w-full appearance-none rounded-xl border border-border bg-background px-4 py-3 pr-11 text-foreground outline-none focus:border-emerald focus:ring-2 focus:ring-emerald/30"><option value="">{loadingBooks ? 'Loading books...' : 'Select a book'}</option>{books.map(book=><option key={book.id} value={book.id}>{book.title}</option>)}</select><ChevronDown aria-hidden="true" className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-forest" /></div></div>
             <div className="flex flex-col gap-2"><label htmlFor="name" className="text-sm font-medium text-forest">Full Name</label><input id="name" type="text" required value={form.name} onChange={e=>updateField('name',e.target.value)} placeholder="Your full name" className="rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-emerald focus:ring-2 focus:ring-emerald/30" /></div>
             <div className="flex flex-col gap-2"><label htmlFor="email" className="text-sm font-medium text-forest">Email Address</label><input id="email" type="email" required value={form.email} onChange={e=>updateField('email',e.target.value)} placeholder="you@example.com" className="rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-emerald focus:ring-2 focus:ring-emerald/30" /></div>
             <div className="flex flex-col gap-2"><label htmlFor="phone" className="text-sm font-medium text-forest">Phone Number</label><input id="phone" type="tel" required value={form.phone} onChange={e=>updateField('phone',e.target.value)} placeholder="+250 7XX XXX XXX" className="rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-emerald focus:ring-2 focus:ring-emerald/30" /></div>
