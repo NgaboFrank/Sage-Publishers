@@ -4,12 +4,19 @@ import { useEffect, type ReactNode } from 'react'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   useEffect(() => {
-    function handleLogoutClick(event: MouseEvent) {
+    function handleAdminNavigation(event: MouseEvent) {
       const target = event.target as HTMLElement | null
       const button = target?.closest('button')
-      if (!button || button.textContent?.trim() !== 'Logout') return
-      event.preventDefault()
-      window.location.assign('/api/admin/logout')
+      if (!button) return
+      const text = button.textContent?.trim()
+      if (text === 'Logout') {
+        event.preventDefault()
+        window.location.assign('/api/admin/logout')
+      }
+      if (text === 'Content') {
+        event.preventDefault()
+        window.location.assign('/admin/content')
+      }
     }
 
     const style = document.createElement('style')
@@ -25,9 +32,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     ].join(' ')
     document.head.appendChild(style)
 
-    document.addEventListener('click', handleLogoutClick)
+    document.addEventListener('click', handleAdminNavigation)
     return () => {
-      document.removeEventListener('click', handleLogoutClick)
+      document.removeEventListener('click', handleAdminNavigation)
       style.remove()
     }
   }, [])
