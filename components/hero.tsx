@@ -37,7 +37,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.5 }} className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
-            <a href="/payment" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald px-7 py-3.5 font-semibold text-forest-deep shadow-xl shadow-emerald/20 transition hover:-translate-y-0.5 sm:w-auto">Order a Copy <ArrowUpRight className="h-4 w-4" /></a>
+            <a href="/payment" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald px-7 py-3.5 font-semibold text-forest-deep shadow-xl shadow-emerald/20 transition hover:-translate-y-0.5 sm:w-auto">Pay for the Book <ArrowUpRight className="h-4 w-4" /></a>
             <a href="/trailer" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-cream/15 bg-cream/5 px-7 py-3.5 font-semibold text-cream backdrop-blur-md transition hover:bg-cream/10 sm:w-auto"><Play className="h-4 w-4 fill-current" /> Watch Trailer</a>
           </motion.div>
 
