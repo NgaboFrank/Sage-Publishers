@@ -73,3 +73,14 @@ on conflict (id) do nothing;
 
 -- The application uses the server-side Supabase service role for admin operations.
 -- Do not expose SUPABASE_SERVICE_ROLE_KEY in browser code.
+
+-- Security: all application tables are protected by Row Level Security.
+-- The Sage Publishers Next.js server routes use the service-role key, which bypasses
+-- RLS for trusted server-side operations. No public/anon policies are granted here,
+-- so direct REST/API access with the public anon key cannot read or modify these tables.
+alter table public.admins enable row level security;
+alter table public.books enable row level security;
+alter table public.site_content enable row level security;
+alter table public.customers enable row level security;
+alter table public.orders enable row level security;
+alter table public.contact_messages enable row level security;
