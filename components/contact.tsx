@@ -297,7 +297,7 @@ export function Contact() {
         </Reveal>
 
 
-        {/* Pesapal online payment */}
+        {/* Online payment */}
 
         <Reveal delay={0.2}>
           <div className="mt-14 overflow-hidden rounded-3xl border border-emerald/20 bg-forest text-cream shadow-xl shadow-forest/25">
@@ -331,7 +331,7 @@ export function Contact() {
                   whileTap={{ scale: 0.96 }}
                   className="inline-flex items-center justify-center rounded-full bg-emerald px-7 py-3 font-semibold text-forest-deep shadow-lg shadow-emerald/30"
                 >
-                  PAY WITH PESAPAL
+                  PAY FOR THE BOOK
                 </motion.a>
 
               </div>
