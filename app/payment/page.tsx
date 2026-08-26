@@ -23,7 +23,7 @@ export default function PaymentPage() {
     if (!form.bookId || !form.amount || !form.name || !form.phone) { setError('Please select a book and enter your name and phone number first.'); return }
     setError('')
     const amount = String(Math.round(Number(form.amount)))
-    window.location.href = `tel:*182*8*1*${BK_PAY_CODE}*${amount}`
+    window.location.href = `tel:*182*8*1*${BK_PAY_CODE}*${amount}#`
   }
   async function handleCardPayment(e:React.FormEvent<HTMLFormElement>) { e.preventDefault(); setLoading(true); setError(''); try { const response = await fetch('/api/pesapal/pay', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(form) }); const data = await response.json(); if (!response.ok) throw new Error(data.error || 'Unable to start the payment.'); if (!data.redirect_url) throw new Error('The payment provider did not return a payment URL.'); window.location.href = data.redirect_url } catch (error) { setError(error instanceof Error ? error.message : 'Unable to start the payment.'); setLoading(false) } }
 
