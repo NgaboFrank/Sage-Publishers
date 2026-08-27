@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { supabaseAdmin } from '../../../../../lib/supabase-admin'
-import { requireAdmin } from '../../../../../lib/admin-auth'
+import { supabaseAdmin } from '../../../../lib/supabase-admin'
+import { requireAdmin } from '../../../../lib/admin-auth'
 
 type GalleryItem = { src: string; alt: string; span: string }
 const KEY = 'gallery_items'
