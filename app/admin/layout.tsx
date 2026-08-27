@@ -47,6 +47,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       link.innerHTML = '<span style="font-size:16px;line-height:1">↗</span><span>View website</span>'
       sidebar.appendChild(divider)
       sidebar.appendChild(link)
+
+      const reportLink = document.createElement('a')
+      reportLink.href = '/admin/reports'
+      reportLink.className = 'mt-1 flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white'
+      reportLink.innerHTML = '<span style="font-size:16px;line-height:1">▣</span><span>Reports</span>'
+      sidebar.appendChild(reportLink)
     }
 
     document.addEventListener('click', handleAdminNavigation)
