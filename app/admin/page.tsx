@@ -42,6 +42,8 @@ type Order = {
   books?: { title: string } | null
 }
 
+type GalleryItem = { src: string; alt: string; span: string }
+
 const emptyBook = {
   title: '',
   author: '',
@@ -225,7 +227,7 @@ export default function AdminPage() {
 
           {tab === 'Dashboard' && <Dashboard books={books} orders={orders} paid={paid.length} published={published.length} onBooks={() => setTab('Books')} onOrders={() => setTab('Orders')} />}
           {tab === 'Books' && <BooksTab books={books} book={book} setBook={setBook} editing={editing} setEditing={setEditing} saveBook={saveBook} upload={upload} uploading={uploading} editBook={editBook} deleteBook={deleteBook} />}
-          {tab === 'Images' && <ImagesTab uploading={uploading} upload={upload} />}
+          {tab === 'Images' && <ImagesTab />}
           {tab === 'Orders' && <OrdersTab orders={orders} />}
           {tab === 'Content' && <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm"><h2 className="text-xl font-bold">Website content</h2><p className="mt-2 text-sm text-slate-500">Manage homepage text and images from this workspace.</p></div>}
         </div>
@@ -310,18 +312,132 @@ function StatCard({ icon: Icon, label, value, detail, onClick }: { icon: any; la
   )
 }
 
-function ImagesTab({ uploading, upload }: { uploading: boolean; upload: (file: File, gallery?: boolean) => void }) {
+function ImagesTab() {
+  const [items, setItems] = useState<GalleryItem[]>([])
+  const [loading, setLoading] = useState(true)
+  const [busy, setBusy] = useState(false)
+  const [message, setMessage] = useState('')
+
+  async function loadGallery() {
+    setLoading(true)
+    setMessage('')
+    try {
+      const res = await fetch('/api/admin/gallery', { cache: 'no-store' })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Unable to load gallery.')
+      setItems(Array.isArray(data.items) ? data.items : [])
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : 'Unable to load gallery.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    loadGallery()
+  }, [])
+
+  async function uploadImage(file: File, replaceIndex?: number) {
+    setBusy(true)
+    setMessage('')
+    try {
+      const form = new FormData()
+      form.append('file', file)
+      const uploadRes = await fetch('/api/admin/upload', { method: 'POST', body: form })
+      const uploadData = await uploadRes.json()
+      if (!uploadRes.ok) throw new Error(uploadData.error || 'Upload failed.')
+
+      const next = [...items]
+      const newItem: GalleryItem = {
+        src: uploadData.url,
+        alt: file.name.replace(/\.[^/.]+$/, '').replace(/[-_]+/g, ' '),
+        span: replaceIndex !== undefined ? (items[replaceIndex]?.span || '') : '',
+      }
+      if (replaceIndex !== undefined) next[replaceIndex] = newItem
+      else next.push(newItem)
+
+      const saveRes = await fetch('/api/admin/gallery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: next }),
+      })
+      const saveData = await saveRes.json()
+      if (!saveRes.ok) throw new Error(saveData.error || 'Could not save gallery.')
+
+      setItems(next)
+      setMessage(replaceIndex !== undefined ? 'Image replaced successfully.' : 'Image added successfully.')
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : 'Image update failed.')
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  async function removeImage(index: number) {
+    if (!confirm('Remove this image from the website gallery?')) return
+    setBusy(true)
+    setMessage('')
+    try {
+      const next = items.filter((_, i) => i !== index)
+      const res = await fetch('/api/admin/gallery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: next }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Could not save gallery.')
+      setItems(next)
+      setMessage('Image removed successfully.')
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : 'Could not remove image.')
+    } finally {
+      setBusy(false)
+    }
+  }
+
   return (
     <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-      <div className="flex items-center gap-3">
-        <div className="rounded-2xl bg-[#e7f1eb] p-3 text-[#14532d]"><ImageIcon className="h-6 w-6" /></div>
-        <div><h2 className="text-xl font-bold">Media library</h2><p className="text-sm text-slate-500">Upload book covers and website images.</p></div>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <div className="rounded-2xl bg-[#e7f1eb] p-3 text-[#14532d]"><ImageIcon className="h-6 w-6" /></div>
+          <div><h2 className="text-xl font-bold">Website Gallery</h2><p className="text-sm text-slate-500">See, add, replace, or remove images shown on the public website.</p></div>
+        </div>
+        <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#103d2b] px-5 py-3 text-sm font-bold text-white hover:bg-[#14532d]">
+          <Upload className="h-4 w-4" />
+          {busy ? 'Working…' : 'Add image'}
+          <input type="file" accept="image/*" className="hidden" disabled={busy} onChange={(e) => { const file = e.target.files?.[0]; if (file) uploadImage(file); e.currentTarget.value = '' }} />
+        </label>
       </div>
-      <label className="mt-7 inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[#103d2b] px-5 py-3 text-sm font-bold text-white hover:bg-[#14532d]">
-        <Upload className="h-4 w-4" />
-        {uploading ? 'Uploading…' : 'Upload image'}
-        <input className="hidden" type="file" accept="image/*" multiple onChange={(e) => { for (const f of Array.from(e.target.files || [])) upload(f, true); e.currentTarget.value = '' }} />
-      </label>
+
+      {message && <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800">{message}</div>}
+
+      {loading ? (
+        <div className="mt-7 rounded-2xl bg-slate-50 p-10 text-center text-sm text-slate-500">Loading current gallery images…</div>
+      ) : items.length === 0 ? (
+        <div className="mt-7 rounded-2xl border border-dashed border-slate-300 p-10 text-center text-sm text-slate-500">No gallery images found. Add an image to start the website gallery.</div>
+      ) : (
+        <div className="mt-7 grid grid-cols-2 gap-5 sm:grid-cols-3 xl:grid-cols-4">
+          {items.map((item, index) => (
+            <div key={`${item.src}-${index}`} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <div className="relative aspect-square bg-slate-100">
+                <img src={item.src} alt={item.alt} className="h-full w-full object-cover" />
+              </div>
+              <div className="p-3">
+                <div className="truncate text-xs font-semibold text-slate-700">{item.alt || `Gallery image ${index + 1}`}</div>
+                <div className="mt-3 flex gap-2">
+                  <label className="inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-[#103d2b] px-2 py-2 text-xs font-bold text-white hover:bg-[#14532d]">
+                    <Upload className="h-3.5 w-3.5" /> Replace
+                    <input type="file" accept="image/*" className="hidden" disabled={busy} onChange={(e) => { const file = e.target.files?.[0]; if (file) uploadImage(file, index); e.currentTarget.value = '' }} />
+                  </label>
+                  <button type="button" onClick={() => removeImage(index)} disabled={busy} className="inline-flex items-center justify-center rounded-lg bg-red-50 px-3 py-2 text-xs font-bold text-red-600 hover:bg-red-100 disabled:opacity-50" title="Delete image">
+                    <Trash2 className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
