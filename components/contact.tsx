@@ -114,12 +114,12 @@ export function Contact() {
                 <MessageCircle className="h-7 w-7" />
               </span>
               <div>
-                <h3 className="font-serif text-2xl font-semibold text-forest">Text to Order</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <h3 className="font-serif text-xl font-semibold text-forest">Text to Order</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                   Send us a text and we&apos;ll help you order your copy.
                 </p>
               </div>
-              <p className="mt-auto font-serif text-2xl font-semibold text-forest">
+              <p className="mt-auto font-serif text-xl font-semibold text-forest">
                 (+250) 781 087 745
               </p>
             </motion.a>
@@ -138,12 +138,12 @@ export function Contact() {
                 <MessageSquare className="h-7 w-7" />
               </span>
               <div>
-                <h3 className="font-serif text-2xl font-semibold text-forest">Message on WhatsApp</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <h3 className="font-serif text-xl font-semibold text-forest">Message on WhatsApp</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                   Chat with us directly on WhatsApp for quick replies.
                 </p>
               </div>
-              <p className="mt-auto font-serif text-2xl font-semibold text-forest">
+              <p className="mt-auto font-serif text-xl font-semibold text-forest">
                 (+250) 781 087 745
               </p>
             </motion.a>
@@ -160,12 +160,12 @@ export function Contact() {
                 <Mail className="h-7 w-7" />
               </span>
               <div>
-                <h3 className="font-serif text-2xl font-semibold text-forest">Bulk Purchase</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <h3 className="font-serif text-xl font-semibold text-forest">Bulk Purchase</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                   Ordering in bulk? Contact us for special rates and arrangements.
                 </p>
               </div>
-              <p className="mt-auto break-all font-serif text-2xl font-semibold text-forest">
+              <p className="mt-auto break-all font-serif text-xl font-semibold text-forest">
                 mugaboan@gmail.com
               </p>
             </motion.a>
