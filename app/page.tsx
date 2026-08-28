@@ -2,6 +2,7 @@ import { SiteNav } from '@/components/site-nav'
 import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
 import { Features } from '@/components/features'
+import { Gallery } from '@/components/gallery'
 import { Testimonials } from '@/components/testimonials'
 import { Contact } from '@/components/contact'
 import { CallToAction } from '@/components/cta'
@@ -72,6 +73,7 @@ export default function Page() {
         <PurchaseReasons />
         <About />
         <Features />
+        <Gallery />
         <Testimonials />
         <CallToAction />
         <FAQ />
