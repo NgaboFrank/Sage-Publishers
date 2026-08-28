@@ -21,27 +21,27 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 px-5 pb-20 md:px-8 lg:grid-cols-[1fr_0.9fr] lg:gap-20 lg:pb-24">
         <motion.div style={{ y: textY }} className="max-w-2xl text-center lg:text-left">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-emerald/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-emerald/10 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-emerald">
             <Sparkles className="h-3 w-3" /> A Sage Publishers original
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 26 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }} className="mt-5 font-serif text-4xl font-semibold leading-[0.98] tracking-tight sm:text-5xl md:text-5xl xl:text-[4rem]">
+          <motion.h1 initial={{ opacity: 0, y: 26 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }} className="mt-4 font-serif text-3xl font-semibold leading-[1] tracking-tight sm:text-4xl md:text-4xl xl:text-[3.5rem]">
             The Breeze
             <br />
             <span className="text-emerald">of the Forest</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.25 }} className="mt-4 font-serif text-base italic text-cream/65 sm:text-lg">
+          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.25 }} className="mt-3 font-serif text-sm italic text-cream/65 sm:text-base">
             Animal stories that children remember.
           </motion.p>
-          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.38 }} className="mx-auto mt-5 max-w-lg text-[13px] leading-relaxed text-cream/70 sm:text-sm lg:mx-0">
+          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.38 }} className="mx-auto mt-4 max-w-lg text-xs leading-relaxed text-cream/70 sm:text-[13px] lg:mx-0">
             A beautifully illustrated collection of gentle adventures that encourage bravery, kindness, friendship and imagination—one story at a time.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.5 }} className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
-            <a href="/payment" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald px-7 py-3.5 font-semibold text-forest-deep shadow-xl shadow-emerald/20 transition hover:-translate-y-0.5 sm:w-auto">Pay for the Book <ArrowUpRight className="h-4 w-4" /></a>
-            <a href="/trailer" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-cream/15 bg-cream/5 px-7 py-3.5 font-semibold text-cream backdrop-blur-md transition hover:bg-cream/10 sm:w-auto"><Play className="h-4 w-4 fill-current" /> Watch Trailer</a>
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.5 }} className="mt-7 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
+            <a href="/payment" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald px-6 py-3 text-sm font-semibold text-forest-deep shadow-xl shadow-emerald/20 transition hover:-translate-y-0.5 sm:w-auto">Pay for the Book <ArrowUpRight className="h-4 w-4" /></a>
+            <a href="/trailer" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-cream/15 bg-cream/5 px-6 py-3 text-sm font-semibold text-cream backdrop-blur-md transition hover:bg-cream/10 sm:w-auto"><Play className="h-4 w-4 fill-current" /> Watch Trailer</a>
           </motion.div>
 
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] text-cream/50 lg:justify-start">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[10px] text-cream/50 lg:justify-start">
             <span className="inline-flex items-center gap-2"><ShieldCheck className="h-3.5 w-3.5 text-emerald" /> Secure online checkout</span>
             <span>Designed for family reading</span>
             <span>Made by Sage Publishers Ltd</span>
@@ -53,8 +53,8 @@ export function Hero() {
           <div className="relative rounded-[2rem] border border-cream/10 bg-cream/5 p-3 shadow-2xl shadow-black/30 backdrop-blur-sm md:p-4">
             <Image src="/book-cover.jpeg" alt="The Breeze of the Forest book cover" width={900} height={900} priority className="rounded-[1.35rem]" />
             <div className="absolute -bottom-5 -left-4 hidden rounded-2xl border border-cream/10 bg-forest/90 px-5 py-4 shadow-xl backdrop-blur-md sm:block">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-emerald">Featured title</p>
-              <p className="mt-1 font-serif text-lg font-semibold text-cream">A story for every heart.</p>
+              <p className="text-[9px] uppercase tracking-[0.18em] text-emerald">Featured title</p>
+              <p className="mt-1 font-serif text-base font-semibold text-cream">A story for every heart.</p>
             </div>
           </div>
         </motion.div>
