@@ -17,7 +17,7 @@ const items: GalleryItem[] = [
   {
     src: '/forest-nest-family.jpg',
     alt: 'Pencil sketch of a bird family gathered in a nest high in the branches',
-    span: 'sm:col-span-2 sm:row-span-2',
+    span: '',
   },
   {
     src: '/forest-snake.jpg',
@@ -28,11 +28,6 @@ const items: GalleryItem[] = [
     src: '/forest-birds-flight.jpg',
     alt: 'Pencil sketch of birds flying through a stormy forest of pines',
     span: '',
-  },
-  {
-    src: '/forest-fallen-nest.jpg',
-    alt: 'Pencil sketch of a fledgling bird beneath a nest in the falling rain',
-    span: 'sm:col-span-2',
   },
 ]
 
@@ -55,7 +50,7 @@ export function Gallery() {
   }, [active, close])
 
   return (
-    <section id="gallery" className="relative bg-background py-24 md:py-32">
+    <section id="gallery" className="relative bg-background py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
@@ -71,14 +66,14 @@ export function Gallery() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-3 sm:auto-rows-[240px]">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {items.map((item, i) => (
             <Reveal key={item.src} delay={(i % 3) * 0.08} className={item.span}>
               <motion.button
                 type="button"
                 onClick={() => setActive(item)}
                 whileHover={{ scale: 0.985 }}
-                className="group relative h-full w-full overflow-hidden rounded-2xl shadow-md shadow-forest/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2"
+                className="group relative h-[220px] w-full overflow-hidden rounded-2xl shadow-md shadow-forest/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2 sm:h-[250px]"
               >
                 <Image
                   src={item.src}
@@ -96,7 +91,7 @@ export function Gallery() {
           ))}
         </div>
 
-        <Reveal delay={0.2} className="mt-12 flex justify-center">
+        <Reveal delay={0.2} className="mt-10 flex justify-center">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
