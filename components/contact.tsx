@@ -47,6 +47,44 @@ export function Contact() {
     <section id="contact" className="relative bg-background py-24 md:py-32">
       <div className="mx-auto max-w-5xl px-5 md:px-8">
 
+        {/* Online payment */}
+
+        <Reveal>
+          <div className="mb-14 overflow-hidden rounded-3xl border border-emerald/20 bg-forest text-cream shadow-xl shadow-forest/25">
+
+            <div className="grid items-center gap-8 p-8 md:grid-cols-[auto_1fr_auto] md:p-10">
+
+              <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
+                <Smartphone className="h-8 w-8" />
+              </span>
+
+              <div className="text-center md:text-left">
+                <h3 className="font-serif text-2xl font-semibold">
+                  Order &amp; Pay with Ease
+                </h3>
+
+                <p className="mt-1 text-sm text-cream/70">
+                  Pay securely online with Pesapal, or reach out to order and arrange a bulk purchase
+                  for individuals, learning centers, organizations, and communities.
+                </p>
+              </div>
+
+              <div className="flex justify-center md:justify-end">
+                <motion.a
+                  href="/payment"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="inline-flex items-center justify-center rounded-full bg-emerald px-7 py-3 font-semibold text-forest-deep shadow-lg shadow-emerald/30"
+                >
+                  ORDER &amp; PAY WITH EASE
+                </motion.a>
+              </div>
+
+            </div>
+
+          </div>
+        </Reveal>
+
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-[0.25em] text-moss">
@@ -69,7 +107,6 @@ export function Contact() {
             </div>
           </Reveal>
         </div>
-
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
 
@@ -100,7 +137,6 @@ export function Contact() {
             </motion.a>
           </Reveal>
 
-
           <Reveal delay={0.1}>
             <motion.a
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20I%20would%20like%20to%20order%20The%20Breeze%20of%20the%20Forest`}
@@ -129,7 +165,6 @@ export function Contact() {
               </p>
             </motion.a>
           </Reveal>
-
 
           <Reveal delay={0.2}>
             <motion.a
@@ -160,7 +195,6 @@ export function Contact() {
 
         </div>
 
-
         {/* Message form */}
 
         <Reveal delay={0.15}>
@@ -175,7 +209,6 @@ export function Contact() {
                 Fill in the form and we&apos;ll get back to you as soon as we can.
               </p>
             </div>
-
 
             <form onSubmit={handleSubmit} className="mx-auto max-w-2xl">
 
@@ -199,7 +232,6 @@ export function Contact() {
                   />
                 </div>
 
-
                 <div className="flex flex-col gap-2">
                   <label htmlFor="email" className="text-sm font-medium text-forest">
                     Your Email
@@ -220,9 +252,7 @@ export function Contact() {
 
               </div>
 
-
               <div className="mt-5 flex flex-col gap-2">
-
                 <label htmlFor="message" className="text-sm font-medium text-forest">
                   Message
                 </label>
@@ -238,12 +268,9 @@ export function Contact() {
                   placeholder="I'd like to order a copy of The Breeze of the Forest..."
                   className="resize-y rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-emerald focus:ring-2 focus:ring-emerald/30"
                 />
-
               </div>
 
-
               <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
-
                 <p
                   className={`text-sm ${
                     status === 'sent'
@@ -264,7 +291,6 @@ export function Contact() {
                         : 'Opens Gmail to send directly'}
                 </p>
 
-
                 <motion.button
                   type="submit"
                   disabled={status === 'sending'}
@@ -272,7 +298,6 @@ export function Contact() {
                   whileTap={status === 'sending' ? undefined : { scale: 0.96 }}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-8 py-3 font-semibold text-cream shadow-lg shadow-forest/25 disabled:opacity-70"
                 >
-
                   {status === 'sending' ? (
                     <Loader2 className="h-5 w-5 animate-spin" />
                   ) : status === 'sent' ? (
@@ -286,57 +311,10 @@ export function Contact() {
                     : status === 'sent'
                       ? 'Sent'
                       : 'Send Message'}
-
                 </motion.button>
-
               </div>
 
             </form>
-
-          </div>
-        </Reveal>
-
-
-        {/* Online payment */}
-
-        <Reveal delay={0.2}>
-          <div className="mt-14 overflow-hidden rounded-3xl border border-emerald/20 bg-forest text-cream shadow-xl shadow-forest/25">
-
-            <div className="grid items-center gap-8 p-8 md:grid-cols-[auto_1fr_auto] md:p-10">
-
-              <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
-                <Smartphone className="h-8 w-8" />
-              </span>
-
-
-              <div className="text-center md:text-left">
-
-                <h3 className="font-serif text-2xl font-semibold">
-                  Pay Securely Online
-                </h3>
-
-                <p className="mt-1 text-sm text-cream/70">
-                  Pay for your order securely online using Pesapal.
-                  Choose from the payment methods available for your location.
-                </p>
-
-              </div>
-
-
-              <div className="flex justify-center md:justify-end">
-
-                <motion.a
-                  href="/payment"
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="inline-flex items-center justify-center rounded-full bg-emerald px-7 py-3 font-semibold text-forest-deep shadow-lg shadow-emerald/30"
-                >
-                  PAY FOR THE BOOK
-                </motion.a>
-
-              </div>
-
-            </div>
 
           </div>
         </Reveal>
