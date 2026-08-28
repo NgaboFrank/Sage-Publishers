@@ -48,7 +48,7 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <motion.div style={{ y: bookY }} initial={{ opacity: 0, scale: 0.94, rotate: -4 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 1, delay: 0.22, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto w-full max-w-[34rem]">
+        <motion.div style={{ y: bookY }} initial={{ opacity: 0, scale: 0.94, rotate: -4 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 1, delay: 0.22, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto w-full max-w-[30rem]">
           <div aria-hidden="true" className="absolute inset-8 rounded-[3rem] bg-emerald/20 blur-3xl" />
           <div className="relative rounded-[2rem] border border-cream/10 bg-cream/5 p-3 shadow-2xl shadow-black/30 backdrop-blur-sm md:p-4">
             <Image src="/book-cover.jpeg" alt="The Breeze of the Forest book cover" width={900} height={900} priority className="rounded-[1.35rem]" />
