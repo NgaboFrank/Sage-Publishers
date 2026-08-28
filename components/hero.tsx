@@ -24,15 +24,15 @@ export function Hero() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-emerald/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald">
             <Sparkles className="h-3.5 w-3.5" /> A Sage Publishers original
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 26 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }} className="mt-6 font-serif text-5xl font-semibold leading-[0.94] tracking-tight sm:text-6xl md:text-7xl xl:text-[6.6rem]">
+          <motion.h1 initial={{ opacity: 0, y: 26 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }} className="mt-6 font-serif text-5xl font-semibold leading-[0.94] tracking-tight sm:text-5xl md:text-6xl xl:text-[5rem]">
             The Breeze
             <br />
             <span className="text-emerald">of the Forest</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.25 }} className="mt-5 font-serif text-xl italic text-cream/65 sm:text-2xl">
+          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.25 }} className="mt-5 font-serif text-lg italic text-cream/65 sm:text-xl">
             Animal stories that children remember.
           </motion.p>
-          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.38 }} className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/70 sm:text-lg lg:mx-0">
+          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.38 }} className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-cream/70 sm:text-base lg:mx-0">
             A beautifully illustrated collection of gentle adventures that encourage bravery, kindness, friendship and imagination—one story at a time.
           </motion.p>
 
