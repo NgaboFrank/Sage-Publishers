@@ -48,24 +48,20 @@ export function Contact() {
       <div className="mx-auto max-w-5xl px-5 md:px-8">
 
         {/* Online payment */}
-
         <Reveal>
           <div className="mb-14 overflow-hidden rounded-3xl border border-emerald/20 bg-forest text-cream shadow-xl shadow-forest/25">
-
             <div className="grid items-center gap-8 p-8 md:grid-cols-[auto_1fr_auto] md:p-10">
-
-              <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
+              <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald/15 text-emerald">
                 <Smartphone className="h-8 w-8" />
               </span>
 
               <div className="text-center md:text-left">
                 <h3 className="font-serif text-2xl font-semibold">
-                  Order &amp; Pay with Ease
+                  Pay Securely Online
                 </h3>
-
-                <p className="mt-1 text-sm text-cream/70">
-                  Pay securely online with Pesapal, or reach out to order and arrange a bulk purchase
-                  for individuals, learning centers, organizations, and communities.
+                <p className="mt-1 text-sm leading-relaxed text-cream/70">
+                  Pay for your order securely online using Pesapal. Choose from the payment methods
+                  available for your location.
                 </p>
               </div>
 
@@ -76,12 +72,10 @@ export function Contact() {
                   whileTap={{ scale: 0.96 }}
                   className="inline-flex items-center justify-center rounded-full bg-emerald px-7 py-3 font-semibold text-forest-deep shadow-lg shadow-emerald/30"
                 >
-                  ORDER &amp; PAY WITH EASE
+                  PAY FOR THE BOOK
                 </motion.a>
               </div>
-
             </div>
-
           </div>
         </Reveal>
 
@@ -109,7 +103,6 @@ export function Contact() {
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-
           <Reveal>
             <motion.a
               href="sms:+250781087745"
@@ -120,17 +113,12 @@ export function Contact() {
               <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
                 <MessageCircle className="h-7 w-7" />
               </span>
-
               <div>
-                <h3 className="font-serif text-2xl font-semibold text-forest">
-                  Text to Order
-                </h3>
-
+                <h3 className="font-serif text-2xl font-semibold text-forest">Text to Order</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Send us a text and we&apos;ll help you order your copy.
                 </p>
               </div>
-
               <p className="mt-auto font-serif text-2xl font-semibold text-forest">
                 (+250) 781 087 745
               </p>
@@ -149,17 +137,12 @@ export function Contact() {
               <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
                 <MessageSquare className="h-7 w-7" />
               </span>
-
               <div>
-                <h3 className="font-serif text-2xl font-semibold text-forest">
-                  Message on WhatsApp
-                </h3>
-
+                <h3 className="font-serif text-2xl font-semibold text-forest">Message on WhatsApp</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Chat with us directly on WhatsApp for quick replies.
                 </p>
               </div>
-
               <p className="mt-auto font-serif text-2xl font-semibold text-forest">
                 (+250) 781 087 745
               </p>
@@ -176,95 +159,66 @@ export function Contact() {
               <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
                 <Mail className="h-7 w-7" />
               </span>
-
               <div>
-                <h3 className="font-serif text-2xl font-semibold text-forest">
-                  Bulk Purchase
-                </h3>
-
+                <h3 className="font-serif text-2xl font-semibold text-forest">Bulk Purchase</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Ordering in bulk? Contact us for special rates and arrangements.
                 </p>
               </div>
-
               <p className="mt-auto break-all font-serif text-2xl font-semibold text-forest">
                 mugaboan@gmail.com
               </p>
             </motion.a>
           </Reveal>
-
         </div>
 
         {/* Message form */}
-
         <Reveal delay={0.15}>
           <div className="mt-6 rounded-3xl border border-border bg-card p-8 shadow-lg shadow-forest/10 md:p-10">
-
             <div className="mb-6 text-center">
-              <h3 className="font-serif text-2xl font-semibold text-forest">
-                Send Us a Message
-              </h3>
-
+              <h3 className="font-serif text-2xl font-semibold text-forest">Send Us a Message</h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 Fill in the form and we&apos;ll get back to you as soon as we can.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="mx-auto max-w-2xl">
-
               <div className="grid gap-5 sm:grid-cols-2">
-
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-sm font-medium text-forest">
-                    Your Name
-                  </label>
-
+                  <label htmlFor="name" className="text-sm font-medium text-forest">Your Name</label>
                   <input
                     id="name"
                     type="text"
                     required
                     value={form.name}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, name: e.target.value }))
-                    }
+                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                     placeholder="Jane Doe"
                     className="rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-emerald focus:ring-2 focus:ring-emerald/30"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-sm font-medium text-forest">
-                    Your Email
-                  </label>
-
+                  <label htmlFor="email" className="text-sm font-medium text-forest">Your Email</label>
                   <input
                     id="email"
                     type="email"
                     required
                     value={form.email}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, email: e.target.value }))
-                    }
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                     placeholder="jane@example.com"
                     className="rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-emerald focus:ring-2 focus:ring-emerald/30"
                   />
                 </div>
-
               </div>
 
               <div className="mt-5 flex flex-col gap-2">
-                <label htmlFor="message" className="text-sm font-medium text-forest">
-                  Message
-                </label>
-
+                <label htmlFor="message" className="text-sm font-medium text-forest">Message</label>
                 <textarea
                   id="message"
                   required
                   rows={5}
                   value={form.message}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, message: e.target.value }))
-                  }
+                  onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                   placeholder="I'd like to order a copy of The Breeze of the Forest..."
                   className="resize-y rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-emerald focus:ring-2 focus:ring-emerald/30"
                 />
@@ -305,20 +259,12 @@ export function Contact() {
                   ) : (
                     <Send className="h-5 w-5" />
                   )}
-
-                  {status === 'sending'
-                    ? 'Sending…'
-                    : status === 'sent'
-                      ? 'Sent'
-                      : 'Send Message'}
+                  {status === 'sending' ? 'Sending…' : status === 'sent' ? 'Sent' : 'Send Message'}
                 </motion.button>
               </div>
-
             </form>
-
           </div>
         </Reveal>
-
       </div>
     </section>
   )
