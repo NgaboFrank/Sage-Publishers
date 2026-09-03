@@ -38,21 +38,37 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     if (sidebar && !sidebar.querySelector('[data-view-website]')) {
       const divider = document.createElement('div')
       divider.className = 'my-3 border-t border-white/10'
+
       const link = document.createElement('a')
       link.href = '/'
       link.target = '_blank'
       link.rel = 'noreferrer'
       link.dataset.viewWebsite = 'true'
-      link.className = 'mt-2 flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white'
+      link.className = 'mt-1 flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white'
       link.innerHTML = '<span style="font-size:16px;line-height:1">↗</span><span>View website</span>'
-      sidebar.appendChild(divider)
-      sidebar.appendChild(link)
 
       const reportLink = document.createElement('a')
       reportLink.href = '/admin/reports'
       reportLink.className = 'mt-1 flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white'
       reportLink.innerHTML = '<span style="font-size:16px;line-height:1">▣</span><span>Reports</span>'
-      sidebar.appendChild(reportLink)
+
+      const companyLabel = Array.from(sidebar.children).find((child) => child.textContent?.trim() === 'Sage Publishers Ltd.')
+      const logoutButton = Array.from(sidebar.querySelectorAll('button')).find((button) => button.textContent?.trim() === 'Logout')
+
+      if (companyLabel) {
+        sidebar.insertBefore(divider, companyLabel)
+        sidebar.insertBefore(link, companyLabel)
+        sidebar.insertBefore(reportLink, companyLabel)
+      } else {
+        sidebar.appendChild(divider)
+        sidebar.appendChild(link)
+        sidebar.appendChild(reportLink)
+      }
+
+      if (companyLabel && logoutButton) {
+        companyLabel.classList.remove('py-2')
+        companyLabel.classList.add('mt-3')
+      }
     }
 
     document.addEventListener('click', handleAdminNavigation)
