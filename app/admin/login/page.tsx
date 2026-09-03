@@ -27,7 +27,8 @@ export default function AdminLogin() {
       <label className="block text-sm font-semibold mb-2">Email</label>
       <input value={email} onChange={e=>setEmail(e.target.value)} type="email" required className="w-full rounded-xl border px-4 py-3 mb-5 outline-none focus:ring-2 focus:ring-emerald-600/20" />
       <label className="block text-sm font-semibold mb-2">Password</label>
-      <input value={password} onChange={e=>setPassword(e.target.value)} type="password" required className="w-full rounded-xl border px-4 py-3 mb-5 outline-none focus:ring-2 focus:ring-emerald-600/20" />
+      <input value={password} onChange={e=>setPassword(e.target.value)} type="password" required className="w-full rounded-xl border px-4 py-3 mb-2 outline-none focus:ring-2 focus:ring-emerald-600/20" />
+      <div className="mb-5 text-right"><button type="button" onClick={() => router.push('/admin/forgot-password')} className="text-sm font-semibold text-[#14532d] hover:underline">Forgot password?</button></div>
       {error && <p className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
       <button disabled={loading} className="w-full rounded-xl bg-[#14532d] px-4 py-3 font-semibold text-white disabled:opacity-60">{loading ? 'Signing in…' : 'Sign in'}</button>
     </form>
