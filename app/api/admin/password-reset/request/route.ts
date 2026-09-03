@@ -22,11 +22,10 @@ export async function POST(request: Request) {
     const resetUrl = `${origin}/admin/reset-password?token=${encodeURIComponent(token)}`
 
     const apiKey = process.env.RESEND_API_KEY?.trim()
-    // If PASSWORD_RESET_FROM contains an email address, use it. Otherwise keep
-    // the Resend onboarding sender that already works before a custom domain is verified.
-    const configuredFrom = process.env.PASSWORD_RESET_FROM?.trim() || ''
-    const from = configuredFrom.includes('@') ? configuredFrom : 'KHMC <onboarding@resend.dev>'
+    const from = process.env.PASSWORD_RESET_FROM?.trim() || process.env.RESEND_FROM_EMAIL?.trim()
+
     if (!apiKey) throw new Error('RESEND_API_KEY is not configured.')
+    if (!from) throw new Error('PASSWORD_RESET_FROM is not configured.')
 
     const emailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
