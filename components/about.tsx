@@ -9,11 +9,7 @@ import { Reveal } from './reveal'
 const aboutSlides = [
   {
     image: '/book-lifestyle.jpeg',
-    alt: 'The Breeze of the Forest book resting on a wooden table',
-  },
-  {
-    image: '/book-cover.jpeg',
-    alt: 'The Breeze of the Forest book cover',
+    alt: 'The Breeze of the Forest book',
   },
   {
     image: '/animal-tales.webp',
@@ -131,29 +127,22 @@ export function About() {
         <div className="order-1 lg:order-2">
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-[0.25em] text-moss">
-              About the Book
+              About Animal Tales
             </span>
             <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">
-              A gentle forest full of lessons
+              Animal Tales for young readers
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <div className="mt-6 space-y-5 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>
-                The Breeze of the Forest is a book by Sage Publishers. It is a collection of
-                entertaining and educational animal tales that spark children&apos;s imagination
-                while teaching values such as bravery, courage, kindness and friendship. The stories
-                also introduce lessons about negative behaviors children should learn to recognize
-                and avoid.
+                This book is a collection of animal stories for children. These stories can be read
+                to them at bedtime, or children can read on their own and discover valuable life
+                lessons.
               </p>
               <p>
-                The book is perfect for bedtime reading, helping parents create meaningful moments
-                while encouraging a lifelong love of reading.
-              </p>
-              <p>
-                It also includes illustrations that can be used as a coloring activity for younger
-                children under adult supervision, making reading both educational and fun.
+                The moral lessons in this book will help them grow into kind and wonderful adults.
               </p>
             </div>
           </Reveal>
