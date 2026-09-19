@@ -21,7 +21,7 @@ const slides = [
     accent: 'under a starry night sky',
     subtitle: 'Wild stories beneath a beautiful African sky.',
     description: 'A collection of animal tales filled with wonder, friendship and lessons for young readers—bringing the magic of the wild to every page.',
-    image: '/animal-tales-enhanced.svg',
+    image: '/animal-tales.webp',
     alt: 'Animal Tales under a starry night sky book cover',
     label: 'A Sage Publishers original',
   },
