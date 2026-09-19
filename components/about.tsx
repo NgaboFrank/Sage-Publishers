@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { BookOpen, Moon, Palette, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Reveal } from './reveal'
 
-const aboutSlides = [
+const breezeAboutSlides = [
   { image: '/book-lifestyle.jpeg', alt: 'The Breeze of the Forest book resting on a wooden table' },
   { image: '/book-cover.jpeg', alt: 'The Breeze of the Forest book cover' },
 ]
@@ -24,7 +24,7 @@ export function About() {
   const [activeSlide, setActiveSlide] = useState(0)
 
   useEffect(() => {
-    const timer = window.setInterval(() => setActiveSlide((current) => (current + 1) % aboutSlides.length), 5000)
+    const timer = window.setInterval(() => setActiveSlide((current) => (current + 1) % breezeAboutSlides.length), 5000)
     return () => window.clearInterval(timer)
   }, [])
 
@@ -35,13 +35,13 @@ export function About() {
           <motion.div style={{ y: imageY }} className="relative">
             <div aria-hidden="true" className="absolute -left-4 -top-4 h-full w-full rounded-3xl border border-moss/40" />
             <div className="relative overflow-hidden rounded-3xl shadow-xl shadow-forest/15">
-              <motion.div key={aboutSlides[activeSlide].image} initial={{ opacity: 0, scale: 1.03 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
+              <motion.div key={breezeAboutSlides[activeSlide].image} initial={{ opacity: 0, scale: 1.03 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
                 <Image src={aboutSlides[activeSlide].image} alt={aboutSlides[activeSlide].alt} width={1080} height={1080} priority={activeSlide === 0} className="aspect-square w-full object-cover" />
               </motion.div>
-              <button type="button" aria-label="Previous About image" onClick={() => setActiveSlide((activeSlide - 1 + aboutSlides.length) % aboutSlides.length)} className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"><ChevronLeft className="h-5 w-5" /></button>
+              <button type="button" data-book="breeze-of-the-forest" aria-label="Previous About image" onClick={() => setActiveSlide((activeSlide - 1 + aboutSlides.length) % aboutSlides.length)} className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"><ChevronLeft className="h-5 w-5" /></button>
               <button type="button" aria-label="Next About image" onClick={() => setActiveSlide((activeSlide + 1) % aboutSlides.length)} className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"><ChevronRight className="h-5 w-5" /></button>
               <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-forest/75 px-3 py-2 backdrop-blur-md">
-                {aboutSlides.map((slide, index) => <button key={slide.image} type="button" aria-label={`Show About image ${index + 1}`} aria-current={activeSlide === index} onClick={() => setActiveSlide(index)} className={`h-2 rounded-full transition-all ${activeSlide === index ? 'w-7 bg-emerald' : 'w-2 bg-cream/60 hover:bg-cream'}`} />)}
+                {breezeAboutSlides.map((slide, index) => <button key={slide.image} type="button" aria-label={`Show About image ${index + 1}`} aria-current={activeSlide === index} onClick={() => setActiveSlide(index)} className={`h-2 rounded-full transition-all ${activeSlide === index ? 'w-7 bg-emerald' : 'w-2 bg-cream/60 hover:bg-cream'}`} />)}
               </div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="absolute -bottom-6 -right-4 rounded-2xl bg-forest px-6 py-4 text-cream shadow-lg sm:-right-6"><p className="font-serif text-3xl font-semibold leading-none">Sage</p><p className="text-xs uppercase tracking-[0.15em] text-cream/70">Publishers Ltd</p></motion.div>
