@@ -1,7 +1,6 @@
 import { SiteNav } from '@/components/site-nav'
 import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
-import { AnimalTales } from '@/components/animal-tales'
 import { Features } from '@/components/features'
 import { Gallery } from '@/components/gallery'
 import { Testimonials } from '@/components/testimonials'
@@ -28,5 +27,5 @@ const faqJsonLd = {
 }
 const organizationJsonLd = { '@context': 'https://schema.org', '@type': 'Organization', name: 'Sage Publishers Ltd', url: 'https://sagepublishersltd.com', description: 'Sage Publishers Ltd publishes educational and entertaining books for children, including The Breeze of the Forest.', email: 'mailto:Mugaboan@gmail.com', telephone: '+250781087745' }
 export default function Page() {
-  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd).replace(/</g, '\\u003c') }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, '\\u003c') }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, '\\u003c') }} /><SiteNav /><main><Hero /><PurchaseReasons /><About /><AnimalTales /><Features /><Gallery /><Testimonials /><CallToAction /><FAQ /><Contact /></main><SiteFooter /><FloatingWhatsApp /><MobileOrderBar /></>
+  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd).replace(/</g, '\\u003c') }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, '\\u003c') }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, '\\u003c') }} /><SiteNav /><main><Hero /><PurchaseReasons /><About /><Features /><Gallery /><Testimonials /><CallToAction /><FAQ /><Contact /></main><SiteFooter /><FloatingWhatsApp /><MobileOrderBar /></>
 }
