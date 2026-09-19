@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1280" viewBox="0 0 1200 1280" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="clean" x="-2%" y="-2%" width="104%" height="104%">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.06" intercept="-0.02"/>
+        <feFuncG type="linear" slope="1.06" intercept="-0.02"/>
+        <feFuncB type="linear" slope="1.06" intercept="-0.02"/>
+      </feComponentTransfer>
+      <feConvolveMatrix order="3" kernelMatrix="0 -0.12 0 -0.12 1.48 -0.12 0 -0.12 0" preserveAlpha="true"/>
+    </filter>
+  </defs>
+  <image href="/animal-tales.jpg" x="0" y="0" width="1200" height="1280" preserveAspectRatio="xMidYMid slice" filter="url(#clean)"/>
+</svg>
