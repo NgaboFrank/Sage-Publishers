@@ -7,48 +7,24 @@ import { BookOpen, Moon, Palette, ChevronLeft, ChevronRight } from 'lucide-react
 import { Reveal } from './reveal'
 
 const aboutSlides = [
-  {
-    image: '/book-lifestyle.jpeg',
-    alt: 'The Breeze of the Forest book',
-  },
-  {
-    image: '/animal-tales.webp',
-    alt: 'Animal Tales under a starry night sky book cover',
-  },
+  { image: '/book-lifestyle.jpeg', alt: 'The Breeze of the Forest book resting on a wooden table' },
+  { image: '/book-cover.jpeg', alt: 'The Breeze of the Forest book cover' },
 ]
 
 const highlights = [
-  {
-    icon: BookOpen,
-    title: 'Values that last',
-    text: 'Tales teaching bravery, courage, kindness and friendship.',
-  },
-  {
-    icon: Moon,
-    title: 'Perfect for bedtime',
-    text: 'Gentle stories to share and strengthen the bond with your child.',
-  },
-  {
-    icon: Palette,
-    title: 'Colour as you read',
-    text: 'Illustrations double as a supervised coloring activity.',
-  },
+  { icon: BookOpen, title: 'Values that last', text: 'Tales teaching bravery, courage, kindness and friendship.' },
+  { icon: Moon, title: 'Perfect for bedtime', text: 'Gentle stories to share and strengthen the bond with your child.' },
+  { icon: Palette, title: 'Colour as you read', text: 'Illustrations double as a supervised coloring activity.' },
 ]
 
 export function About() {
   const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  })
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const imageY = useTransform(scrollYProgress, [0, 1], [40, -40])
   const [activeSlide, setActiveSlide] = useState(0)
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % aboutSlides.length)
-    }, 5000)
-
+    const timer = window.setInterval(() => setActiveSlide((current) => (current + 1) % aboutSlides.length), 5000)
     return () => window.clearInterval(timer)
   }, [])
 
@@ -57,112 +33,28 @@ export function About() {
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-8 lg:grid-cols-2">
         <div ref={ref} className="relative order-2 lg:order-1">
           <motion.div style={{ y: imageY }} className="relative">
-            <div
-              aria-hidden="true"
-              className="absolute -left-4 -top-4 h-full w-full rounded-3xl border border-moss/40"
-            />
+            <div aria-hidden="true" className="absolute -left-4 -top-4 h-full w-full rounded-3xl border border-moss/40" />
             <div className="relative overflow-hidden rounded-3xl shadow-xl shadow-forest/15">
-              <motion.div
-                key={aboutSlides[activeSlide].image}
-                initial={{ opacity: 0, scale: 1.03 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Image
-                  src={aboutSlides[activeSlide].image}
-                  alt={aboutSlides[activeSlide].alt}
-                  width={1080}
-                  height={1080}
-                  priority={activeSlide === 0}
-                  className="aspect-square w-full object-cover"
-                />
+              <motion.div key={aboutSlides[activeSlide].image} initial={{ opacity: 0, scale: 1.03 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
+                <Image src={aboutSlides[activeSlide].image} alt={aboutSlides[activeSlide].alt} width={1080} height={1080} priority={activeSlide === 0} className="aspect-square w-full object-cover" />
               </motion.div>
-
-              <button
-                type="button"
-                aria-label="Previous About image"
-                onClick={() => setActiveSlide((activeSlide - 1 + aboutSlides.length) % aboutSlides.length)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-
-              <button
-                type="button"
-                aria-label="Next About image"
-                onClick={() => setActiveSlide((activeSlide + 1) % aboutSlides.length)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-
+              <button type="button" aria-label="Previous About image" onClick={() => setActiveSlide((activeSlide - 1 + aboutSlides.length) % aboutSlides.length)} className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"><ChevronLeft className="h-5 w-5" /></button>
+              <button type="button" aria-label="Next About image" onClick={() => setActiveSlide((activeSlide + 1) % aboutSlides.length)} className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"><ChevronRight className="h-5 w-5" /></button>
               <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-forest/75 px-3 py-2 backdrop-blur-md">
-                {aboutSlides.map((slide, index) => (
-                  <button
-                    key={slide.image}
-                    type="button"
-                    aria-label={`Show About image ${index + 1}`}
-                    aria-current={activeSlide === index}
-                    onClick={() => setActiveSlide(index)}
-                    className={`h-2 rounded-full transition-all ${
-                      activeSlide === index ? 'w-7 bg-emerald' : 'w-2 bg-cream/60 hover:bg-cream'
-                    }`}
-                  />
-                ))}
+                {aboutSlides.map((slide, index) => <button key={slide.image} type="button" aria-label={`Show About image ${index + 1}`} aria-current={activeSlide === index} onClick={() => setActiveSlide(index)} className={`h-2 rounded-full transition-all ${activeSlide === index ? 'w-7 bg-emerald' : 'w-2 bg-cream/60 hover:bg-cream'}`} />)}
               </div>
             </div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -bottom-6 -right-4 rounded-2xl bg-forest px-6 py-4 text-cream shadow-lg sm:-right-6"
-            >
-              <p className="font-serif text-3xl font-semibold leading-none">Sage</p>
-              <p className="text-xs uppercase tracking-[0.15em] text-cream/70">Publishers Ltd</p>
-            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="absolute -bottom-6 -right-4 rounded-2xl bg-forest px-6 py-4 text-cream shadow-lg sm:-right-6"><p className="font-serif text-3xl font-semibold leading-none">Sage</p><p className="text-xs uppercase tracking-[0.15em] text-cream/70">Publishers Ltd</p></motion.div>
           </motion.div>
         </div>
-
         <div className="order-1 lg:order-2">
-          <Reveal>
-            <span className="text-sm font-semibold uppercase tracking-[0.25em] text-moss">
-              About Animal Tales
-            </span>
-            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">
-              Animal Tales for young readers
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mt-6 space-y-5 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-              <p>
-                This book is a collection of animal stories for children. These stories can be read
-                to them at bedtime, or children can read on their own and discover valuable life
-                lessons.
-              </p>
-              <p>
-                The moral lessons in this book will help them grow into kind and wonderful adults.
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {highlights.map((item, i) => (
-              <Reveal key={item.title} delay={0.15 + i * 0.1}>
-                <motion.div
-                  whileHover={{ y: -6 }}
-                  className="h-full rounded-2xl border border-border bg-card p-5 shadow-sm"
-                >
-                  <item.icon className="h-6 w-6 text-emerald" />
-                  <h3 className="mt-3 font-serif text-lg font-semibold text-forest">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-                </motion.div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal><span className="text-sm font-semibold uppercase tracking-[0.25em] text-moss">About the Book</span><h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">A gentle forest full of lessons</h2></Reveal>
+          <Reveal delay={0.1}><div className="mt-6 space-y-5 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p>The Breeze of the Forest is a book by Sage Publishers. It is a collection of entertaining and educational animal tales that spark children&apos;s imagination while teaching values such as bravery, courage, kindness and friendship. The stories also introduce lessons about negative behaviors children should learn to recognize and avoid.</p>
+            <p>The book is perfect for bedtime reading, helping parents create meaningful moments while encouraging a lifelong love of reading.</p>
+            <p>It also includes illustrations that can be used as a coloring activity for younger children under adult supervision, making reading both educational and fun.</p>
+          </div></Reveal>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">{highlights.map((item, i) => <Reveal key={item.title} delay={0.15 + i * 0.1}><motion.div whileHover={{ y: -6 }} className="h-full rounded-2xl border border-border bg-card p-5 shadow-sm"><item.icon className="h-6 w-6 text-emerald" /><h3 className="mt-3 font-serif text-lg font-semibold text-forest">{item.title}</h3><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.text}</p></motion.div></Reveal>)}</div>
         </div>
       </div>
     </section>
