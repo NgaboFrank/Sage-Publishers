@@ -1,7 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { motion, useEffect, useState } from 'motion/react'
+import { useEffect, useState } from 'react'
+import { motion } from 'motion/react'
 import { BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Reveal } from './reveal'
 
