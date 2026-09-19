@@ -2,9 +2,24 @@
 
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'motion/react'
-import { useRef } from 'react'
-import { BookOpen, Moon, Palette } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { BookOpen, Moon, Palette, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Reveal } from './reveal'
+
+const aboutSlides = [
+  {
+    image: '/book-lifestyle.jpeg',
+    alt: 'The Breeze of the Forest book resting on a wooden table',
+  },
+  {
+    image: '/book-cover.jpeg',
+    alt: 'The Breeze of the Forest book cover',
+  },
+  {
+    image: '/animal-tales.webp',
+    alt: 'Animal Tales under a starry night sky book cover',
+  },
+]
 
 const highlights = [
   {
@@ -31,6 +46,15 @@ export function About() {
     offset: ['start end', 'end start'],
   })
   const imageY = useTransform(scrollYProgress, [0, 1], [40, -40])
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % aboutSlides.length)
+    }, 5000)
+
+    return () => window.clearInterval(timer)
+  }, [])
 
   return (
     <section id="about" className="relative overflow-hidden bg-background py-24 md:py-32">
@@ -41,13 +65,56 @@ export function About() {
               aria-hidden="true"
               className="absolute -left-4 -top-4 h-full w-full rounded-3xl border border-moss/40"
             />
-            <Image
-              src="/book-lifestyle.jpeg"
-              alt="The Breeze of the Forest paperback resting on a wooden table beside a leafy plant in warm sunlight"
-              width={1080}
-              height={1080}
-              className="relative rounded-3xl shadow-xl shadow-forest/15"
-            />
+            <div className="relative overflow-hidden rounded-3xl shadow-xl shadow-forest/15">
+              <motion.div
+                key={aboutSlides[activeSlide].image}
+                initial={{ opacity: 0, scale: 1.03 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Image
+                  src={aboutSlides[activeSlide].image}
+                  alt={aboutSlides[activeSlide].alt}
+                  width={1080}
+                  height={1080}
+                  priority={activeSlide === 0}
+                  className="aspect-square w-full object-cover"
+                />
+              </motion.div>
+
+              <button
+                type="button"
+                aria-label="Previous About image"
+                onClick={() => setActiveSlide((activeSlide - 1 + aboutSlides.length) % aboutSlides.length)}
+                className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              <button
+                type="button"
+                aria-label="Next About image"
+                onClick={() => setActiveSlide((activeSlide + 1) % aboutSlides.length)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+
+              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-forest/75 px-3 py-2 backdrop-blur-md">
+                {aboutSlides.map((slide, index) => (
+                  <button
+                    key={slide.image}
+                    type="button"
+                    aria-label={`Show About image ${index + 1}`}
+                    aria-current={activeSlide === index}
+                    onClick={() => setActiveSlide(index)}
+                    className={`h-2 rounded-full transition-all ${
+                      activeSlide === index ? 'w-7 bg-emerald' : 'w-2 bg-cream/60 hover:bg-cream'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
