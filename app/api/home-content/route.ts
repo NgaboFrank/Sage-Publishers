@@ -6,6 +6,7 @@ const HOME_KEYS = [
   'home_slide_animal_tales',
   'home_slide_animal_tales_fr',
   'home_cta_images',
+  'home_gallery_images',
 ]
 
 export async function GET() {
