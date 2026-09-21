@@ -95,7 +95,7 @@ export function Gallery() {
                 <a
                   href={`/payment?book=${encodeURIComponent(
                     i === 0 ? 'Contes d’animaux sous une nuit étoilée' :
-                    i === 1 ? 'Animal Tales Under a Story Night Sky' :
+                    i === 1 ? 'Animal Tales Under a Starry Night Sky' :
                     'The Breeze of the Forest'
                   )}`}
                   className="inline-flex items-center justify-center rounded-full bg-emerald px-6 py-3 font-semibold text-forest-deep shadow-md shadow-emerald/20 transition-transform hover:scale-[1.03]"
