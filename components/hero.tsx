@@ -4,7 +4,6 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Play, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react'
-import { FloatingLeaves } from './floating-leaves'
 
 const slides = [
   {
@@ -55,7 +54,6 @@ export function Hero() {
       <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,_rgba(82,200,120,0.18),_transparent_28%),radial-gradient(circle_at_20%_20%,_rgba(255,255,255,0.05),_transparent_22%)]" />
       <div aria-hidden="true" className="absolute -right-24 top-20 h-80 w-80 rounded-full bg-emerald/12 blur-[120px]" />
       <div aria-hidden="true" className="absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-emerald/10 blur-[130px]" />
-      <FloatingLeaves count={11} tone="dark" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 px-5 pb-20 md:px-8 lg:grid-cols-[1fr_0.9fr] lg:gap-20 lg:pb-24">
         <motion.div style={{ y: textY }} className="max-w-2xl text-center lg:text-left">
