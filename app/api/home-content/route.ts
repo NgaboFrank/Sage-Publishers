@@ -10,7 +10,7 @@ const HOME_KEYS = [
 export async function GET() {
   try {
     const keys = HOME_KEYS.join(',')
-    const content = await supabaseAdmin(`site_content?select=content_key,image_url&content_key=in.(${keys})`)
+    const content = await supabaseAdmin(`site_content?select=content_key,image_url,value&content_key=in.(${keys})`)
     return NextResponse.json({ content })
   } catch {
     return NextResponse.json({ content: [] })
