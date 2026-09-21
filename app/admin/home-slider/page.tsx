@@ -14,6 +14,7 @@ export default function HomeSliderAdmin() {
   const [slides, setSlides] = useState(defaults)
   const [busy, setBusy] = useState<string | null>(null)
   const [message, setMessage] = useState('')
+  const [ctaDirty, setCtaDirty] = useState(false)
   const [ctaImages, setCtaImages] = useState<string[]>(['/book-cover.jpeg','/animal-tales.webp'])
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function HomeSliderAdmin() {
     if (!r.ok) { setBusy(null); setMessage(d.error || 'Upload failed.'); return }
     const next = [...ctaImages, d.url]
     const save = await fetch('/api/admin/content', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({content_key:'home_cta_images',value:JSON.stringify(next),image_url:''}) })
-    setBusy(null); if (save.ok) { setCtaImages(next); setMessage('Lower homepage slider image added.') }
+    setBusy(null); if (save.ok) { setCtaImages(next); setCtaDirty(false); setMessage('Image added and published on the website.') }
   }
   async function replaceCta(file: File, i: number) {
     setBusy('home_cta_images'); setMessage('')
@@ -58,14 +59,14 @@ export default function HomeSliderAdmin() {
     if (!r.ok) { setBusy(null); setMessage(d.error || 'Upload failed.'); return }
     const next = ctaImages.map((src,n)=>n===i?d.url:src)
     const save=await fetch('/api/admin/content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content_key:'home_cta_images',value:JSON.stringify(next),image_url:''})})
-    setBusy(null); if(save.ok){setCtaImages(next);setMessage('Lower homepage slider image changed.')}
+    setBusy(null); if(save.ok){setCtaImages(next);setCtaDirty(false);setMessage('Image changed and published on the website.')}
   }
 
   async function removeCta(i: number) {
     const next = ctaImages.filter((_,n)=>n!==i)
     setBusy('home_cta_images')
     const r=await fetch('/api/admin/content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content_key:'home_cta_images',value:JSON.stringify(next),image_url:''})})
-    setBusy(null); if(r.ok){setCtaImages(next);setMessage('Image removed from lower homepage slider.')}
+    setBusy(null); if(r.ok){setCtaImages(next);setCtaDirty(false);setMessage('Image removed and website updated.')}
   }
 
   return <main className="min-h-screen bg-[#f6f8f7] px-5 py-8 text-[#10251b] lg:px-8">
@@ -88,6 +89,9 @@ export default function HomeSliderAdmin() {
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {ctaImages.map((src,i)=><div key={src+i} className="rounded-2xl border border-slate-200 p-3"><img src={src} alt="" className="aspect-square w-full rounded-xl bg-slate-100 object-contain"/><div className="mt-3 grid grid-cols-2 gap-2"><label className="cursor-pointer rounded-xl bg-[#eef5f1] px-3 py-2 text-center text-sm font-bold text-[#103d2b]">Change<input type="file" accept="image/*" className="hidden" onChange={e=>{const f=e.target.files?.[0];if(f)replaceCta(f,i)}}/></label><button onClick={()=>removeCta(i)} className="rounded-xl border border-red-200 px-3 py-2 text-sm font-bold text-red-600">Remove</button></div></div>)}
           <label className="flex min-h-48 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 p-5 text-center text-sm font-bold text-[#103d2b]"><ImagePlus className="h-6 w-6"/>Add image<input type="file" accept="image/*" className="hidden" onChange={e=>{const f=e.target.files?.[0];if(f)addCta(f)}}/></label>
+        </div>
+        <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900">
+          Changes to this slider are saved and published automatically when you Add, Change, or Remove an image.
         </div>
       </section>
       <h2 className="mb-4 text-xl font-bold">Home Slider Images</h2>
