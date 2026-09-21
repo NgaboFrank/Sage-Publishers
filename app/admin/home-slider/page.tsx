@@ -14,14 +14,14 @@ export default function HomeSliderAdmin() {
   const [slides, setSlides] = useState(defaults)
   const [busy, setBusy] = useState<string | null>(null)
   const [message, setMessage] = useState('')
-  const [ctaImages, setCtaImages] = useState<string[]>([])
+  const [ctaImages, setCtaImages] = useState<string[]>(['/book-cover.jpeg','/animal-tales.webp'])
 
   useEffect(() => {
     fetch('/api/admin/content', { cache: 'no-store' }).then(r => r.json()).then(data => {
       const map = new Map((data.content || []).map((x: any) => [x.content_key, x]))
       setSlides(defaults.map(s => ({ ...s, image_url: (map.get(s.key) as any)?.image_url || '' })))
       const cta = map.get('home_cta_images') as any
-      if (cta?.value) { try { const p = JSON.parse(cta.value); if (Array.isArray(p)) setCtaImages(p) } catch {} }
+      if (cta?.value) { try { const p = JSON.parse(cta.value); if (Array.isArray(p) && p.length) setCtaImages(p) } catch {} }
     }).catch(() => {})
   }, [])
 
@@ -51,6 +51,16 @@ export default function HomeSliderAdmin() {
     const save = await fetch('/api/admin/content', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({content_key:'home_cta_images',value:JSON.stringify(next),image_url:''}) })
     setBusy(null); if (save.ok) { setCtaImages(next); setMessage('Lower homepage slider image added.') }
   }
+  async function replaceCta(file: File, i: number) {
+    setBusy('home_cta_images'); setMessage('')
+    const form = new FormData(); form.append('file', file)
+    const r = await fetch('/api/admin/upload', { method:'POST', body:form }); const d = await r.json()
+    if (!r.ok) { setBusy(null); setMessage(d.error || 'Upload failed.'); return }
+    const next = ctaImages.map((src,n)=>n===i?d.url:src)
+    const save=await fetch('/api/admin/content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content_key:'home_cta_images',value:JSON.stringify(next),image_url:''})})
+    setBusy(null); if(save.ok){setCtaImages(next);setMessage('Lower homepage slider image changed.')}
+  }
+
   async function removeCta(i: number) {
     const next = ctaImages.filter((_,n)=>n!==i)
     setBusy('home_cta_images')
@@ -76,7 +86,7 @@ export default function HomeSliderAdmin() {
         <h2 className="text-xl font-bold">“Bring the magic home” Slider</h2>
         <p className="mt-1 text-sm text-slate-500">Add or remove the book images shown in the lower homepage slider.</p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {ctaImages.map((src,i)=><div key={src+i} className="rounded-2xl border border-slate-200 p-3"><img src={src} alt="" className="aspect-square w-full rounded-xl bg-slate-100 object-contain"/><button onClick={()=>removeCta(i)} className="mt-3 w-full rounded-xl border border-red-200 px-3 py-2 text-sm font-bold text-red-600">Remove</button></div>)}
+          {ctaImages.map((src,i)=><div key={src+i} className="rounded-2xl border border-slate-200 p-3"><img src={src} alt="" className="aspect-square w-full rounded-xl bg-slate-100 object-contain"/><div className="mt-3 grid grid-cols-2 gap-2"><label className="cursor-pointer rounded-xl bg-[#eef5f1] px-3 py-2 text-center text-sm font-bold text-[#103d2b]">Change<input type="file" accept="image/*" className="hidden" onChange={e=>{const f=e.target.files?.[0];if(f)replaceCta(f,i)}}/></label><button onClick={()=>removeCta(i)} className="rounded-xl border border-red-200 px-3 py-2 text-sm font-bold text-red-600">Remove</button></div></div>)}
           <label className="flex min-h-48 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 p-5 text-center text-sm font-bold text-[#103d2b]"><ImagePlus className="h-6 w-6"/>Add image<input type="file" accept="image/*" className="hidden" onChange={e=>{const f=e.target.files?.[0];if(f)addCta(f)}}/></label>
         </div>
       </section>
