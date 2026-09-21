@@ -17,6 +17,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         event.preventDefault()
         window.location.assign('/admin/content')
       }
+      if (text === 'Images') {
+        event.preventDefault()
+        window.location.assign('/admin/home-slider')
+      }
       if (text === 'Gallery') {
         event.preventDefault()
         window.location.assign('/admin/gallery')
