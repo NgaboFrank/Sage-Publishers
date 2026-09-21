@@ -20,16 +20,30 @@ const bookImages = [
 
 export function CallToAction() {
   const [active, setActive] = useState(0)
+  const [managedImages, setManagedImages] = useState<string[]>([])
+
+  useEffect(() => {
+    fetch('/api/home-content', { cache: 'no-store' }).then(r => r.json()).then(data => {
+      const item = (data.content || []).find((x: any) => x.content_key === 'home_cta_images')
+      if (item?.value) {
+        try { const parsed = JSON.parse(item.value); if (Array.isArray(parsed)) setManagedImages(parsed.filter(Boolean)) } catch {}
+      }
+    }).catch(() => {})
+  }, [])
+
+  const displayImages = managedImages.length ? managedImages.map((src, i) => ({ src, alt: `Homepage featured book image ${i + 1}` })) : bookImages
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setActive((current) => (current + 1) % bookImages.length)
+      setActive((current) => (current + 1) % displayImages.length)
     }, 6500)
 
     return () => window.clearInterval(timer)
-  }, [])
+  }, [displayImages.length])
 
-  const book = bookImages[active]
+  useEffect(() => { if (active >= displayImages.length) setActive(0) }, [active, displayImages.length])
+
+  const book = displayImages[active]
 
   return (
     <section className="relative overflow-hidden bg-forest py-24 text-cream md:py-32">
@@ -64,7 +78,7 @@ export function CallToAction() {
               <button
                 type="button"
                 aria-label="Previous book"
-                onClick={() => setActive((active - 1 + bookImages.length) % bookImages.length)}
+                onClick={() => setActive((active - 1 + displayImages.length) % displayImages.length)}
                 className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-forest/75 p-2 text-cream backdrop-blur-md transition hover:bg-forest"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -73,14 +87,14 @@ export function CallToAction() {
               <button
                 type="button"
                 aria-label="Next book"
-                onClick={() => setActive((active + 1) % bookImages.length)}
+                onClick={() => setActive((active + 1) % displayImages.length)}
                 className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-forest/75 p-2 text-cream backdrop-blur-md transition hover:bg-forest"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
 
               <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-forest/75 px-3 py-2 backdrop-blur-md">
-                {bookImages.map((item, index) => (
+                {displayImages.map((item, index) => (
                   <button
                     key={item.src}
                     type="button"
