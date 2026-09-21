@@ -30,7 +30,7 @@ const slides = [
     accent: 'sous une nuit étoilée',
     subtitle: 'Des histoires sauvages sous un magnifique ciel africain.',
     description: 'Une collection de contes animaliers remplis de merveille, d’amitié et de leçons pour les jeunes lecteurs—la magie de la nature à chaque page.',
-    image: '/animal-tales-fr.webp',
+    image: '/animal-tales-fr.jpeg',
     alt: 'Couverture française de Contes d’animaux sous une nuit étoilée',
     label: 'Une création originale de Sage Publishers',
   },
@@ -60,84 +60,35 @@ export function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 px-5 pb-20 md:px-8 lg:grid-cols-[1fr_0.9fr] lg:gap-20 lg:pb-24">
         <motion.div style={{ y: textY }} className="max-w-2xl text-center lg:text-left">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.45 }}
-            >
+            <motion.div key={active} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.45 }}>
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-emerald/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald sm:text-[11px]">
                 <Sparkles className="h-3.5 w-3.5" /> {slide.label}
               </div>
-              <h1 className="mt-5 font-serif text-4xl font-semibold leading-[1] tracking-tight sm:text-5xl md:text-5xl xl:text-[4rem]">
-                {slide.title}
-                <br />
-                <span className="text-emerald">{slide.accent}</span>
-              </h1>
+              <h1 className="mt-5 font-serif text-4xl font-semibold leading-[1] tracking-tight sm:text-5xl md:text-5xl xl:text-[4rem]">{slide.title}<br /><span className="text-emerald">{slide.accent}</span></h1>
               <p className="mt-4 font-serif text-base italic text-cream/65 sm:text-lg">{slide.subtitle}</p>
               <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-cream/70 sm:text-[15px] lg:mx-0">{slide.description}</p>
             </motion.div>
           </AnimatePresence>
 
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.2 }} className="mt-7 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
-            <a href="/payment" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald px-6 py-3 text-sm font-semibold text-forest-deep shadow-xl shadow-emerald/20 transition hover:-translate-y-0.5 sm:w-auto">
-              Pay for the Book <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <a href="/trailer" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-cream/15 bg-cream/5 px-6 py-3 text-sm font-semibold text-cream backdrop-blur-md transition hover:bg-cream/10 sm:w-auto">
-              <Play className="h-4 w-4 fill-current" /> Watch Trailer
-            </a>
+            <a href="/payment" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald px-6 py-3 text-sm font-semibold text-forest-deep shadow-xl shadow-emerald/20 transition hover:-translate-y-0.5 sm:w-auto">Pay for the Book <ArrowUpRight className="h-4 w-4" /></a>
+            <a href="/trailer" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-cream/15 bg-cream/5 px-6 py-3 text-sm font-semibold text-cream backdrop-blur-md transition hover:bg-cream/10 sm:w-auto"><Play className="h-4 w-4 fill-current" /> Watch Trailer</a>
           </motion.div>
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[10px] text-cream/50 lg:justify-start">
-            <span className="inline-flex items-center gap-2"><ShieldCheck className="h-3.5 w-3.5 text-emerald" /> Secure online checkout</span>
-            <span>Designed for family reading</span>
-            <span>Made by Sage Publishers Ltd</span>
-          </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[10px] text-cream/50 lg:justify-start"><span className="inline-flex items-center gap-2"><ShieldCheck className="h-3.5 w-3.5 text-emerald" /> Secure online checkout</span><span>Designed for family reading</span><span>Made by Sage Publishers Ltd</span></div>
         </motion.div>
 
         <motion.div style={{ y: bookY }} className="relative mx-auto w-full max-w-[30rem]">
           <div aria-hidden="true" className="absolute inset-8 rounded-[3rem] bg-emerald/20 blur-3xl" />
           <div className="relative rounded-[2rem] border border-cream/10 bg-cream/5 p-3 shadow-2xl shadow-black/30 backdrop-blur-sm md:p-4">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={slide.image}
-                initial={{ opacity: 0, scale: 0.97, x: 18 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                exit={{ opacity: 0, scale: 0.97, x: -18 }}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Image src={slide.image} alt={slide.alt} width={900} height={900} priority={active === 0} className="aspect-square w-full rounded-[1.35rem] object-cover" />
-              </motion.div>
-            </AnimatePresence>
-
-            <button aria-label="Previous book" onClick={() => setActive((active - 1 + slides.length) % slides.length)} className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-forest/70 p-2 text-cream backdrop-blur-md transition hover:bg-forest">
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button aria-label="Next book" onClick={() => setActive((active + 1) % slides.length)} className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-forest/70 p-2 text-cream backdrop-blur-md transition hover:bg-forest">
-              <ChevronRight className="h-5 w-5" />
-            </button>
-
-            <div className="absolute -bottom-5 -left-4 hidden rounded-2xl border border-cream/10 bg-forest/90 px-5 py-4 shadow-xl backdrop-blur-md sm:block">
-              <p className="text-[9px] uppercase tracking-[0.18em] text-emerald">Featured title</p>
-              <p className="mt-1 font-serif text-base font-semibold text-cream">{active === 0 ? 'A story for every heart.' : active === 1 ? 'Stories under the stars.' : 'Des histoires sous les étoiles.'}</p>
-            </div>
-
-            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-forest/70 px-3 py-2 backdrop-blur-md">
-              {slides.map((item, index) => (
-                <button
-                  key={item.image}
-                  aria-label={`Show slide ${index + 1}`}
-                  aria-current={active === index}
-                  onClick={() => setActive(index)}
-                  className={`h-2 rounded-full transition-all ${active === index ? 'w-7 bg-emerald' : 'w-2 bg-cream/50 hover:bg-cream/80'}`}
-                />
-              ))}
-            </div>
+            <AnimatePresence mode="wait"><motion.div key={slide.image} initial={{ opacity: 0, scale: 0.97, x: 18 }} animate={{ opacity: 1, scale: 1, x: 0 }} exit={{ opacity: 0, scale: 0.97, x: -18 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}><Image src={slide.image} alt={slide.alt} width={900} height={900} priority={active === 0} className="aspect-square w-full rounded-[1.35rem] object-cover" /></motion.div></AnimatePresence>
+            <button aria-label="Previous book" onClick={() => setActive((active - 1 + slides.length) % slides.length)} className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-forest/70 p-2 text-cream backdrop-blur-md transition hover:bg-forest"><ChevronLeft className="h-5 w-5" /></button>
+            <button aria-label="Next book" onClick={() => setActive((active + 1) % slides.length)} className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-forest/70 p-2 text-cream backdrop-blur-md transition hover:bg-forest"><ChevronRight className="h-5 w-5" /></button>
+            <div className="absolute -bottom-5 -left-4 hidden rounded-2xl border border-cream/10 bg-forest/90 px-5 py-4 shadow-xl backdrop-blur-md sm:block"><p className="text-[9px] uppercase tracking-[0.18em] text-emerald">Featured title</p><p className="mt-1 font-serif text-base font-semibold text-cream">{active === 0 ? 'A story for every heart.' : active === 1 ? 'Stories under the stars.' : 'Des histoires sous les étoiles.'}</p></div>
+            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-forest/70 px-3 py-2 backdrop-blur-md">{slides.map((item, index) => <button key={item.image} aria-label={`Show slide ${index + 1}`} aria-current={active === index} onClick={() => setActive(index)} className={`h-2 rounded-full transition-all ${active === index ? 'w-7 bg-emerald' : 'w-2 bg-cream/50 hover:bg-cream/80'}`} />)}</div>
           </div>
         </motion.div>
       </div>
-
       <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   )
