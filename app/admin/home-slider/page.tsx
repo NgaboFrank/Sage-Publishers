@@ -25,14 +25,20 @@ export default function HomeSliderAdmin() {
       setSlides(current => {
         const fixed = current.filter(s => !s.dynamic)
         const normalize = (v:string) => String(v || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim()
-        const fixedTitles = fixed.map(s => normalize(s.label.replace(/^Slide\s+\d+\s*[—-]\s*/i, '')))
+        const fixedTitles = [
+          'the breeze of the forest',
+          'animal tales',
+          'contes d animaux'
+        ].map(normalize)
         const added = published
           .filter((b:any) => {
             const title = normalize(b.title)
-            return !fixedTitles.some(existing => existing.includes(title) || title.includes(existing) ||
-              (title.includes('animal tales') && existing.includes('animal tales')) ||
-              (title.includes('contes d animaux') && existing.includes('contes d animaux')) ||
-              (title.includes('breeze') && existing.includes('breeze')))
+            return !fixedTitles.some(existing =>
+              title === existing ||
+              (existing === 'animal tales' && title.startsWith('animal tales')) ||
+              (existing === 'contes d animaux' && title.startsWith('contes d animaux')) ||
+              (existing === 'the breeze of the forest' && title.includes('breeze of the forest'))
+            )
           })
           .map((b:any, i:number) => ({
             key: 'home_slide_book_'+b.id,
