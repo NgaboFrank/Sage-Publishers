@@ -16,7 +16,19 @@ export default function PaymentPage() {
   const [loadingBooks, setLoadingBooks] = useState(true)
   const [error, setError] = useState('')
 
-  useEffect(() => { fetch('/api/books').then(r => r.json()).then(data => setBooks(data.books || [])).catch(() => setError('Unable to load available books.')).finally(() => setLoadingBooks(false)) }, [])
+  useEffect(() => {
+    fetch('/api/books').then(r => r.json()).then(data => {
+      const loaded: Book[] = data.books || []
+      setBooks(loaded)
+      const requested = new URLSearchParams(window.location.search).get('book')
+      if (requested) {
+        const normalize = (v:string) => decodeURIComponent(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim()
+        const wanted = normalize(requested)
+        const match = loaded.find(b => normalize(b.id) === wanted || normalize(b.title) === wanted)
+        if (match) setForm(current => ({ ...current, bookId: match.id, amount: Number(match.price) > 0 ? String(match.price) : '' }))
+      }
+    }).catch(() => setError('Unable to load available books.')).finally(() => setLoadingBooks(false))
+  }, [])
   function selectBook(id:string) { const book = books.find(b => b.id === id); setForm(current => ({ ...current, bookId:id, amount:book && Number(book.price) > 0 ? String(book.price) : '' })) }
   function updateField(field:string, value:string) { setForm(current => ({ ...current, [field]:value })) }
   function startBkPay() {
