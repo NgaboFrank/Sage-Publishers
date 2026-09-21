@@ -1,60 +1,95 @@
 'use client'
 
-import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
-import { BookOpen, Moon, Palette, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Reveal } from './reveal'
 
-const breezeAboutSlides = [
-  { image: '/book-lifestyle.jpeg', alt: 'The Breeze of the Forest book resting on a wooden table' },
-  { image: '/book-cover.jpeg', alt: 'The Breeze of the Forest book cover' },
-]
-
-const highlights = [
-  { icon: BookOpen, title: 'Values that last', text: 'Tales teaching bravery, courage, kindness and friendship.' },
-  { icon: Moon, title: 'Perfect for bedtime', text: 'Gentle stories to share and strengthen the bond with your child.' },
-  { icon: Palette, title: 'Colour as you read', text: 'Illustrations double as a supervised coloring activity.' },
-]
-
 export function About() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const imageY = useTransform(scrollYProgress, [0, 1], [40, -40])
-  const [activeSlide, setActiveSlide] = useState(0)
-
-  useEffect(() => {
-    const timer = window.setInterval(() => setActiveSlide((current) => (current + 1) % breezeAboutSlides.length), 5000)
-    return () => window.clearInterval(timer)
-  }, [])
-
   return (
     <section id="about" className="relative overflow-hidden bg-background py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-8 lg:grid-cols-2">
-        <div ref={ref} className="relative order-2 lg:order-1">
-          <motion.div style={{ y: imageY }} className="relative">
-            <div aria-hidden="true" className="absolute -left-4 -top-4 h-full w-full rounded-3xl border border-moss/40" />
-            <div className="relative overflow-hidden rounded-3xl shadow-xl shadow-forest/15">
-              <motion.div key={breezeAboutSlides[activeSlide].image} initial={{ opacity: 0, scale: 1.03 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
-                <Image src={breezeAboutSlides[activeSlide].image} alt={breezeAboutSlides[activeSlide].alt} width={1080} height={1080} priority={activeSlide === 0} className="aspect-square w-full object-cover" />
-              </motion.div>
-              <button type="button" data-book="breeze-of-the-forest" aria-label="Previous About image" onClick={() => setActiveSlide((activeSlide - 1 + breezeAboutSlides.length) % breezeAboutSlides.length)} className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"><ChevronLeft className="h-5 w-5" /></button>
-              <button type="button" aria-label="Next About image" onClick={() => setActiveSlide((activeSlide + 1) % breezeAboutSlides.length)} className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-forest/70 p-2.5 text-cream shadow-lg backdrop-blur-md transition hover:bg-forest"><ChevronRight className="h-5 w-5" /></button>
-              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-forest/75 px-3 py-2 backdrop-blur-md">
-                {breezeAboutSlides.map((slide, index) => <button key={slide.image} type="button" aria-label={`Show About image ${index + 1}`} aria-current={activeSlide === index} onClick={() => setActiveSlide(index)} className={`h-2 rounded-full transition-all ${activeSlide === index ? 'w-7 bg-emerald' : 'w-2 bg-cream/60 hover:bg-cream'}`} />)}
+      <div className="mx-auto max-w-5xl px-5 md:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-[0.25em] text-moss">
+              About Sage Publishers Ltd
+            </span>
+            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl md:text-6xl">
+              Inspiring young minds, one story at a time.
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <p className="mx-auto mt-7 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Sage Publishers Ltd is a children’s publishing company dedicated to creating meaningful,
+              engaging, and educational books that inspire young readers. Our goal is to make reading
+              enjoyable while helping children discover important values, develop their imagination,
+              and learn lessons they can carry into everyday life.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <Reveal delay={0.15}>
+            <div className="h-full rounded-3xl border border-border bg-card p-7 shadow-sm md:p-8">
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">What We Do</span>
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground">
+                <p>
+                  We create and share thoughtfully written and beautifully illustrated books for children.
+                  Our stories are designed to entertain, encourage curiosity, and introduce positive values
+                  such as kindness, courage, friendship, respect, and responsibility.
+                </p>
+                <p>
+                  Our books are suitable for independent reading, family reading, and bedtime storytelling,
+                  giving parents, guardians, teachers, and children opportunities to learn and enjoy stories together.
+                </p>
               </div>
             </div>
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="absolute -bottom-6 -right-4 rounded-2xl bg-forest px-6 py-4 text-cream shadow-lg sm:-right-6"><p className="font-serif text-3xl font-semibold leading-none">Sage</p><p className="text-xs uppercase tracking-[0.15em] text-cream/70">Publishers Ltd</p></motion.div>
-          </motion.div>
-        </div>
-        <div className="order-1 lg:order-2">
-          <Reveal><span className="text-sm font-semibold uppercase tracking-[0.25em] text-moss">About the Book</span><h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">A gentle forest full of lessons</h2></Reveal>
-          <Reveal delay={0.1}><div className="mt-6 space-y-5 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-            <p>The Breeze of the Forest is a book by Sage Publishers. It is a collection of entertaining and educational animal tales that spark children&apos;s imagination while teaching values such as bravery, courage, kindness and friendship. The stories also introduce lessons about negative behaviors children should learn to recognize and avoid.</p>
-            <p>The book is perfect for bedtime reading, helping parents create meaningful moments while encouraging a lifelong love of reading.</p>
-            <p>It also includes illustrations that can be used as a coloring activity for younger children under adult supervision, making reading both educational and fun.</p>
-          </div></Reveal>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">{highlights.map((item, i) => <Reveal key={item.title} delay={0.15 + i * 0.1}><motion.div whileHover={{ y: -6 }} className="h-full rounded-2xl border border-border bg-card p-5 shadow-sm"><item.icon className="h-6 w-6 text-emerald" /><h3 className="mt-3 font-serif text-lg font-semibold text-forest">{item.title}</h3><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.text}</p></motion.div></Reveal>)}</div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="h-full rounded-3xl border border-border bg-card p-7 shadow-sm md:p-8">
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">More Than Just Stories</span>
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground">
+                <p>
+                  At Sage Publishers Ltd, we believe children’s books can do more than entertain. A good story
+                  can help a child understand the world, develop empathy, think creatively, and build positive character.
+                </p>
+                <p>
+                  Our publications combine storytelling, illustrations, and valuable life lessons to create reading
+                  experiences that are both enjoyable and educational. Some of our books also include activities
+                  that allow children to interact creatively with what they read.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.25}>
+            <div className="h-full rounded-3xl border border-border bg-card p-7 shadow-sm md:p-8">
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">Our Website</span>
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground">
+                <p>
+                  Our website makes it easy for readers, parents, schools, and organizations to discover our
+                  publications, explore book information, view illustrations, learn more about our work, and place orders.
+                </p>
+                <p>
+                  We also provide options for larger or bulk orders for schools, organizations, groups, and other interested customers.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.3}>
+            <div className="h-full rounded-3xl border border-border bg-card p-7 shadow-sm md:p-8">
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">Our Purpose</span>
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground">
+                <p>
+                  Our purpose is to encourage a lasting love of reading and contribute to the growth and development
+                  of young minds through quality children’s literature.
+                </p>
+                <p>
+                  At Sage Publishers Ltd, every story is an opportunity to inspire, teach, and bring people together through the joy of reading.
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
