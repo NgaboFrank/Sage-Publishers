@@ -92,19 +92,6 @@ export function CallToAction() {
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
-
-              <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-forest/75 px-3 py-2 backdrop-blur-md">
-                {displayImages.map((item, index) => (
-                  <button
-                    key={item.src}
-                    type="button"
-                    aria-label={`Show book image ${index + 1}`}
-                    aria-current={active === index}
-                    onClick={() => setActive(index)}
-                    className={`h-2 rounded-full transition-all ${active === index ? 'w-7 bg-emerald' : 'w-2 bg-cream/50 hover:bg-cream/80'}`}
-                  />
-                ))}
-              </div>
             </div>
           </motion.div>
         </Reveal>
