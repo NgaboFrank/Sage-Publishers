@@ -79,7 +79,9 @@ export function Gallery() {
                   src={item.src}
                   alt={item.alt}
                   fill
-                  sizes="(max-width: 640px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 92vw, 33vw"
+                  quality={65}
+                  loading="lazy"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
                 <span
