@@ -59,7 +59,7 @@ export function Hero() {
         <motion.div style={{ y: textY }} className="max-w-2xl text-center lg:text-left">
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.45 }}>
-              <h1 className="font-serif text-[2.65rem] font-semibold leading-[0.96] tracking-[-0.025em] sm:text-5xl md:text-6xl xl:text-[4.35rem]">{slide.title}<br /><span className="text-emerald">{slide.accent}</span></h1>
+              <h1 className={`font-serif font-semibold leading-[0.98] tracking-[-0.025em] ${active === 0 ? 'text-[2.65rem] sm:text-5xl md:text-6xl xl:text-[4.35rem]' : 'text-[2.25rem] sm:text-[2.75rem] md:text-[3.25rem] xl:text-[3.7rem]'}`}>{slide.title}<br /><span className="text-emerald">{slide.accent}</span></h1>
               <p className="mt-4 font-serif text-base italic text-cream/65 sm:text-lg">{slide.subtitle}</p>
               <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-cream/70 sm:text-[15px] lg:mx-0">{slide.description}</p>
             </motion.div>
