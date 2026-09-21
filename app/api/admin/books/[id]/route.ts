@@ -19,7 +19,11 @@ export async function PATCH(request: Request, { params }: Params) {
     if (body.gallery_urls !== undefined) patch.gallery_urls = Array.isArray(body.gallery_urls) ? body.gallery_urls : []
     if (body.published !== undefined) patch.published = Boolean(body.published)
     patch.updated_at = new Date().toISOString()
-    const rows = await supabaseAdmin(`books?id=eq.${encodeURIComponent(id)}`, { method: 'PATCH', body: JSON.stringify(patch) })
+    const rows = await supabaseAdmin(`books?id=eq.${encodeURIComponent(id)}&select=*`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=representation' },
+      body: JSON.stringify(patch),
+    })
     return NextResponse.json({ book: Array.isArray(rows) ? rows[0] : rows })
   } catch (error) {
     const unauthorized = error instanceof Error && error.message === 'UNAUTHORIZED'
