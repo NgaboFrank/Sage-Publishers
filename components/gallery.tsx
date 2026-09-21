@@ -11,6 +11,7 @@ type GalleryItem = {
   src: string
   alt: string
   span: string
+  title?: string
 }
 
 const items: GalleryItem[] = [
@@ -41,7 +42,7 @@ export function Gallery() {
       if (entry?.value) {
         try {
           const urls = JSON.parse(entry.value)
-          if (Array.isArray(urls) && urls.length) setHomeItems(urls.slice(0,3).map((src:string, i:number) => ({ src, alt: `Homepage gallery image ${i+1}`, span:'' })))
+          if (Array.isArray(urls) && urls.length) setHomeItems(urls.slice(0,3).map((src:string, i:number) => ({ src, alt: `Homepage gallery image ${i+1}`, span:'', title: ['Contes d’animaux sous une nuit étoilée','Animal Tales Under a Starry Night Sky','The Breeze of the Forest'][i] || `Book ${i+1}` })))
         } catch {}
       }
     }).catch(() => {})
@@ -68,13 +69,13 @@ export function Gallery() {
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-[0.25em] text-moss">
-              Gallery
+              Our Books
             </span>
             <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">
-              Step inside the forest
+              Discover our books
             </h2>
             <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-              A glimpse of the hand-painted world your little ones will fall in love with.
+              Explore our collection of beautifully illustrated books, created to inspire imagination, learning, and memorable reading moments for children and families.
             </p>
           </Reveal>
         </div>
@@ -102,6 +103,7 @@ export function Gallery() {
                   className="absolute inset-0 bg-gradient-to-t from-forest-deep/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
               </motion.button>
+              <h3 className="mt-4 px-2 text-center font-serif text-xl font-semibold leading-snug text-forest">{item.title || ['Contes d’animaux sous une nuit étoilée','Animal Tales Under a Starry Night Sky','The Breeze of the Forest'][i]}</h3>
             </Reveal>
           ))}
         </div>
