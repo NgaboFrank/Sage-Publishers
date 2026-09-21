@@ -72,7 +72,7 @@ export function CallToAction() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <Image src={book.src} alt={book.alt} width={600} height={600} className="rounded-[1.4rem] aspect-square object-cover" />
+                <Image src={book.src} alt={book.alt} width={600} height={600} loading="lazy" quality={68} sizes="(max-width: 640px) 88vw, 384px" className="rounded-[1.4rem] aspect-square object-cover" />
               </motion.div>
 
               <button
