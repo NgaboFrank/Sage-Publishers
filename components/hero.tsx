@@ -25,6 +25,15 @@ const slides = [
     alt: 'Animal Tales under a starry night sky book cover',
     label: 'A Sage Publishers original',
   },
+  {
+    title: 'Contes d’animaux',
+    accent: 'sous une nuit étoilée',
+    subtitle: 'Des histoires sauvages sous un magnifique ciel africain.',
+    description: 'Une collection de contes animaliers remplis de merveille, d’amitié et de leçons pour les jeunes lecteurs—la magie de la nature à chaque page.',
+    image: '/animal-tales-fr.webp',
+    alt: 'Couverture française de Contes d’animaux sous une nuit étoilée',
+    label: 'Une création originale de Sage Publishers',
+  },
 ]
 
 export function Hero() {
@@ -111,7 +120,7 @@ export function Hero() {
 
             <div className="absolute -bottom-5 -left-4 hidden rounded-2xl border border-cream/10 bg-forest/90 px-5 py-4 shadow-xl backdrop-blur-md sm:block">
               <p className="text-[9px] uppercase tracking-[0.18em] text-emerald">Featured title</p>
-              <p className="mt-1 font-serif text-base font-semibold text-cream">{active === 0 ? 'A story for every heart.' : 'Stories under the stars.'}</p>
+              <p className="mt-1 font-serif text-base font-semibold text-cream">{active === 0 ? 'A story for every heart.' : active === 1 ? 'Stories under the stars.' : 'Des histoires sous les étoiles.'}</p>
             </div>
 
             <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-forest/70 px-3 py-2 backdrop-blur-md">
