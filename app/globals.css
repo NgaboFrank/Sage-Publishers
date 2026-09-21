@@ -133,3 +133,13 @@ main > div > aside button[aria-label="Collapse sidebar"] {
     transition-duration: 0.001ms !important;
   }
 }
+
+
+/* Premium responsive finishing */
+@media (max-width: 640px) {
+  h1, h2, h3 { text-wrap: balance; }
+  main section { scroll-margin-top: 5.5rem; }
+}
+@media (min-width: 1280px) {
+  .max-w-7xl { max-width: 80rem; }
+}
