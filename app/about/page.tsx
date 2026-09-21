@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { SiteNav } from '@/components/site-nav'
 import { About } from '@/components/about'
-import { AnimalTales } from '@/components/animal-tales'
 import { BackButton } from '@/components/back-button'
 import { SiteFooter } from '@/components/site-footer'
 
@@ -30,7 +29,6 @@ export default function AboutPage() {
           <BackButton />
         </div>
         <About />
-        <AnimalTales />
       </main>
       <SiteFooter />
     </>
