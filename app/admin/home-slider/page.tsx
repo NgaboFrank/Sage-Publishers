@@ -104,7 +104,7 @@ export default function HomeSliderAdmin() {
           <div className="min-w-0 flex-1"><div className="font-bold">{b.title}</div><div className="mt-1 text-xs text-slate-500">Published book</div>
           <button onClick={async()=>{const key='home_slide_book_'+b.id;setBusy(key);const r=await fetch('/api/admin/content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content_key:key,value:b.title,image_url:b.cover_url})});setBusy(null);setMessage(r.ok?b.title+' added to Home Slider Images.':'Could not add book to slider.')}} className="mt-3 rounded-lg bg-[#103d2b] px-3 py-2 text-xs font-bold text-white">Add to home slider</button></div>
         </div>)}
-      </div>
+      </div>}
       <div className="grid gap-6 lg:grid-cols-3">{slides.map((s,i)=><section key={s.key} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
         <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">{s.image_url ? <img src={s.image_url} alt="" className="h-full w-full object-contain"/> : <div className="flex h-full items-center justify-center text-sm text-slate-400">Current website image</div>}</div>
         <h2 className="mt-5 text-lg font-bold">{s.label}</h2><p className="mt-1 min-h-10 text-sm text-slate-500">{s.description}</p>
