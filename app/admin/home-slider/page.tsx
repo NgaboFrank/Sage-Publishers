@@ -20,16 +20,15 @@ export default function HomeSliderAdmin() {
 
   useEffect(() => {
     fetch('/api/admin/books', { cache: 'no-store' }).then(r => r.json()).then(data => {
-      const published = (data.books || []).filter((b:any) => b.published && b.cover_url)
+      const published = (data.books || []).filter((b:any) => b.published)
       setBooks(published)
       setSlides(current => {
         const fixed = current.filter(s => !s.dynamic)
-        const known = new Set(fixed.map(s => s.label.toLowerCase()))
-        const added = published.filter((b:any) => !known.has(('Slide 1 — '+b.title).toLowerCase()) && !fixed.some(s => s.label.toLowerCase().includes(String(b.title).toLowerCase()))).map((b:any, i:number) => ({
+        const added = published.map((b:any, i:number) => ({
           key: 'home_slide_book_'+b.id,
           label: `Slide ${fixed.length+i+1} — ${b.title}`,
           description: 'Published book added automatically from Books.',
-          image_url: b.cover_url,
+          image_url: b.cover_url || '',
           dynamic: true
         }))
         return [...fixed, ...added]
