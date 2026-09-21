@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowLeft, CheckCircle2, Plus, Save, Trash2 } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, ImagePlus, Plus, Save, Trash2 } from 'lucide-react'
 
 
 type ContentItem = {
@@ -14,6 +14,9 @@ type ContentItem = {
 const starterKeys = [
   ['hero_title', 'Homepage hero title'],
   ['hero_description', 'Homepage hero description'],
+  ['home_slide_breeze', 'Home slide image — The Breeze of the Forest'],
+  ['home_slide_animal_tales', 'Home slide image — Animal Tales (English)'],
+  ['home_slide_animal_tales_fr', 'Home slide image — Animal Tales (French)'],
   ['about_title', 'About section title'],
   ['about_description', 'About section text'],
   ['contact_phone', 'Contact phone'],
@@ -49,6 +52,22 @@ export default function AdminContentPage() {
 
   function update(index: number, patch: Partial<ContentItem>) {
     setItems((current) => current.map((item, i) => i === index ? { ...item, ...patch } : item))
+  }
+
+  async function uploadImage(file: File, index: number) {
+    setSaving(items[index].content_key)
+    setMessage('')
+    const form = new FormData()
+    form.append('file', file)
+    const res = await fetch('/api/admin/upload', { method: 'POST', body: form })
+    const data = await res.json()
+    setSaving(null)
+    if (!res.ok) {
+      setMessage(data.error || 'Image upload failed.')
+      return
+    }
+    update(index, { image_url: data.url })
+    setMessage('Image uploaded. Click Save changes to publish it on the homepage.')
   }
 
   async function save(item: ContentItem, index: number) {
@@ -125,7 +144,14 @@ export default function AdminContentPage() {
                   {!item.id && <button onClick={() => removeUnsaved(index)} className="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600"><Trash2 className="h-4 w-4" /></button>}
                 </div>
                 <textarea value={item.value} onChange={(e) => update(index, { value: e.target.value })} placeholder="Enter website text…" className="min-h-28 w-full rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm outline-none focus:border-[#5b806b]" />
-                <input value={item.image_url || ''} onChange={(e) => update(index, { image_url: e.target.value })} placeholder="Optional image URL" className="mt-3 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-[#5b806b]" />
+                <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_auto]">
+                  <input value={item.image_url || ''} onChange={(e) => update(index, { image_url: e.target.value })} placeholder="Optional image URL" className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-[#5b806b]" />
+                  <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#103d2b]/15 bg-[#eef5f1] px-4 py-3 text-sm font-bold text-[#103d2b] hover:bg-[#e4efe9]">
+                    <ImagePlus className="h-4 w-4" /> Upload image
+                    <input type="file" accept="image/*" className="hidden" onChange={(e) => { const file = e.target.files?.[0]; if (file) uploadImage(file, index) }} />
+                  </label>
+                </div>
+                {item.image_url && <img src={item.image_url} alt="" className="mt-3 h-32 w-full rounded-xl border border-slate-200 bg-slate-50 object-contain p-2" />}
                 <button onClick={() => save(item, index)} disabled={saving === item.content_key} className="mt-4 inline-flex items-center gap-2 rounded-xl bg-[#103d2b] px-5 py-3 text-sm font-bold text-white disabled:opacity-60">
                   <Save className="h-4 w-4" /> {saving === item.content_key ? 'Saving…' : 'Save changes'}
                 </button>
