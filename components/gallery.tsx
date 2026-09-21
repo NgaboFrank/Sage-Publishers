@@ -93,7 +93,11 @@ export function Gallery() {
               <h3 className="mt-4 px-2 text-center font-serif text-xl font-semibold leading-snug text-forest">{item.title || ['Contes d’animaux sous une nuit étoilée','Animal Tales Under a Starry Night Sky','The Breeze of the Forest'][i]}</h3>
               <div className="mt-4 flex justify-center">
                 <a
-                  href={`/payment?book=${encodeURIComponent(item.title || '')}`}
+                  href={`/payment?book=${encodeURIComponent(
+                    i === 0 ? 'Contes d’animaux sous une nuit étoilée' :
+                    i === 1 ? 'Animal Tales Under a Story Night Sky' :
+                    'The Breeze of the Forest'
+                  )}`}
                   className="inline-flex items-center justify-center rounded-full bg-emerald px-6 py-3 font-semibold text-forest-deep shadow-md shadow-emerald/20 transition-transform hover:scale-[1.03]"
                 >
                   Order the Book
