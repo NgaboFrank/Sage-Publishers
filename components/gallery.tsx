@@ -15,21 +15,9 @@ type GalleryItem = {
 }
 
 const items: GalleryItem[] = [
-  {
-    src: '/forest-nest-family.jpg',
-    alt: 'Pencil sketch of a bird family gathered in a nest high in the branches',
-    span: '',
-  },
-  {
-    src: '/forest-snake.jpg',
-    alt: 'Pencil sketch of a snake facing a hawk swooping through bare winter trees',
-    span: '',
-  },
-  {
-    src: '/forest-birds-flight.jpg',
-    alt: 'Pencil sketch of birds flying through a stormy forest of pines',
-    span: '',
-  },
+  { src: '/animal-tales-fr.webp', alt: 'Contes d’animaux sous une nuit étoilée', span: '', title: 'Contes d’animaux sous une nuit étoilée' },
+  { src: '/animal-tales.webp', alt: 'Animal Tales Under a Starry Night Sky', span: '', title: 'Animal Tales Under a Starry Night Sky' },
+  { src: '/book-cover.jpeg', alt: 'The Breeze of the Forest', span: '', title: 'The Breeze of the Forest' },
 ]
 
 export function Gallery() {
