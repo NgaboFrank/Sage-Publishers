@@ -35,15 +35,6 @@ export function GalleryPage() {
   const [items, setItems] = useState<GalleryItem[]>(fallbackItems)
   const [active, setActive] = useState<GalleryItem | null>(null)
 
-  useEffect(() => {
-    fetch('/api/gallery', { cache: 'no-store' })
-      .then((res) => res.ok ? res.json() : null)
-      .then((data) => {
-        if (Array.isArray(data?.items) && data.items.length) setItems(data.items)
-      })
-      .catch(() => {})
-  }, [])
-
   const close = useCallback(() => setActive(null), [])
 
   useEffect(() => {
