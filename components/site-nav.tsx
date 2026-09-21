@@ -44,11 +44,11 @@ export function SiteNav() {
       initial={{ y: -90, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4"
+      className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 md:px-5 md:pt-4"
     >
-      <nav className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-3 py-3 transition-all duration-300 md:px-4 ${scrolled ? 'border-cream/15 bg-forest-deep/88 shadow-2xl shadow-black/15 backdrop-blur-xl' : 'border-cream/10 bg-forest-deep/55 backdrop-blur-md'}`}>
-        <Link href="/" className="flex min-w-0 items-center gap-3 rounded-xl px-2 py-1.5 text-cream">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald/15 ring-1 ring-emerald/20">
+      <nav className={`mx-auto flex max-w-7xl items-center justify-between rounded-[1.35rem] border px-2.5 py-2.5 transition-all duration-300 sm:px-3 md:px-4 md:py-3 ${scrolled ? 'border-cream/15 bg-forest-deep/88 shadow-2xl shadow-black/15 backdrop-blur-xl' : 'border-cream/10 bg-forest-deep/55 backdrop-blur-md'}`}>
+        <Link href="/" className="flex min-w-0 items-center gap-2.5 rounded-xl px-1.5 py-1 text-cream sm:gap-3 sm:px-2 sm:py-1.5">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 bg-emerald/15 ring-1 ring-emerald/20">
             <span className="font-serif text-lg font-semibold text-emerald">S</span>
           </span>
           <span className="min-w-0">
