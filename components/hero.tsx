@@ -41,6 +41,18 @@ export function Hero() {
   const bookY = useTransform(scrollYProgress, [0, 1], [0, 90])
   const textY = useTransform(scrollYProgress, [0, 1], [0, 38])
   const [active, setActive] = useState(0)
+  const [slideImages, setSlideImages] = useState<Record<string, string>>({})
+
+  useEffect(() => {
+    fetch('/api/home-content', { cache: 'no-store' })
+      .then((res) => res.json())
+      .then((data) => {
+        const map: Record<string, string> = {}
+        for (const item of data.content || []) if (item.image_url) map[item.content_key] = item.image_url
+        setSlideImages(map)
+      })
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     const timer = window.setInterval(() => setActive((current) => (current + 1) % slides.length), 6500)
@@ -48,6 +60,8 @@ export function Hero() {
   }, [])
 
   const slide = slides[active]
+  const imageKeys = ['home_slide_breeze', 'home_slide_animal_tales', 'home_slide_animal_tales_fr']
+  const slideImage = slideImages[imageKeys[active]] || slide.image
 
   return (
     <section ref={ref} id="top" className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-forest-deep pt-24 text-cream sm:pt-28 lg:pt-32">
@@ -76,7 +90,7 @@ export function Hero() {
         <motion.div style={{ y: bookY }} className="relative mx-auto w-full max-w-[22rem] sm:max-w-[27rem] lg:max-w-[31rem]">
           <div aria-hidden="true" className="absolute inset-8 rounded-[3rem] bg-emerald/20 blur-3xl" />
           <div className="relative rounded-[2rem] border border-cream/10 bg-cream/5 p-3 shadow-2xl shadow-black/30 backdrop-blur-sm md:p-4">
-            <AnimatePresence mode="wait"><motion.div key={slide.image} initial={{ opacity: 0, scale: 0.97, x: 18 }} animate={{ opacity: 1, scale: 1, x: 0 }} exit={{ opacity: 0, scale: 0.97, x: -18 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}><Image src={slide.image} alt={slide.alt} width={900} height={900} priority={active === 0} className="aspect-square w-full rounded-[1.35rem] object-cover shadow-[0_28px_70px_rgba(0,0,0,0.28)]" /></motion.div></AnimatePresence>
+            <AnimatePresence mode="wait"><motion.div key={slideImage} initial={{ opacity: 0, scale: 0.97, x: 18 }} animate={{ opacity: 1, scale: 1, x: 0 }} exit={{ opacity: 0, scale: 0.97, x: -18 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}><Image src={slideImage} alt={slide.alt} width={900} height={900} priority={active === 0} className="aspect-square w-full rounded-[1.35rem] object-cover shadow-[0_28px_70px_rgba(0,0,0,0.28)]" /></motion.div></AnimatePresence>
             <button aria-label="Previous book" onClick={() => setActive((active - 1 + slides.length) % slides.length)} className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-forest/70 p-2 text-cream backdrop-blur-md transition hover:bg-forest"><ChevronLeft className="h-5 w-5" /></button>
             <button aria-label="Next book" onClick={() => setActive((active + 1) % slides.length)} className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-forest/70 p-2 text-cream backdrop-blur-md transition hover:bg-forest"><ChevronRight className="h-5 w-5" /></button>
             <div className="absolute -bottom-5 -left-4 hidden rounded-2xl border border-cream/10 bg-forest/90 px-5 py-4 shadow-xl backdrop-blur-md sm:block"><p className="text-[9px] uppercase tracking-[0.18em] text-emerald">Featured title</p><p className="mt-1 font-serif text-base font-semibold text-cream">{active === 0 ? 'A story for every heart.' : active === 1 ? 'Stories under the stars.' : 'Des histoires sous les étoiles.'}</p></div>
