@@ -86,7 +86,7 @@ export function Gallery() {
                 type="button"
                 onClick={() => setActive(item)}
                 whileHover={{ scale: 0.985 }}
-                className="group relative h-[220px] w-full overflow-hidden rounded-2xl shadow-md shadow-forest/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2 sm:h-[250px]"
+                className="group relative h-[420px] w-full overflow-hidden rounded-2xl bg-forest/5 shadow-md shadow-forest/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2 sm:h-[460px] lg:h-[520px]"
               >
                 <Image
                   src={item.src}
@@ -95,7 +95,7 @@ export function Gallery() {
                   sizes="(max-width: 640px) 92vw, 33vw"
                   quality={65}
                   loading="lazy"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.01]"
                 />
                 <span
                   aria-hidden="true"
