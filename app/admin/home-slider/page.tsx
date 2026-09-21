@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowLeft, CheckCircle2, ImagePlus, Save } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, ImagePlus, Images, Save } from 'lucide-react'
 
 type Slide = { key: string; label: string; description: string; image_url: string }
 const defaults: Slide[] = [
@@ -43,9 +43,17 @@ export default function HomeSliderAdmin() {
     <div className="mx-auto max-w-6xl">
       <div className="mb-7 flex items-center gap-4">
         <button onClick={()=>location.assign('/admin')} className="rounded-xl border border-slate-200 bg-white p-2.5"><ArrowLeft className="h-5 w-5"/></button>
-        <div><div className="text-sm font-semibold text-[#5b806b]">Sage Publishers / Homepage</div><h1 className="text-3xl font-bold">Home Slider Images</h1><p className="mt-1 text-sm text-slate-500">Change each homepage book image independently. Gallery images are managed separately.</p></div>
+        <div className="min-w-0 flex-1"><div className="text-sm font-semibold text-[#5b806b]">Sage Publishers / Images</div><h1 className="text-3xl font-bold">Website Images</h1><p className="mt-1 text-sm text-slate-500">Manage homepage slider images and gallery images from the admin.</p></div>
+        <a href="/admin/gallery" className="inline-flex items-center gap-2 rounded-xl bg-[#103d2b] px-4 py-3 text-sm font-bold text-white hover:bg-[#14532d]"><Images className="h-4 w-4"/>Manage Gallery Images</a>
       </div>
       {message && <div className="mb-6 flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-semibold text-emerald-800"><CheckCircle2 className="h-5 w-5"/>{message}</div>}
+      <section className="mb-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+          <div><h2 className="text-xl font-bold">Gallery Images</h2><p className="mt-1 text-sm text-slate-500">Add, upload, replace, reorder or remove images shown on the Gallery page.</p></div>
+          <a href="/admin/gallery" className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#103d2b]/15 bg-[#eef5f1] px-5 py-3 text-sm font-bold text-[#103d2b]"><ImagePlus className="h-4 w-4"/>Open Gallery Manager</a>
+        </div>
+      </section>
+      <h2 className="mb-4 text-xl font-bold">Home Slider Images</h2>
       <div className="grid gap-6 lg:grid-cols-3">{slides.map((s,i)=><section key={s.key} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
         <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">{s.image_url ? <img src={s.image_url} alt="" className="h-full w-full object-contain"/> : <div className="flex h-full items-center justify-center text-sm text-slate-400">Current website image</div>}</div>
         <h2 className="mt-5 text-lg font-bold">{s.label}</h2><p className="mt-1 min-h-10 text-sm text-slate-500">{s.description}</p>
