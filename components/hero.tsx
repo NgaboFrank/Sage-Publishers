@@ -3,7 +3,7 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, Play, Sparkles, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowUpRight, Play, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react'
 import { FloatingLeaves } from './floating-leaves'
 
 const slides = [
@@ -61,9 +61,6 @@ export function Hero() {
         <motion.div style={{ y: textY }} className="max-w-2xl text-center lg:text-left">
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.45 }}>
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-emerald/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald sm:text-[11px]">
-                <Sparkles className="h-3.5 w-3.5" /> {slide.label}
-              </div>
               <h1 className="mt-5 font-serif text-4xl font-semibold leading-[1] tracking-tight sm:text-5xl md:text-5xl xl:text-[4rem]">{slide.title}<br /><span className="text-emerald">{slide.accent}</span></h1>
               <p className="mt-4 font-serif text-base italic text-cream/65 sm:text-lg">{slide.subtitle}</p>
               <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-cream/70 sm:text-[15px] lg:mx-0">{slide.description}</p>
