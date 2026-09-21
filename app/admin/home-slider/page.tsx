@@ -16,8 +16,10 @@ export default function HomeSliderAdmin() {
   const [message, setMessage] = useState('')
   const [ctaDirty, setCtaDirty] = useState(false)
   const [ctaImages, setCtaImages] = useState<string[]>(['/book-cover.jpeg','/animal-tales.webp'])
+  const [books, setBooks] = useState<any[]>([])
 
   useEffect(() => {
+    fetch('/api/admin/books', { cache: 'no-store' }).then(r => r.json()).then(data => setBooks((data.books || []).filter((b:any) => b.published))).catch(() => {})
     fetch('/api/admin/content', { cache: 'no-store' }).then(r => r.json()).then(data => {
       const map = new Map((data.content || []).map((x: any) => [x.content_key, x]))
       setSlides(defaults.map(s => ({ ...s, image_url: (map.get(s.key) as any)?.image_url || '' })))
@@ -94,7 +96,15 @@ export default function HomeSliderAdmin() {
           Changes to this slider are saved and published automatically when you Add, Change, or Remove an image.
         </div>
       </section>
-      <h2 className="mb-4 text-xl font-bold">Home Slider Images</h2>
+      <h2 className="mb-2 text-xl font-bold">Home Slider Images</h2>
+      <p className="mb-4 text-sm text-slate-500">Every published book with a cover is shown here automatically. Use “Add to home slider” to create a slide for a newly added book.</p>
+      {books.filter((b:any)=>b.cover_url).length > 0 && <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {books.filter((b:any)=>b.cover_url).map((b:any)=><div key={b.id} className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4">
+          <img src={b.cover_url} alt="" className="h-24 w-20 rounded-xl bg-slate-100 object-contain"/>
+          <div className="min-w-0 flex-1"><div className="font-bold">{b.title}</div><div className="mt-1 text-xs text-slate-500">Published book</div>
+          <button onClick={async()=>{const key='home_slide_book_'+b.id;setBusy(key);const r=await fetch('/api/admin/content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content_key:key,value:b.title,image_url:b.cover_url})});setBusy(null);setMessage(r.ok?b.title+' added to Home Slider Images.':'Could not add book to slider.')}} className="mt-3 rounded-lg bg-[#103d2b] px-3 py-2 text-xs font-bold text-white">Add to home slider</button></div>
+        </div>)}
+      </div>
       <div className="grid gap-6 lg:grid-cols-3">{slides.map((s,i)=><section key={s.key} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
         <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">{s.image_url ? <img src={s.image_url} alt="" className="h-full w-full object-contain"/> : <div className="flex h-full items-center justify-center text-sm text-slate-400">Current website image</div>}</div>
         <h2 className="mt-5 text-lg font-bold">{s.label}</h2><p className="mt-1 min-h-10 text-sm text-slate-500">{s.description}</p>
