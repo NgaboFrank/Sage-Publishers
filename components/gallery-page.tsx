@@ -39,7 +39,7 @@ export function GalleryPage() {
     fetch('/api/gallery', { cache: 'no-store' })
       .then((res) => res.ok ? res.json() : null)
       .then((data) => {
-        if (Array.isArray(data?.items)) setItems(data.items)
+        if (Array.isArray(data?.items) && data.items.length) setItems(data.items)
       })
       .catch(() => {})
   }, [])
