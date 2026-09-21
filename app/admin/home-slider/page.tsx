@@ -17,6 +17,7 @@ export default function HomeSliderAdmin() {
   const [ctaDirty, setCtaDirty] = useState(false)
   const [ctaImages, setCtaImages] = useState<string[]>(['/book-cover.jpeg','/animal-tales.webp'])
   const [books, setBooks] = useState<any[]>([])
+  const [homeGallery, setHomeGallery] = useState<string[]>(['/forest-nest-family.jpg','/forest-snake.jpg','/forest-birds-flight.jpg'])
 
   useEffect(() => {
     fetch('/api/admin/books', { cache: 'no-store' }).then(r => r.json()).then(data => {
@@ -55,6 +56,8 @@ export default function HomeSliderAdmin() {
       setSlides(defaults.map(s => ({ ...s, image_url: (map.get(s.key) as any)?.image_url || '' })))
       const cta = map.get('home_cta_images') as any
       if (cta?.value) { try { const p = JSON.parse(cta.value); if (Array.isArray(p) && p.length) setCtaImages(p) } catch {} }
+      const hg = map.get('home_gallery_images') as any
+      if (hg?.value) { try { const p = JSON.parse(hg.value); if (Array.isArray(p) && p.length) setHomeGallery(p.slice(0,3)) } catch {} }
     }).catch(() => {})
   }, [])
 
@@ -73,6 +76,16 @@ export default function HomeSliderAdmin() {
     const r = await fetch('/api/admin/content', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({content_key:slide.key,value:'',image_url:slide.image_url}) })
     const d = await r.json(); setBusy(null)
     setMessage(r.ok ? 'Homepage slide image updated successfully.' : (d.error || 'Could not save image.'))
+  }
+
+  async function changeHomeGallery(file: File, i: number) {
+    setBusy('home_gallery_images'); setMessage('')
+    const form = new FormData(); form.append('file', file)
+    const r = await fetch('/api/admin/upload', { method:'POST', body:form }); const d = await r.json()
+    if (!r.ok) { setBusy(null); setMessage(d.error || 'Upload failed.'); return }
+    const next = homeGallery.map((src,n)=>n===i?d.url:src)
+    const save = await fetch('/api/admin/content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content_key:'home_gallery_images',value:JSON.stringify(next),image_url:''})})
+    setBusy(null); if(save.ok){setHomeGallery(next);setMessage('Homepage Gallery image updated successfully.')}
   }
 
   async function addCta(file: File) {
@@ -111,8 +124,11 @@ export default function HomeSliderAdmin() {
       {message && <div className="mb-6 flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-semibold text-emerald-800"><CheckCircle2 className="h-5 w-5"/>{message}</div>}
       <section className="mb-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-          <div><h2 className="text-xl font-bold">Gallery Images</h2><p className="mt-1 text-sm text-slate-500">Add, upload, replace, reorder or remove images shown on the Gallery page.</p></div>
-          <a href="/admin/gallery" className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#103d2b]/15 bg-[#eef5f1] px-5 py-3 text-sm font-bold text-[#103d2b]"><ImagePlus className="h-4 w-4"/>Open Gallery Manager</a>
+          <div><h2 className="text-xl font-bold">Homepage Gallery — 3 Images</h2><p className="mt-1 text-sm text-slate-500">Manage the three Gallery preview images shown on the homepage.</p></div>
+          <a href="/admin/gallery" className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#103d2b]/15 bg-[#eef5f1] px-5 py-3 text-sm font-bold text-[#103d2b]"><Images className="h-4 w-4"/>Manage Full Gallery</a>
+        </div>
+        <div className="mt-5 grid gap-4 sm:grid-cols-3">
+          {homeGallery.map((src,i)=><div key={i} className="rounded-2xl border border-slate-200 p-3"><img src={src} alt="" className="aspect-[4/3] w-full rounded-xl bg-slate-100 object-cover"/><div className="mt-2 text-sm font-bold">Homepage Gallery Image {i+1}</div><label className="mt-3 flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#eef5f1] px-3 py-2 text-sm font-bold text-[#103d2b]"><ImagePlus className="h-4 w-4"/>Change image<input type="file" accept="image/*" className="hidden" onChange={e=>{const f=e.target.files?.[0];if(f)changeHomeGallery(f,i)}}/></label></div>)}
         </div>
       </section>
       <section className="mb-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
