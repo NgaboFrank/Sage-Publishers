@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowLeft, CheckCircle2, ImagePlus, Images, Save } from 'lucide-react'
 
-type Slide = { key: string; label: string; description: string; image_url: string }
+type Slide = { key: string; label: string; description: string; image_url: string; dynamic?: boolean }
 const defaults: Slide[] = [
   { key: 'home_slide_breeze', label: 'Slide 1 — The Breeze of the Forest', description: 'Main book image shown on the first homepage slide.', image_url: '' },
   { key: 'home_slide_animal_tales', label: 'Slide 2 — Animal Tales (English)', description: 'English Animal Tales book image.', image_url: '' },
@@ -19,7 +19,22 @@ export default function HomeSliderAdmin() {
   const [books, setBooks] = useState<any[]>([])
 
   useEffect(() => {
-    fetch('/api/admin/books', { cache: 'no-store' }).then(r => r.json()).then(data => setBooks((data.books || []).filter((b:any) => b.published))).catch(() => {})
+    fetch('/api/admin/books', { cache: 'no-store' }).then(r => r.json()).then(data => {
+      const published = (data.books || []).filter((b:any) => b.published && b.cover_url)
+      setBooks(published)
+      setSlides(current => {
+        const fixed = current.filter(s => !s.dynamic)
+        const known = new Set(fixed.map(s => s.label.toLowerCase()))
+        const added = published.filter((b:any) => !known.has(('Slide 1 — '+b.title).toLowerCase()) && !fixed.some(s => s.label.toLowerCase().includes(String(b.title).toLowerCase()))).map((b:any, i:number) => ({
+          key: 'home_slide_book_'+b.id,
+          label: `Slide ${fixed.length+i+1} — ${b.title}`,
+          description: 'Published book added automatically from Books.',
+          image_url: b.cover_url,
+          dynamic: true
+        }))
+        return [...fixed, ...added]
+      })
+    }).catch(() => {})
     fetch('/api/admin/content', { cache: 'no-store' }).then(r => r.json()).then(data => {
       const map = new Map((data.content || []).map((x: any) => [x.content_key, x]))
       setSlides(defaults.map(s => ({ ...s, image_url: (map.get(s.key) as any)?.image_url || '' })))
@@ -97,14 +112,7 @@ export default function HomeSliderAdmin() {
         </div>
       </section>
       <h2 className="mb-2 text-xl font-bold">Home Slider Images</h2>
-      <p className="mb-4 text-sm text-slate-500">Every published book with a cover is shown here automatically. Use “Add to home slider” to create a slide for a newly added book.</p>
-      {books.filter((b:any)=>b.cover_url).length > 0 && <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {books.filter((b:any)=>b.cover_url).map((b:any)=><div key={b.id} className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4">
-          <img src={b.cover_url} alt="" className="h-24 w-20 rounded-xl bg-slate-100 object-contain"/>
-          <div className="min-w-0 flex-1"><div className="font-bold">{b.title}</div><div className="mt-1 text-xs text-slate-500">Published book</div>
-          <button onClick={async()=>{const key='home_slide_book_'+b.id;setBusy(key);const r=await fetch('/api/admin/content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content_key:key,value:b.title,image_url:b.cover_url})});setBusy(null);setMessage(r.ok?b.title+' added to Home Slider Images.':'Could not add book to slider.')}} className="mt-3 rounded-lg bg-[#103d2b] px-3 py-2 text-xs font-bold text-white">Add to home slider</button></div>
-        </div>)}
-      </div>}
+      <p className="mb-4 text-sm text-slate-500">Every published book with a cover is added here automatically as its own slide card. You can change its image and save it like the other slides.</p>
       <div className="grid gap-6 lg:grid-cols-3">{slides.map((s,i)=><section key={s.key} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
         <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">{s.image_url ? <img src={s.image_url} alt="" className="h-full w-full object-contain"/> : <div className="flex h-full items-center justify-center text-sm text-slate-400">Current website image</div>}</div>
         <h2 className="mt-5 text-lg font-bold">{s.label}</h2><p className="mt-1 min-h-10 text-sm text-slate-500">{s.description}</p>
