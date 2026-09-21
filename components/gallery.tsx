@@ -32,7 +32,20 @@ const items: GalleryItem[] = [
 ]
 
 export function Gallery() {
+  const [homeItems, setHomeItems] = useState<GalleryItem[]>(items)
   const [active, setActive] = useState<GalleryItem | null>(null)
+
+  useEffect(() => {
+    fetch('/api/home-content', { cache: 'no-store' }).then(r => r.json()).then(data => {
+      const entry = (data.content || []).find((x:any) => x.content_key === 'home_gallery_images')
+      if (entry?.value) {
+        try {
+          const urls = JSON.parse(entry.value)
+          if (Array.isArray(urls) && urls.length) setHomeItems(urls.slice(0,3).map((src:string, i:number) => ({ src, alt: `Homepage gallery image ${i+1}`, span:'' })))
+        } catch {}
+      }
+    }).catch(() => {})
+  }, [])
 
   const close = useCallback(() => setActive(null), [])
 
@@ -67,7 +80,7 @@ export function Gallery() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {items.map((item, i) => (
+          {homeItems.map((item, i) => (
             <Reveal key={item.src} delay={(i % 3) * 0.08} className={item.span}>
               <motion.button
                 type="button"
