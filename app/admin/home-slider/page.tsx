@@ -24,13 +24,23 @@ export default function HomeSliderAdmin() {
       setBooks(published)
       setSlides(current => {
         const fixed = current.filter(s => !s.dynamic)
-        const added = published.map((b:any, i:number) => ({
-          key: 'home_slide_book_'+b.id,
-          label: `Slide ${fixed.length+i+1} — ${b.title}`,
-          description: 'Published book added automatically from Books.',
-          image_url: b.cover_url || '',
-          dynamic: true
-        }))
+        const normalize = (v:string) => String(v || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim()
+        const fixedTitles = fixed.map(s => normalize(s.label.replace(/^Slide\s+\d+\s*[—-]\s*/i, '')))
+        const added = published
+          .filter((b:any) => {
+            const title = normalize(b.title)
+            return !fixedTitles.some(existing => existing.includes(title) || title.includes(existing) ||
+              (title.includes('animal tales') && existing.includes('animal tales')) ||
+              (title.includes('contes d animaux') && existing.includes('contes d animaux')) ||
+              (title.includes('breeze') && existing.includes('breeze')))
+          })
+          .map((b:any, i:number) => ({
+            key: 'home_slide_book_'+b.id,
+            label: `Slide ${fixed.length+i+1} — ${b.title}`,
+            description: 'Published book added automatically from Books.',
+            image_url: b.cover_url || '',
+            dynamic: true
+          }))
         return [...fixed, ...added]
       })
     }).catch(() => {})
