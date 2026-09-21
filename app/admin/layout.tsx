@@ -25,6 +25,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         event.preventDefault()
         window.location.assign('/admin/gallery')
       }
+      if (text === 'Gallery') {
+        event.preventDefault()
+        window.location.assign('/admin/gallery')
+      }
     }
 
     const style = document.createElement('style')
@@ -55,6 +59,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       link.className = 'mt-1 flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white'
       link.innerHTML = '<span style="font-size:16px;line-height:1">↗</span><span>View website</span>'
 
+      const galleryLink = document.createElement('a')
+      galleryLink.href = '/admin/gallery'
+      galleryLink.dataset.galleryManager = 'true'
+      galleryLink.className = 'mt-1 flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white'
+      galleryLink.innerHTML = '<span style="font-size:16px;line-height:1">▧</span><span>Gallery images</span>'
+
       const reportLink = document.createElement('a')
       reportLink.href = '/admin/reports'
       reportLink.className = 'mt-1 flex w-full items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white'
@@ -66,10 +76,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       if (companyLabel) {
         sidebar.insertBefore(divider, companyLabel)
         sidebar.insertBefore(link, companyLabel)
+        sidebar.insertBefore(galleryLink, companyLabel)
         sidebar.insertBefore(reportLink, companyLabel)
       } else {
         sidebar.appendChild(divider)
         sidebar.appendChild(link)
+        sidebar.appendChild(galleryLink)
         sidebar.appendChild(reportLink)
       }
 
