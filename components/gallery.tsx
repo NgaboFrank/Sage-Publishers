@@ -1,10 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { AnimatePresence, motion } from 'motion/react'
 import { useCallback, useEffect, useState } from 'react'
-import { X, ArrowRight } from 'lucide-react'
+import { X } from 'lucide-react'
 import { Reveal } from './reveal'
 
 type GalleryItem = {
@@ -92,24 +91,18 @@ export function Gallery() {
                 />
               </motion.button>
               <h3 className="mt-4 px-2 text-center font-serif text-xl font-semibold leading-snug text-forest">{item.title || ['Contes d’animaux sous une nuit étoilée','Animal Tales Under a Starry Night Sky','The Breeze of the Forest'][i]}</h3>
+              <div className="mt-4 flex justify-center">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-full bg-emerald px-6 py-3 font-semibold text-forest-deep shadow-md shadow-emerald/20 transition-transform hover:scale-[1.03]"
+                >
+                  Order the Book
+                </a>
+              </div>
             </Reveal>
           ))}
         </div>
 
-        <Reveal delay={0.2} className="mt-10 flex justify-center">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link
-              href="/gallery"
-              className="inline-flex items-center gap-3 rounded-full bg-emerald px-8 py-4 font-semibold text-forest-deep shadow-lg shadow-emerald/30 transition-all hover:shadow-xl hover:shadow-emerald/40"
-            >
-              View All Gallery
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </motion.div>
-        </Reveal>
       </div>
 
       <AnimatePresence>
