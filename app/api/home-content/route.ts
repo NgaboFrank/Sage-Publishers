@@ -5,6 +5,7 @@ const HOME_KEYS = [
   'home_slide_breeze',
   'home_slide_animal_tales',
   'home_slide_animal_tales_fr',
+  'home_cta_images',
 ]
 
 export async function GET() {
