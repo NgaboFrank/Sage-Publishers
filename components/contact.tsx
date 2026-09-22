@@ -192,7 +192,7 @@ export function Contact() {
                     required
                     value={form.name}
                     onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                    placeholder="Jane Doe"
+                    placeholder="Enter your full name"
                     className="rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-emerald focus:ring-2 focus:ring-emerald/30"
                   />
                 </div>
@@ -205,7 +205,7 @@ export function Contact() {
                     required
                     value={form.email}
                     onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                    placeholder="jane@example.com"
+                    placeholder="Enter your email address"
                     className="rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-emerald focus:ring-2 focus:ring-emerald/30"
                   />
                 </div>
