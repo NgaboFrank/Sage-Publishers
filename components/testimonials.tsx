@@ -45,38 +45,38 @@ export function Testimonials() {
   )
 
   return (
-    <section className="relative bg-background py-20 md:py-28">
+    <section className="relative bg-background py-14 md:py-18">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <span className="text-xs font-semibold uppercase tracking-[0.28em] text-moss">
               Loved by Families
             </span>
-            <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-forest sm:text-4xl md:text-[2.7rem]">
+            <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-forest sm:text-4xl">
               What parents are saying
             </h2>
           </Reveal>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mx-auto mt-8 grid max-w-6xl gap-4 md:grid-cols-3">
           {visibleTestimonials.map((t, i) => (
             <Reveal key={`${t.name}-${offset}`} delay={i * 0.08}>
               <motion.figure
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, ease: 'easeOut' }}
-                className="relative flex min-h-[290px] h-full flex-col rounded-2xl border border-border/80 bg-card p-7 shadow-[0_8px_30px_rgba(20,55,40,0.06)]"
+                className="relative flex min-h-[220px] h-full flex-col rounded-[1.25rem] border border-border/80 bg-card p-5 shadow-[0_8px_24px_rgba(20,55,40,0.05)]"
               >
-                <Quote className="h-7 w-7 text-emerald/25" aria-hidden="true" />
-                <div className="mt-4 flex gap-1" aria-label="5 out of 5 stars">
+                <Quote className="h-5 w-5 text-emerald/25" aria-hidden="true" />
+                <div className="mt-3 flex gap-1" aria-label="5 out of 5 stars">
                   {Array.from({ length: 5 }).map((_, s) => (
-                    <Star key={s} className="h-3.5 w-3.5 fill-gold text-gold" aria-hidden="true" />
+                    <Star key={s} className="h-3 w-3 fill-gold text-gold" aria-hidden="true" />
                   ))}
                 </div>
-                <blockquote className="mt-4 flex-1 text-pretty font-serif text-lg leading-8 text-forest">
+                <blockquote className="mt-3 flex-1 text-pretty font-serif text-base leading-7 text-forest">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-6 border-t border-border/80 pt-4">
+                <figcaption className="mt-4 border-t border-border/80 pt-3">
                   <p className="text-sm font-semibold text-forest">{t.name}</p>
                   <p className="mt-0.5 text-xs text-muted-foreground">{t.role}</p>
                 </figcaption>
@@ -85,7 +85,7 @@ export function Testimonials() {
           ))}
         </div>
 
-        <div className="mt-7 flex justify-center gap-1.5" aria-label="Testimonial rotation">
+        <div className="mt-5 flex justify-center gap-1.5" aria-label="Testimonial rotation">
           {testimonials.map((t, index) => (
             <span
               key={t.name}
