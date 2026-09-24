@@ -1,6 +1,6 @@
 'use client'
 
-import { BookOpen, Heart, Sparkles } from 'lucide-react'
+import { BookOpenText, Gem, Feather } from 'lucide-react'
 import { Reveal } from './reveal'
 
 export function About() {
@@ -34,16 +34,16 @@ export function About() {
               </p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl bg-secondary/70 p-4">
-                  <BookOpen className="h-5 w-5 text-moss" strokeWidth={1.7} />
+                <div className="rounded-2xl border border-border/70 bg-card/70 p-4 shadow-[0_8px_24px_rgba(7,31,20,0.04)]">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-card shadow-sm"><BookOpenText className="h-[18px] w-[18px] text-forest" strokeWidth={1.5} /></span>
                   <p className="mt-3 text-sm font-semibold text-forest">Engaging stories</p>
                 </div>
-                <div className="rounded-2xl bg-secondary/70 p-4">
-                  <Sparkles className="h-5 w-5 text-moss" strokeWidth={1.7} />
+                <div className="rounded-2xl border border-border/70 bg-card/70 p-4 shadow-[0_8px_24px_rgba(7,31,20,0.04)]">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-card shadow-sm"><Feather className="h-[18px] w-[18px] text-forest" strokeWidth={1.5} /></span>
                   <p className="mt-3 text-sm font-semibold text-forest">Creative learning</p>
                 </div>
-                <div className="rounded-2xl bg-secondary/70 p-4">
-                  <Heart className="h-5 w-5 text-moss" strokeWidth={1.7} />
+                <div className="rounded-2xl border border-border/70 bg-card/70 p-4 shadow-[0_8px_24px_rgba(7,31,20,0.04)]">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-card shadow-sm"><Gem className="h-[18px] w-[18px] text-forest" strokeWidth={1.5} /></span>
                   <p className="mt-3 text-sm font-semibold text-forest">Positive values</p>
                 </div>
               </div>
