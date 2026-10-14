@@ -42,11 +42,9 @@ export function SiteFooter() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cream/35">Get in touch</p>
             <div className="mt-4 space-y-3 text-sm">
-              {(books.length ? books : [{id:'default',title:'The Breeze of the Forest'}]).map(book => (
-                <Link key={book.id} href={book.id === 'default' ? '/payment' : `/payment?book=${encodeURIComponent(book.id)}`} className="flex items-center gap-2 text-emerald transition hover:text-cream">
-                  Order {book.title} <ArrowUpRight className="h-4 w-4 shrink-0" />
-                </Link>
-              ))}
+              <Link href="/payment" className="flex items-center gap-2 text-emerald transition hover:text-cream">
+                Order a book <ArrowUpRight className="h-4 w-4 shrink-0" />
+              </Link>
               <a href="https://wa.me/250781087745" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-cream/65 hover:text-emerald"><MessageCircle className="h-4 w-4" /> WhatsApp: +250 781 087 745</a>
               <a href="mailto:mugaboan@gmail.com" className="flex items-center gap-2 text-cream/65 hover:text-emerald"><Mail className="h-4 w-4" /> mugaboan@gmail.com</a>
             </div>
