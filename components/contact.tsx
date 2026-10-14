@@ -94,8 +94,8 @@ export function Contact() {
               for individuals, learning centers, organizations, and communities.
             </p>
 
-            <div className="mt-6 inline-block rounded-full border border-emerald/30 bg-emerald/5 px-5 py-2">
-              <p className="text-sm font-medium text-forest">
+            <div className="mt-7 inline-block rounded-2xl border border-emerald/25 bg-emerald/5 px-6 py-3 sm:px-8 sm:py-4">
+              <p className="font-[cursive] text-lg font-semibold leading-relaxed text-forest sm:text-2xl">
                 📞 <span className="text-emerald">Contact us</span> to get the price and details
               </p>
             </div>
