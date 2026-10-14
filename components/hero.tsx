@@ -70,7 +70,7 @@ export function Hero() {
         <motion.div style={{ y: textY }} className="min-w-0 w-full max-w-2xl text-center lg:text-left">
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.45 }}>
-              <h1 className={`font-serif font-semibold leading-[1.12] tracking-[-0.02em] [overflow-wrap:break-word] ${active === 0 ? 'text-[clamp(1.9rem,8vw,2.5rem)] sm:text-4xl md:text-5xl xl:text-[3.7rem]' : 'text-[clamp(1.75rem,7.5vw,2.25rem)] sm:text-4xl md:text-[3rem] xl:text-[3.4rem]'}`}>{slide.title}<br /><span className="text-emerald">{slide.accent}</span></h1>
+              <h1 className={`font-sans font-semibold leading-[1.16] tracking-[-0.025em] text-cream [overflow-wrap:break-word] ${active === 0 ? 'text-[clamp(1.9rem,8vw,2.5rem)] sm:text-4xl md:text-5xl xl:text-[3.7rem]' : 'text-[clamp(1.7rem,6.8vw,2.2rem)] sm:text-4xl md:text-[2.8rem] xl:text-[3.15rem]'}`}>{slide.title}<br /><span className="text-emerald">{slide.accent}</span></h1>
               <p className="mx-auto mt-5 max-w-[34ch] text-[15px] leading-7 text-cream/85 sm:max-w-lg sm:text-lg sm:leading-8 lg:mx-0">{slide.subtitle}</p>
               <p className="mx-auto mt-3 max-w-[38ch] text-[15px] leading-7 text-cream/80 sm:max-w-lg sm:text-lg sm:leading-8 lg:mx-0">{slide.description}</p>
             </motion.div>
