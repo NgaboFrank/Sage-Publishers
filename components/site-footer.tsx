@@ -34,7 +34,7 @@ export function SiteFooter() {
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald/15 font-serif text-lg font-semibold text-emerald">S</span>
               <div><p className="font-serif text-xl font-semibold">Sage Publishers Ltd</p><p className="text-[10px] uppercase tracking-[0.22em] text-cream/40">Stories with purpose</p></div>
             </div>
-            <p className="mt-5 max-w-md text-base leading-8 text-cream/75 sm:text-lg">Publishing thoughtful stories for young readers, designed to entertain, teach, and create meaningful family moments.</p>
+            <p className="mt-5 max-w-md text-base leading-8 text-cream/75 sm:text-lg">Stories that inspire young readers.</p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cream/35">Explore</p>
