@@ -3,6 +3,7 @@ import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
 import { Gallery } from '@/components/gallery'
 import { Testimonials } from '@/components/testimonials'
+import { Contact } from '@/components/contact'
 import { CallToAction } from '@/components/cta'
 import { SiteFooter } from '@/components/site-footer'
 import { MobileOrderBar, FloatingWhatsApp } from '@/components/conversion'
@@ -26,6 +27,7 @@ export default function Page() {
         <Gallery />
         <Testimonials />
         <CallToAction />
+        <Contact />
       </main>
       <SiteFooter />
       <FloatingWhatsApp />
