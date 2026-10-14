@@ -12,7 +12,6 @@ const links = [
   { label: 'Why It Matters', href: '/features' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Trailer', href: '/trailer' },
-  { label: 'FAQ', href: '/#faq' },
   { label: 'Contact', href: '/contact' },
 ]
 
