@@ -1,5 +1,6 @@
 import { SiteNav } from '@/components/site-nav'
 import { Hero } from '@/components/hero'
+import { About } from '@/components/about'
 import { Gallery } from '@/components/gallery'
 import { Testimonials } from '@/components/testimonials'
 import { CallToAction } from '@/components/cta'
@@ -21,6 +22,7 @@ export default function Page() {
       <SiteNav />
       <main>
         <Hero />
+        <About />
         <Gallery />
         <Testimonials />
         <CallToAction />
