@@ -32,7 +32,7 @@ export function SiteFooter() {
           <div>
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald/15 font-serif text-lg font-semibold text-emerald">S</span>
-              <div><p className="font-serif text-xl font-semibold">Sage Publishers Ltd</p><p className="text-[10px] uppercase tracking-[0.22em] text-cream/40">Stories with purpose</p></div>
+              <div><p className="font-serif text-xl font-semibold">Sage Publishers</p><p className="text-[10px] uppercase tracking-[0.22em] text-cream/40">Children’s books</p></div>
             </div>
             <p className="mt-5 max-w-md text-base leading-8 text-cream/75 sm:text-lg">Stories that inspire young readers.</p>
           </div>
@@ -41,7 +41,7 @@ export function SiteFooter() {
             <nav className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-sm">{links.map(link => <Link key={link.href} href={link.href} className="text-cream/65 transition hover:text-emerald">{link.label}</Link>)}</nav>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cream/35">Order & contact</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cream/35">Get in touch</p>
             <div className="mt-4 space-y-3 text-sm">
               {(books.length ? books : [{id:'default',title:'The Breeze of the Forest'}]).map(book => (
                 <Link key={book.id} href={book.id === 'default' ? '/payment' : `/payment?book=${encodeURIComponent(book.id)}`} className="flex items-center gap-2 text-emerald transition hover:text-cream">
@@ -54,7 +54,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-12 flex flex-col gap-3 border-t border-cream/10 pt-6 text-xs text-cream/35 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {new Date().getFullYear()} Sage Publishers Ltd. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Sage Publishers. All rights reserved.</p>
           <p>{books.length > 1 ? `${books.length} published books` : (books[0]?.title || 'The Breeze of the Forest')}</p>
         </div>
       </div>
