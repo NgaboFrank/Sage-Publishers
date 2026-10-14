@@ -71,8 +71,8 @@ export function Hero() {
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.45 }}>
               <h1 className={`font-serif font-semibold leading-[0.98] tracking-[-0.025em] ${active === 0 ? 'text-[2.5rem] sm:text-4xl md:text-5xl xl:text-[3.7rem]' : 'text-[2.25rem] sm:text-4xl md:text-[3rem] xl:text-[3.4rem]'}`}>{slide.title}<br /><span className="text-emerald">{slide.accent}</span></h1>
-              <p className="mt-4 font-serif text-base italic text-cream/65 sm:text-lg">{slide.subtitle}</p>
-              <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-cream/70 sm:text-[15px] lg:mx-0">{slide.description}</p>
+              <p className="mt-5 text-base leading-8 text-cream/85 sm:text-lg">{slide.subtitle}</p>
+              <p className="mx-auto mt-4 max-w-lg text-base leading-8 text-cream/80 sm:text-lg lg:mx-0">{slide.description}</p>
             </motion.div>
           </AnimatePresence>
 
