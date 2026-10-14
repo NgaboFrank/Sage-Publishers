@@ -25,8 +25,7 @@ export function SiteFooter() {
   }, [])
 
   return (
-    <footer className="relative overflow-hidden bg-forest-deep text-cream">
-      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(82,200,120,0.12),_transparent_45%)]" />
+    <footer className="bg-forest-deep text-cream">
       <div className="relative mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-18">
         <div className="grid gap-10 md:grid-cols-[1.1fr_1fr_0.9fr]">
           <div>
@@ -34,7 +33,7 @@ export function SiteFooter() {
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald/15 font-serif text-lg font-semibold text-emerald">S</span>
               <div><p className="font-serif text-xl font-semibold">Sage Publishers</p><p className="text-[10px] uppercase tracking-[0.22em] text-cream/40">Children’s books</p></div>
             </div>
-            <p className="mt-5 max-w-md text-base leading-8 text-cream/75 sm:text-lg">Stories that inspire young readers.</p>
+            <p className="mt-5 max-w-md text-base leading-7 text-cream/75">Stories that inspire young readers.</p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cream/35">Explore</p>
