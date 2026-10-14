@@ -55,7 +55,7 @@ export function Gallery() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <span className="text-sm font-semibold uppercase tracking-[0.25em] text-moss">
+            <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#299b46] sm:text-3xl">
               Our Books
             </span>
             <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">
