@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'motion/react'
-import { MessageCircle, Mail, Smartphone, Check, Send, Loader2, MessageSquare } from 'lucide-react'
+import { MessageCircle, Mail, Smartphone, Phone, Check, Send, Loader2, MessageSquare } from 'lucide-react'
 import { Reveal } from './reveal'
 
 const WHATSAPP_NUMBER = '250781087745'
@@ -96,7 +96,7 @@ export function Contact() {
 
             <div className="mt-7 inline-block rounded-2xl border border-neutral-200 bg-neutral-50 px-6 py-3 sm:px-8 sm:py-4">
               <p className="font-[cursive] text-lg font-semibold leading-relaxed text-black sm:text-2xl">
-                📞 <span className="text-black">Contact us</span> to get the price and details
+                <Phone className="mr-2 inline-block h-6 w-6 text-[#D4A017]" aria-hidden="true" /> <span className="text-black">Contact us</span> to get the price and details
               </p>
             </div>
           </Reveal>
