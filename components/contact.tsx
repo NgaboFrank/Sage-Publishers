@@ -49,7 +49,7 @@ export function Contact() {
 
         {/* Online payment */}
         <Reveal>
-          <div className="mb-14 overflow-hidden rounded-3xl border border-black bg-black text-cream shadow-xl shadow-forest/25">
+          <div className="mb-14 overflow-hidden rounded-3xl border border-[#2E2921] bg-[#2E2921] text-cream shadow-xl shadow-forest/25">
             <div className="grid items-center gap-8 p-8 md:grid-cols-[auto_1fr_auto] md:p-10">
               <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald/15 text-emerald">
                 <Smartphone className="h-8 w-8" />
