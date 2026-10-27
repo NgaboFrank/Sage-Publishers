@@ -65,7 +65,7 @@ export function Hero() {
                 <span className="mb-4 text-[#B88400]" aria-hidden="true"><BookOpen className="h-5 w-5" /></span>
                 <h2 className="font-serif text-xl font-semibold leading-snug text-black sm:text-2xl">{book.title} {book.accent}</h2>
                 <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-600">{book.subtitle}</p>
-                <a href="/payment" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the book <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-8 w-8" /></span></a>
+                <a href="/payment" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the book <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
               </div>
               <div className="relative min-h-[200px] overflow-hidden rounded-xl bg-[#f5f1e8]">
                 <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 768px) 38vw, 220px" priority={index === 0} className="object-contain p-2" />
@@ -77,7 +77,7 @@ export function Hero() {
               <BookOpen className="mb-4 h-5 w-5 text-[#B88400]" aria-hidden="true" />
               <h2 className="font-serif text-xl font-semibold text-black sm:text-2xl">More stories to explore</h2>
               <p className="mt-3 text-sm leading-relaxed text-neutral-600">Browse our books and discover your next favorite story.</p>
-              <a href="/gallery" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline">Explore books <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-8 w-8" /></span></a>
+              <a href="/gallery" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline">Explore books <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
             </div>
             <div className="flex items-center justify-center rounded-xl bg-[#f5f1e8] p-4"><BookOpen className="h-20 w-20 text-[#B88400]/60" aria-hidden="true" /></div>
           </article>
