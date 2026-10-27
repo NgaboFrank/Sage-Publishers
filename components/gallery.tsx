@@ -55,7 +55,7 @@ export function Gallery() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#299b46] sm:text-3xl">
+            <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">
               Our Books
             </span>
             <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">
@@ -98,7 +98,7 @@ export function Gallery() {
                     i === 1 ? 'Animal Tales Under a Starry Night Sky' :
                     'The Breeze of the Forest'
                   )}`}
-                  className="inline-flex items-center justify-center rounded-full bg-emerald px-6 py-3 font-semibold text-forest-deep shadow-md shadow-emerald/20 transition-transform hover:scale-[1.03]"
+                  className="inline-flex items-center justify-center rounded-full bg-[#F4C542] px-6 py-3 font-semibold text-forest-deep shadow-md shadow-yellow-500/20 transition-transform hover:scale-[1.03]"
                 >
                   Order the Book
                 </a>
