@@ -64,7 +64,7 @@ export function SiteNav() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <Link href="/payment" className="hidden items-center gap-2 rounded-xl bg-[#F4C542] px-4 py-2.5 text-sm font-semibold text-forest-deep shadow-lg shadow-yellow-500/20 transition-transform hover:-translate-y-0.5 sm:inline-flex">
+          <Link href="/payment" className="hidden items-center gap-2 rounded-xl bg-[#F4C542] px-4 py-2.5 text-sm font-semibold text-forest-deep shadow-none transition-transform hover:-translate-y-0.5 sm:inline-flex">
             Order the Book <ArrowUpRight className="h-4 w-4" />
           </Link>
           <button onClick={() => setMobileOpen((v) => !v)} className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-cream hover:bg-cream/10 lg:hidden" aria-label="Toggle menu">
