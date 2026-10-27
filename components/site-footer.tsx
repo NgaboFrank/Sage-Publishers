@@ -30,7 +30,7 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1.1fr_1fr_0.9fr]">
           <div>
             <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald/15 font-serif text-lg font-semibold text-emerald">S</span>
+              
               <div><p className="font-serif text-xl font-semibold">Sage Publishers</p><p className="text-[10px] uppercase tracking-[0.22em] text-cream/40">Children’s books</p></div>
             </div>
             <p className="mt-5 max-w-md text-base leading-7 text-cream/75">Stories that inspire young readers.</p>
