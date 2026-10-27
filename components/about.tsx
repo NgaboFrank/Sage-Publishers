@@ -8,7 +8,7 @@ export function About() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
         <Reveal>
           <div className="max-w-xl">
-            <p className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#299b46] sm:text-3xl">About Sage Publishers</p>
+            <p className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">About Sage Publishers</p>
             <h2 id="about-heading" className="mt-5 font-serif text-[clamp(2.8rem,5vw,5rem)] font-semibold leading-[1.07] tracking-[-0.035em] text-[#123c28]">
               Little stories.<br /><span className="text-[#678a6c]">Big imagination.</span>
             </h2>
