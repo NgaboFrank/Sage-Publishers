@@ -9,8 +9,8 @@ export function About() {
         <Reveal>
           <div className="max-w-xl">
             <p className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">About Sage Publishers</p>
-            <h2 id="about-heading" className="mt-5 font-serif text-[clamp(2.8rem,5vw,5rem)] font-semibold leading-[1.07] tracking-[-0.035em] text-[#123c28]">
-              Little stories.<br /><span className="text-[#678a6c]">Big imagination.</span>
+            <h2 id="about-heading" className="mt-5 font-serif text-[clamp(2.8rem,5vw,5rem)] font-semibold leading-[1.07] tracking-[-0.035em] text-black">
+              Little stories.<br /><span className="text-black">Big imagination.</span>
             </h2>
             <p className="mt-7 max-w-lg text-base leading-8 text-[#53675b] sm:text-lg">
               At Sage Publishers, we believe every child deserves a story worth remembering. We publish engaging, beautifully illustrated books that make reading enjoyable and help young readers discover new ideas, build confidence, and develop a lifelong love of books.
