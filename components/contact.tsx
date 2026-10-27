@@ -85,7 +85,7 @@ export function Contact() {
               Get Your Copy
             </span>
 
-            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">
+            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-black sm:text-5xl">
               Order &amp; Pay with Ease
             </h2>
 
@@ -94,9 +94,9 @@ export function Contact() {
               for individuals, learning centers, organizations, and communities.
             </p>
 
-            <div className="mt-7 inline-block rounded-2xl border border-emerald/25 bg-emerald/5 px-6 py-3 sm:px-8 sm:py-4">
-              <p className="font-[cursive] text-lg font-semibold leading-relaxed text-forest sm:text-2xl">
-                📞 <span className="text-emerald">Contact us</span> to get the price and details
+            <div className="mt-7 inline-block rounded-2xl border border-neutral-200 bg-neutral-50 px-6 py-3 sm:px-8 sm:py-4">
+              <p className="font-[cursive] text-lg font-semibold leading-relaxed text-black sm:text-2xl">
+                📞 <span className="text-black">Contact us</span> to get the price and details
               </p>
             </div>
           </Reveal>
