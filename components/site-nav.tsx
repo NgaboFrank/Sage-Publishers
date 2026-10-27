@@ -47,9 +47,6 @@ export function SiteNav() {
     >
       <nav className={`mx-auto flex max-w-7xl items-center justify-between rounded-[1.35rem] border px-2.5 py-2.5 transition-all duration-300 sm:px-3 md:px-4 md:py-3 ${scrolled ? 'border-cream/15 bg-black/95 shadow-2xl shadow-black/15 backdrop-blur-xl' : 'border-cream/10 bg-black/90 backdrop-blur-md'}`}>
         <Link href="/" className="flex min-w-0 items-center gap-2.5 rounded-xl px-1.5 py-1 text-cream sm:gap-3 sm:px-2 sm:py-1.5">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 bg-yellow-400/15 ring-1 ring-yellow-400/20">
-            <span className="font-serif text-lg font-semibold text-[#F4C542]">S</span>
-          </span>
           <span className="min-w-0">
             <span className="block truncate font-serif text-base font-semibold tracking-tight md:text-lg">Sage Publishers</span>
             <span className="hidden text-[10px] uppercase tracking-[0.24em] text-cream/45 sm:block">Stories with purpose</span>
