@@ -234,3 +234,7 @@ main section:not(#top) { background-color: #ffffff; }
 #top a[href="/trailer"], #top [aria-live="polite"] { color: #34463b !important; }
 #top button[aria-label="Previous book"], #top button[aria-label="Next book"] { color: #14251c !important; border-color: #a7b5aa !important; }
 #top button[aria-label="Previous book"]:hover, #top button[aria-label="Next book"]:hover { background-color: #f0f5f0 !important; }
+
+/* Ensure all homepage hero copy is black on white, including legacy hero markup. */
+#top h1, #top h1 *, #top h2, #top h2 *, #top p:not(.text-emerald), #top p:not(.text-emerald) *, #top .text-cream, #top .text-cream\/80, #top .text-cream\/85 { color: #111111 !important; }
+#top .text-emerald, #top .text-emerald * { color: #35b96b !important; }
