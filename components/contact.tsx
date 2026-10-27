@@ -110,16 +110,16 @@ export function Contact() {
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               className="flex h-full flex-col items-start gap-4 rounded-3xl border border-border bg-card p-8 shadow-lg shadow-forest/10"
             >
-              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-400/15 text-[#D4A017]">
                 <MessageCircle className="h-7 w-7" />
               </span>
               <div>
-                <h3 className="font-serif text-xl font-semibold text-forest">Text to Order</h3>
+                <h3 className="font-serif text-xl font-semibold text-black">Text to Order</h3>
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                   Send us a text and we&apos;ll help you order your copy.
                 </p>
               </div>
-              <p className="mt-auto font-serif text-xl font-semibold text-forest">
+              <p className="mt-auto font-serif text-xl font-semibold text-black">
                 (+250) 781 087 745
               </p>
             </motion.a>
@@ -134,16 +134,16 @@ export function Contact() {
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               className="flex h-full flex-col items-start gap-4 rounded-3xl border border-border bg-card p-8 shadow-lg shadow-forest/10"
             >
-              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-400/15 text-[#D4A017]">
                 <MessageSquare className="h-7 w-7" />
               </span>
               <div>
-                <h3 className="font-serif text-xl font-semibold text-forest">Message on WhatsApp</h3>
+                <h3 className="font-serif text-xl font-semibold text-black">Message on WhatsApp</h3>
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                   Chat with us directly on WhatsApp for quick replies.
                 </p>
               </div>
-              <p className="mt-auto font-serif text-xl font-semibold text-forest">
+              <p className="mt-auto font-serif text-xl font-semibold text-black">
                 (+250) 781 087 745
               </p>
             </motion.a>
@@ -156,16 +156,16 @@ export function Contact() {
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               className="flex h-full flex-col items-start gap-4 rounded-3xl border border-border bg-card p-8 shadow-lg shadow-forest/10"
             >
-              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald/15 text-emerald">
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-400/15 text-[#D4A017]">
                 <Mail className="h-7 w-7" />
               </span>
               <div>
-                <h3 className="font-serif text-xl font-semibold text-forest">Bulk Purchase</h3>
+                <h3 className="font-serif text-xl font-semibold text-black">Bulk Purchase</h3>
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                   Ordering in bulk? Contact us for special rates and arrangements.
                 </p>
               </div>
-              <p className="mt-auto break-all font-serif text-xl font-semibold text-forest">
+              <p className="mt-auto break-all font-serif text-xl font-semibold text-black">
                 mugaboan@gmail.com
               </p>
             </motion.a>
@@ -176,7 +176,7 @@ export function Contact() {
         <Reveal delay={0.15}>
           <div className="mt-6 rounded-3xl border border-border bg-card p-8 shadow-lg shadow-forest/10 md:p-10">
             <div className="mb-6 text-center">
-              <h3 className="font-serif text-2xl font-semibold text-forest">Send Us a Message</h3>
+              <h3 className="font-serif text-2xl font-semibold text-black">Send Us a Message</h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 Fill in the form and we&apos;ll get back to you as soon as we can.
               </p>
@@ -185,7 +185,7 @@ export function Contact() {
             <form onSubmit={handleSubmit} className="mx-auto max-w-2xl">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-sm font-medium text-forest">Your Name</label>
+                  <label htmlFor="name" className="text-sm font-medium text-black">Your Name</label>
                   <input
                     id="name"
                     type="text"
@@ -198,7 +198,7 @@ export function Contact() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-sm font-medium text-forest">Your Email</label>
+                  <label htmlFor="email" className="text-sm font-medium text-black">Your Email</label>
                   <input
                     id="email"
                     type="email"
@@ -212,7 +212,7 @@ export function Contact() {
               </div>
 
               <div className="mt-5 flex flex-col gap-2">
-                <label htmlFor="message" className="text-sm font-medium text-forest">Message</label>
+                <label htmlFor="message" className="text-sm font-medium text-black">Message</label>
                 <textarea
                   id="message"
                   required
@@ -228,7 +228,7 @@ export function Contact() {
                 <p
                   className={`text-sm ${
                     status === 'sent'
-                      ? 'text-emerald'
+                      ? 'text-[#D4A017]'
                       : status === 'error'
                         ? 'text-destructive'
                         : 'text-muted-foreground'
@@ -255,7 +255,7 @@ export function Contact() {
                   {status === 'sending' ? (
                     <Loader2 className="h-5 w-5 animate-spin" />
                   ) : status === 'sent' ? (
-                    <Check className="h-5 w-5 text-emerald" />
+                    <Check className="h-5 w-5 text-[#D4A017]" />
                   ) : (
                     <Send className="h-5 w-5" />
                   )}
