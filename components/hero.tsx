@@ -1,9 +1,8 @@
 'use client'
 
-import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, Play, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowUpRight, BookOpen } from 'lucide-react'
 
 const slides = [
   {
@@ -36,7 +35,6 @@ const slides = [
 ]
 
 export function Hero() {
-  const [active, setActive] = useState(0)
   const [slideImages, setSlideImages] = useState<Record<string, string>>({})
 
   useEffect(() => {
@@ -50,10 +48,9 @@ export function Hero() {
       .catch(() => {})
   }, [])
 
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const timer = window.setInterval(() => setActive((current) => (current + 1) % slides.length), 9000)
-    return () => window.clearInterval(timer)
+  const imageKeys = ['home_slide_breeze', 'home_slide_animal_tales', 'home_slide_animal_tales_fr']
+
+  return () => window.clearInterval(timer)
   }, [])
 
   const slide = slides[active]
@@ -61,37 +58,36 @@ export function Hero() {
   const slideImage = slideImages[imageKeys[active]] || slide.image
 
   return (
-    <section id="top" aria-label="Featured books" className="relative isolate overflow-hidden bg-forest-deep pt-28 text-cream sm:pt-36">
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-10 px-5 pb-16 sm:px-8 sm:pb-24 lg:min-h-[650px] lg:grid-cols-2 lg:gap-16">
-        <div className="max-w-xl">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-emerald">Stories worth sharing</p>
-          <AnimatePresence mode="wait">
-            <motion.div key={active} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-              <h1 className="font-serif text-[clamp(2.8rem,6vw,5.5rem)] font-semibold leading-[1.04] tracking-tight">{slide.title} <span className="text-emerald">{slide.accent}</span></h1>
-              <p className="mt-6 max-w-md text-base leading-relaxed text-cream/80 sm:text-lg">{slide.subtitle}</p>
-            </motion.div>
-          </AnimatePresence>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/payment" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-emerald px-6 py-3 text-sm font-semibold text-forest-deep transition-colors hover:bg-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald">Order the Book <ArrowUpRight className="h-4 w-4" /></a>
-            <a href="/gallery" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-cream/30 px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-cream/10">Explore Books</a>
-          </div>
-          <a href="/trailer" className="mt-6 inline-flex items-center gap-2 text-sm text-cream/75 underline-offset-4 hover:text-cream hover:underline"><Play className="h-4 w-4" /> Watch the trailer</a>
+    <section id="top" aria-label="Featured books" className="bg-[#f7f7f5] pt-28 pb-16 sm:pt-36 sm:pb-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mb-9 max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#B88400]">Sage Publishers</p>
+          <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-black sm:text-5xl">Discover stories worth sharing.</h1>
+          <p className="mt-3 text-base leading-relaxed text-neutral-600">Beautifully illustrated books for young readers and families.</p>
         </div>
-        <div className="mx-auto w-full max-w-[440px]">
-          <div className="relative overflow-hidden rounded-xl bg-cream/5 p-3 sm:p-5">
-            <AnimatePresence mode="wait">
-              <motion.div key={slideImage} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                <Image src={slideImage} alt={slide.alt} width={900} height={900} priority={active === 0} sizes="(max-width: 640px) 90vw, 440px" className="aspect-square w-full rounded-md object-contain" />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-          <div className="mt-5 flex items-center justify-between gap-4">
-            <span aria-live="polite" className="text-sm text-cream/65">{active + 1} / {slides.length}</span>
-            <div className="flex gap-2">
-              <button type="button" aria-label="Previous book" onClick={() => setActive((active - 1 + slides.length) % slides.length)} className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/30 hover:bg-cream/10 focus-visible:outline-2 focus-visible:outline-emerald"><ChevronLeft className="h-5 w-5" /></button>
-              <button type="button" aria-label="Next book" onClick={() => setActive((active + 1) % slides.length)} className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/30 hover:bg-cream/10 focus-visible:outline-2 focus-visible:outline-emerald"><ChevronRight className="h-5 w-5" /></button>
+        <div className="grid gap-4 md:grid-cols-2">
+          {slides.map((book, index) => (
+            <article key={book.image} className="grid min-h-[260px] grid-cols-[1fr_42%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="flex min-w-0 flex-col items-start">
+                <span className="mb-4 text-[#B88400]" aria-hidden="true"><BookOpen className="h-5 w-5" /></span>
+                <h2 className="font-serif text-xl font-semibold leading-snug text-black sm:text-2xl">{book.title} {book.accent}</h2>
+                <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-600">{book.subtitle}</p>
+                <a href="/payment" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the book <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
+              </div>
+              <div className="relative min-h-[200px] overflow-hidden rounded-xl bg-[#f5f1e8]">
+                <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 768px) 38vw, 220px" priority={index === 0} className="object-contain p-2" />
+              </div>
+            </article>
+          ))}
+          <article className="grid min-h-[260px] grid-cols-[1fr_42%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+            <div className="flex flex-col items-start">
+              <BookOpen className="mb-4 h-5 w-5 text-[#B88400]" aria-hidden="true" />
+              <h2 className="font-serif text-xl font-semibold text-black sm:text-2xl">More stories to explore</h2>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-600">Browse our books and discover your next favorite story.</p>
+              <a href="/gallery" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline">Explore books <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
             </div>
-          </div>
+            <div className="flex items-center justify-center rounded-xl bg-[#f5f1e8] p-4"><BookOpen className="h-20 w-20 text-[#B88400]/60" aria-hidden="true" /></div>
+          </article>
         </div>
       </div>
     </section>
