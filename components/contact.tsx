@@ -250,7 +250,7 @@ export function Contact() {
                   disabled={status === 'sending'}
                   whileHover={status === 'sending' ? undefined : { scale: 1.04 }}
                   whileTap={status === 'sending' ? undefined : { scale: 0.96 }}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-8 py-3 font-semibold text-cream shadow-lg shadow-forest/25 disabled:opacity-70"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F4C542] px-8 py-3 font-semibold text-black shadow-lg shadow-forest/25 disabled:opacity-70"
                 >
                   {status === 'sending' ? (
                     <Loader2 className="h-5 w-5 animate-spin" />
