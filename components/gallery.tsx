@@ -90,7 +90,7 @@ export function Gallery() {
                   className="absolute inset-0 bg-gradient-to-t from-forest-deep/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
               </motion.button>
-              <h3 className="mt-4 px-2 text-center font-serif text-xl font-semibold leading-snug text-forest">{item.title || ['Contes d’animaux sous une nuit étoilée','Animal Tales Under a Starry Night Sky','The Breeze of the Forest'][i]}</h3>
+              <h3 className="mt-4 px-2 text-center font-serif text-xl font-semibold leading-snug text-black">{item.title || ['Contes d’animaux sous une nuit étoilée','Animal Tales Under a Starry Night Sky','The Breeze of the Forest'][i]}</h3>
               <div className="mt-4 flex justify-center">
                 <a
                   href={`/payment?book=${encodeURIComponent(
