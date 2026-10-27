@@ -62,7 +62,7 @@ export function Hero() {
           {slides.map((book, index) => (
             <article key={book.image} className="grid min-h-[340px] grid-cols-[1fr_42%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
               <div className="flex min-w-0 flex-col items-start">
-                <span className="mb-4 text-[#B88400]" aria-hidden="true"><BookOpen className="h-5 w-5" /></span>
+                
                 <h2 className="font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">{book.title} {book.accent}</h2>
                 <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-600">{book.subtitle}</p>
                 <a href="/payment" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the book <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
@@ -74,7 +74,7 @@ export function Hero() {
           ))}
           <article className="grid min-h-[340px] grid-cols-[1fr_42%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
             <div className="flex flex-col items-start">
-              <BookOpen className="mb-4 h-5 w-5 text-[#B88400]" aria-hidden="true" />
+              
               <h2 className="font-serif text-xl font-semibold text-black sm:text-2xl">More stories to explore</h2>
               <p className="mt-3 text-sm leading-relaxed text-neutral-600">Browse our books and discover your next favorite story.</p>
               <a href="/gallery" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline">Explore books <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
