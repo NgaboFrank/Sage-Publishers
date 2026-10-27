@@ -2,85 +2,67 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, BookOpen } from 'lucide-react'
+import { ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react'
 
-const slides = [
-  {
-    title: 'The Breeze',
-    accent: 'of the Forest',
-    subtitle: 'Animal stories that children remember.',
-    description: 'A beautifully illustrated collection of gentle adventures that encourage bravery, kindness, friendship and imagination, one story at a time.',
-    image: '/book-cover.jpeg',
-    alt: 'The Breeze of the Forest book cover',
-    label: 'A Sage Publishers original',
-  },
-  {
-    title: 'Animal Tales',
-    accent: 'under a starry night sky',
-    subtitle: 'Wild stories beneath a beautiful African sky.',
-    description: 'A collection of animal tales filled with wonder, friendship and lessons for young readers, bringing the magic of the wild to every page.',
-    image: '/animal-tales.webp',
-    alt: 'Animal Tales under a starry night sky book cover',
-    label: 'A Sage Publishers original',
-  },
-  {
-    title: 'Contes d’animaux',
-    accent: 'sous une nuit étoilée',
-    subtitle: 'Des histoires sauvages sous un magnifique ciel africain.',
-    description: 'Une collection de contes animaliers remplis de merveille, d’amitié et de leçons pour les jeunes lecteurs, avec la magie de la nature à chaque page.',
-    image: '/animal-tales-fr.jpeg',
-    alt: 'Couverture française de Contes d’animaux sous une nuit étoilée',
-    label: 'Une création originale de Sage Publishers',
-  },
+const fallbackImages = [
+  { src: '/animal-tales-fr.webp', alt: 'Contes d’animaux sous une nuit étoilée' },
+  { src: '/animal-tales.webp', alt: 'Animal Tales Under a Starry Night Sky' },
+  { src: '/book-cover.jpeg', alt: 'The Breeze of the Forest' },
 ]
 
 export function Hero() {
-  const [slideImages, setSlideImages] = useState<Record<string, string>>({})
+  const [images, setImages] = useState(fallbackImages)
+  const [active, setActive] = useState(0)
 
   useEffect(() => {
     fetch('/api/home-content', { cache: 'no-store' })
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((data) => {
-        const map: Record<string, string> = {}
-        for (const item of data.content || []) if (item.image_url) map[item.content_key] = item.image_url
-        setSlideImages(map)
+        const entry = (data.content || []).find((item: { content_key: string }) => item.content_key === 'home_gallery_images')
+        if (!entry?.value) return
+        const parsed: unknown = JSON.parse(entry.value)
+        if (!Array.isArray(parsed)) return
+        const urls = parsed.filter((value): value is string => typeof value === 'string' && value.length > 0)
+        if (urls.length) {
+          setImages(urls.map((src, index) => ({ src, alt: fallbackImages[index]?.alt || 'Sage Publishers gallery image' })))
+          setActive(0)
+        }
       })
       .catch(() => {})
   }, [])
 
-  const imageKeys = ['home_slide_breeze', 'home_slide_animal_tales', 'home_slide_animal_tales_fr']
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || images.length < 2) return
+    const timer = window.setInterval(() => setActive((current) => (current + 1) % images.length), 9000)
+    return () => window.clearInterval(timer)
+  }, [images.length])
+
+  const image = images[active] || fallbackImages[0]
 
   return (
-    <section id="top" aria-label="Featured books" className="bg-[#f7f7f5] pt-28 pb-16 sm:pt-36 sm:pb-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="mb-9 max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#B88400]">Sage Publishers</p>
-          <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-black sm:text-5xl">Discover stories worth sharing.</h1>
-          <p className="mt-3 text-base leading-relaxed text-neutral-600">Beautifully illustrated books for young readers and families.</p>
+    <section id="top" aria-label="Sage Publishers" className="bg-white pb-16 pt-32 sm:pb-24 sm:pt-40">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
+        <div className="max-w-xl">
+          <p className="font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Sage Publishers</p>
+          <h1 className="mt-5 font-serif text-5xl font-bold leading-[1.08] tracking-tight text-black sm:text-6xl lg:text-7xl">Find your next story.</h1>
+          <p className="mt-6 text-base leading-relaxed text-black">Explore our books for young readers and families.</p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a href="/payment" className="inline-flex min-h-12 items-center gap-3 rounded-full bg-[#F4C542] px-7 py-3 text-sm font-semibold text-black">Order your copy <ArrowUpRight className="h-4 w-4" /></a>
+            <span className="inline-flex items-center gap-2 text-sm text-neutral-700"><ShieldCheck className="h-4 w-4 text-[#D4A017]" /> Secure checkout with Pesapal</span>
+          </div>
         </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          {slides.map((book, index) => (
-            <article key={book.image} className="grid min-h-[340px] grid-cols-[1fr_42%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
-              <div className="flex min-w-0 flex-col items-start">
-                
-                <h2 className="font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">{book.title} {book.accent}</h2>
-                <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-600">{book.subtitle}</p>
-                <a href="/payment" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the book <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
-              </div>
-              <div className="relative min-h-[270px] overflow-hidden rounded-xl bg-[#f5f1e8]">
-                <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 768px) 38vw, 220px" priority={index === 0} className="object-contain p-2" />
-              </div>
-            </article>
-          ))}
-          <article className="grid min-h-[340px] grid-cols-[1fr_42%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
-            <div className="flex flex-col items-start">
-              
-              <h2 className="font-serif text-xl font-semibold text-black sm:text-2xl">More stories to explore</h2>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-600">Browse our books and discover your next favorite story.</p>
-              <a href="/gallery" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline">Explore books <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
+        <div className="mx-auto w-full max-w-[440px]">
+          <div className="relative overflow-hidden rounded-[30px] bg-white p-3 shadow-xl">
+            <div className="relative aspect-square overflow-hidden rounded-[22px]">
+              <Image key={image.src} src={image.src} alt={image.alt} fill priority sizes="(max-width: 640px) 90vw, 440px" className="object-cover" />
             </div>
-            <div className="flex items-center justify-center rounded-xl bg-[#f5f1e8] p-4"><BookOpen className="h-20 w-20 text-[#B88400]/60" aria-hidden="true" /></div>
-          </article>
+            {images.length > 1 && (
+              <>
+                <button type="button" aria-label="Previous gallery image" onClick={() => setActive((active - 1 + images.length) % images.length)} className="absolute left-5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#173e2c] text-white"><ChevronLeft className="h-5 w-5" /></button>
+                <button type="button" aria-label="Next gallery image" onClick={() => setActive((active + 1) % images.length)} className="absolute right-5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#173e2c] text-white"><ChevronRight className="h-5 w-5" /></button>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </section>
