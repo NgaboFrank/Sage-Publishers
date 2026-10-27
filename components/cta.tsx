@@ -45,18 +45,18 @@ export function CallToAction() {
   const book = displayImages[active]
 
   return (
-    <section className="relative overflow-hidden bg-forest py-24 text-cream md:py-32">
+    <section className="relative overflow-hidden bg-white py-24 text-[#111111] md:py-32">
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 md:px-8 lg:grid-cols-[1fr_0.8fr]">
         <div>
           <Reveal>
             <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#52c878] sm:text-3xl">Sage Publishers</span>
             <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">Find your next story.</h2>
-            <p className="mt-5 max-w-xl leading-relaxed text-cream/70">Explore our books for young readers and families.</p>
+            <p className="mt-5 max-w-xl leading-relaxed text-[#333333]">Explore our books for young readers and families.</p>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <motion.a href="/payment" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald px-7 py-3.5 font-semibold text-forest-deep shadow-xl shadow-emerald/20">Order your copy <ArrowUpRight className="h-4 w-4" /></motion.a>
-              <span className="inline-flex items-center gap-2 text-sm text-cream/50"><ShieldCheck className="h-4 w-4 text-emerald" /> Secure checkout with Pesapal</span>
+              <span className="inline-flex items-center gap-2 text-sm text-[#444444]"><ShieldCheck className="h-4 w-4 text-emerald" /> Secure checkout with Pesapal</span>
             </div>
           </Reveal>
         </div>
