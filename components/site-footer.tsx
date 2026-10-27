@@ -42,7 +42,7 @@ export function SiteFooter() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cream/35">Get in touch</p>
             <div className="mt-4 space-y-3 text-sm">
-              <Link href="/payment" className="flex items-center gap-2 text-emerald transition hover:text-cream">
+              <Link href="/payment" className="flex items-center gap-2 text-[#F4C542] transition hover:text-yellow-200">
                 Order a book <ArrowUpRight className="h-4 w-4 shrink-0" />
               </Link>
               <a href="https://wa.me/250781087745" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-cream/65 hover:text-emerald"><MessageCircle className="h-4 w-4" /> WhatsApp: +250 781 087 745</a>
