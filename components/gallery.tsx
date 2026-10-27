@@ -58,7 +58,7 @@ export function Gallery() {
             <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">
               Our Books
             </span>
-            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">
+            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-black sm:text-5xl">
               Discover our books
             </h2>
             <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
