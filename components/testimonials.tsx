@@ -52,7 +52,7 @@ export function Testimonials() {
             <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">
               Loved by Families
             </span>
-            <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-forest sm:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-black sm:text-4xl">
               What parents are saying
             </h2>
           </Reveal>
