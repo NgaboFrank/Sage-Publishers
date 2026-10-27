@@ -18,7 +18,7 @@ export function About() {
           </div>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="rounded-2xl bg-[#123c28] px-7 py-12 sm:px-11 sm:py-14">
+          <div className="rounded-2xl bg-[#2E2921] px-7 py-12 sm:px-11 sm:py-14">
             <h3 className="font-serif text-3xl leading-tight text-[#fffdf6] sm:text-4xl">
               Stories that stay with you.
             </h3>
