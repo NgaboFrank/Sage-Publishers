@@ -219,3 +219,7 @@ main figure {
     border-top-color: color-mix(in srgb, var(--forest) 4%, transparent);
   }
 }
+
+/* Light homepage sections; retain the original dark green footer and hero. */
+body { background: #ffffff; }
+main section:not(#top) { background-color: #ffffff; }
