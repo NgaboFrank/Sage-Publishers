@@ -50,13 +50,6 @@ export function Hero() {
 
   const imageKeys = ['home_slide_breeze', 'home_slide_animal_tales', 'home_slide_animal_tales_fr']
 
-  return () => window.clearInterval(timer)
-  }, [])
-
-  const slide = slides[active]
-  const imageKeys = ['home_slide_breeze', 'home_slide_animal_tales', 'home_slide_animal_tales_fr']
-  const slideImage = slideImages[imageKeys[active]] || slide.image
-
   return (
     <section id="top" aria-label="Featured books" className="bg-[#f7f7f5] pt-28 pb-16 sm:pt-36 sm:pb-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
