@@ -45,7 +45,7 @@ export function SiteNav() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 md:px-5 md:pt-4"
     >
-      <nav className={`mx-auto flex max-w-7xl items-center justify-between rounded-[1.35rem] border px-2.5 py-2.5 transition-all duration-300 sm:px-3 md:px-4 md:py-3 ${scrolled ? 'border-cream/15 bg-black/95 shadow-2xl shadow-black/15 backdrop-blur-xl' : 'border-cream/10 bg-black/90 backdrop-blur-md'}`}>
+      <nav className={`mx-auto flex max-w-7xl items-center justify-between rounded-[1.35rem] border px-2.5 py-2.5 transition-all duration-300 sm:px-3 md:px-4 md:py-3 ${scrolled ? 'border-cream/15 bg-[#2E2921] shadow-2xl shadow-black/15 backdrop-blur-xl' : 'border-cream/10 bg-[#2E2921] backdrop-blur-md'}`}>
         <Link href="/" className="flex min-w-0 items-center gap-2.5 rounded-xl px-1.5 py-1 text-cream sm:gap-3 sm:px-2 sm:py-1.5">
           <span className="min-w-0">
             <span className="block truncate font-serif text-base font-semibold tracking-tight md:text-lg">Sage Publishers</span>
@@ -75,7 +75,7 @@ export function SiteNav() {
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mx-auto mt-2 max-w-7xl rounded-2xl border border-cream/10 bg-black/95 p-3 shadow-2xl shadow-black/20 backdrop-blur-xl lg:hidden">
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mx-auto mt-2 max-w-7xl rounded-2xl border border-cream/10 bg-[#2E2921] p-3 shadow-2xl shadow-black/20 backdrop-blur-xl lg:hidden">
             <ul className="flex flex-col gap-1">
               {links.map((link) => (
                 <li key={link.href}>
