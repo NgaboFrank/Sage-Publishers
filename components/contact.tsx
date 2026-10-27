@@ -70,7 +70,7 @@ export function Contact() {
                   href="/payment"
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
-                  className="inline-flex items-center justify-center rounded-full bg-emerald px-7 py-3 font-semibold text-forest-deep shadow-lg shadow-emerald/30"
+                  className="inline-flex items-center justify-center rounded-full bg-[#F4C542] px-7 py-3 font-semibold text-forest-deep shadow-lg shadow-emerald/30"
                 >
                   PAY FOR THE BOOK
                 </motion.a>
@@ -81,7 +81,7 @@ export function Contact() {
 
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#299b46] sm:text-3xl">
+            <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">
               Get Your Copy
             </span>
 
