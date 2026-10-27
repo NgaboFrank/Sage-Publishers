@@ -223,3 +223,14 @@ main figure {
 /* Light homepage sections; retain the original dark green footer and hero. */
 body { background: #ffffff; }
 main section:not(#top) { background-color: #ffffff; }
+
+/* White homepage hero: readable dark typography, preserving green accents. */
+#top { background-color: #ffffff !important; color: #14251c !important; }
+#top h1 { color: #14251c !important; }
+#top h1 span { color: #21834a !important; }
+#top p:not(.text-emerald) { color: #34463b !important; }
+#top a[href="/gallery"] { color: #14251c !important; border-color: #a7b5aa !important; }
+#top a[href="/gallery"]:hover { background-color: #f0f5f0 !important; }
+#top a[href="/trailer"], #top [aria-live="polite"] { color: #34463b !important; }
+#top button[aria-label="Previous book"], #top button[aria-label="Next book"] { color: #14251c !important; border-color: #a7b5aa !important; }
+#top button[aria-label="Previous book"]:hover, #top button[aria-label="Next book"]:hover { background-color: #f0f5f0 !important; }
