@@ -61,10 +61,11 @@ export function Hero() {
   return (
     <section id="top" aria-label="Featured books" className="bg-[#f7f7f5] pt-28 pb-16 sm:pt-36 sm:pb-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="mb-9 max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#B88400]">Sage Publishers</p>
-          <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-black sm:text-5xl">Discover stories worth sharing.</h1>
-          <p className="mt-3 text-base leading-relaxed text-neutral-600">Beautifully illustrated books for young readers and families.</p>
+        <div className="mb-10 max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C49316]">Sage Publishers</p>
+          <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight tracking-tight text-[#111111] sm:text-5xl">Where Little Stories Inspire Big Imaginations.</h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#555555]">Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.</p>
+          <a href="/gallery" className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#F4C542] px-6 py-3 text-sm font-semibold text-[#111111] transition-colors hover:bg-[#E8B82F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C49316]">Explore Our Books <ArrowUpRight className="h-4 w-4" /></a>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {slides.map((book, index) => (
