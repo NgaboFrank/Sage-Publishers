@@ -241,3 +241,6 @@ main section:not(#top) { background-color: #ffffff; }
 
 /* Homepage publisher eyebrow: override older forced black hero paragraph rules. */
 #top p.publisher-eyebrow { color: #E0A000 !important; }
+
+/* Keep the homepage Our Books label golden yellow despite legacy hero paragraph overrides. */
+#top p.our-books-label { color: #D4A017 !important; }
