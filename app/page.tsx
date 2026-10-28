@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { SiteNav } from '@/components/site-nav'
 import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
-import { Gallery } from '@/components/gallery'
 import { Testimonials } from '@/components/testimonials'
 import { Contact } from '@/components/contact'
 import { SiteFooter } from '@/components/site-footer'
@@ -25,7 +24,6 @@ export default function Page() {
       <main>
         <Hero />
         <About />
-        <Gallery />
         <section aria-labelledby="gallery-preview-heading" className="bg-white py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
             <div className="mx-auto max-w-2xl text-center">
