@@ -24,7 +24,7 @@ export default function PaymentPage() {
       if (requested) {
         const normalize = (v:string) => decodeURIComponent(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim()
         const wanted = normalize(requested)
-        const match = loaded.find(b => normalize(b.id) === wanted || normalize(b.title) === wanted)
+        const match = loaded.find(b => normalize(b.id) === wanted || normalize(b.title) === wanted) || loaded.find(b => { const title = normalize(b.title); return (wanted.includes('breeze') && title.includes('breeze')) || (wanted.includes('contes') && title.includes('contes')) || (wanted.includes('animal tales') && title.includes('animal tales')) })
         if (match) setForm(current => ({ ...current, bookId: match.id, amount: Number(match.price) > 0 ? String(match.price) : '' }))
       }
     }).catch(() => setError('Unable to load available books.')).finally(() => setLoadingBooks(false))
