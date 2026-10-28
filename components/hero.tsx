@@ -66,7 +66,7 @@ export function Hero() {
           <p className="publisher-eyebrow text-xs font-semibold uppercase tracking-[0.16em] text-[#E0A000]">Sage Publishers</p>
           <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight tracking-tight text-[#111111] sm:text-5xl">Where Little Stories Inspire Big Imaginations.</h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#555555]">Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.</p>
-          <p className="mt-6 font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Our Books</p>
+          <p className="our-books-label mt-6 font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Our Books</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {slides.map((book, index) => (
