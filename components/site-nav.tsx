@@ -75,7 +75,7 @@ export function SiteNav() {
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mx-auto mt-2 max-w-7xl rounded-2xl border border-cream/10 bg-[#2E2921] p-3 shadow-2xl shadow-black/20 backdrop-blur-xl lg:hidden">
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mx-3 mt-2 max-h-[calc(100dvh-5rem)] overflow-y-auto rounded-2xl border border-cream/10 bg-[#2E2921] p-3 shadow-2xl shadow-black/20 backdrop-blur-xl lg:hidden">
             <ul className="flex flex-col gap-1">
               {links.map((link) => (
                 <li key={link.href}>
