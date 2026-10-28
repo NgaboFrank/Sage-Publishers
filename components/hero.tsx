@@ -62,7 +62,7 @@ export function Hero() {
     <section id="top" aria-label="Featured books" className="bg-[#f7f7f5] pt-28 pb-16 sm:pt-36 sm:pb-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mb-10 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C49316]">Sage Publishers</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#F4C542]">Sage Publishers</p>
           <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight tracking-tight text-[#111111] sm:text-5xl">Where Little Stories Inspire Big Imaginations.</h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#555555]">Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.</p>
         </div>
