@@ -70,7 +70,7 @@ export function Hero() {
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {slides.map((book, index) => (
-            <article key={book.image} className="grid min-h-[340px] grid-cols-[minmax(0,1fr)_minmax(0,48%)] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
+            <article key={book.image} className="grid min-h-[340px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
               <div className="flex min-w-0 flex-col items-start">
                 
                 <h2 className="font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">{book.title} {book.accent}</h2>
@@ -79,13 +79,13 @@ export function Hero() {
                 <button type="button" onClick={() => index === 0 ? setSampleOpen(true) : setPendingSample(index)} className="mt-5 rounded-full border border-[#E3B52D] px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-[#FFF6D8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Read a Sample</button>
                 <a href={`/payment?book=${encodeURIComponent(`${book.title} ${book.accent}`)}`} className="mt-4 inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full bg-[#F4C542] px-4 py-2 text-xs font-semibold text-black transition-colors hover:bg-[#E9B72D] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the Book <ArrowUpRight className="h-4 w-4" /></a>
               </div>
-              <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#f5f1e8] shadow-sm">
+              <div className="relative min-h-[260px] overflow-hidden rounded-xl bg-[#f5f1e8] shadow-sm sm:min-h-[300px]">
                 <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 640px) 45vw, (max-width: 1024px) 40vw, 310px" priority={index === 0} className="object-contain p-2 transition-transform duration-300 hover:scale-[1.02]" />
                 {index === 0 && <button type="button" onClick={() => setSampleOpen(true)} aria-label="Read a sample of The Breeze of the Forest" className="absolute inset-0 z-10 cursor-pointer focus-visible:outline-4 focus-visible:outline-yellow-500" />}
               </div>
             </article>
           ))}
-          <article className="grid min-h-[340px] grid-cols-[minmax(0,1fr)_minmax(0,48%)] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
+          <article className="grid min-h-[340px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
             <div className="flex min-w-0 flex-col items-start">
               <p className="text-xs font-semibold uppercase tracking-wider text-[#B88400]">Keep exploring</p>
               <h2 className="mt-3 font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">Your next favorite story awaits</h2>
