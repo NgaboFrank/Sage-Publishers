@@ -101,11 +101,23 @@ export function Hero() {
               <h2 id="sample-title" className="mt-3 pr-8 font-serif text-3xl font-bold text-black">The Breeze of the Forest</h2>
               <p className="mt-2 text-sm text-neutral-500">Sample story · Mani’s Family and Ntumi the Snake</p>
               <div className="mt-6 space-y-4 border-y border-neutral-200 py-6 font-serif text-lg leading-8 text-neutral-800">
-                <h3 className="text-2xl font-semibold text-black">Meet Mani, the brave little bird</h3>
-                <p>Every morning, Mani watches her family leave the nest. Her mother and siblings have important work to do, but Mani is still too young to fly. She wishes she could join them.</p>
-                <p>Mani has a secret: she is afraid of walking alone to the river. Instead of telling her mother, she has sometimes pretended to have taken her bath. When her sister Nini discovers what is troubling her, she gently helps Mani understand why honesty matters.</p>
-                <p>With Nini’s encouragement, Mani finds the courage to tell her mother the truth. Her family reminds her that growing up takes patience, kindness, and a little bravery.</p>
-                <p className="text-sm italic text-neutral-500">This is a short retelling of the opening story, not the complete chapter.</p>
+                <h3 className="text-2xl font-semibold text-black">Mani’s Family and Ntumi the Snake</h3>
+                <h4 className="text-xl font-semibold text-black">Mani, the Brave!</h4>
+                <p>Every morning was busy in Mani’s family. Her mother and older siblings each had their daily responsibilities, but Mani was still too young to fly. She stayed behind to watch over their nest, wishing she could go with the others and discover the world beyond the branches.</p>
+                <p>Mani lived with her mother, her sister Nini, and another sibling. Their feathers were bright blue, with a white stripe across their backs. Her father had been away for so long that Mani had never met him. Although she loved her family, there was something she found difficult to tell them.</p>
+                <p>Each day, Mani was expected to walk to the river to bathe. Sometimes she told her mother she had already washed, even when she had not. Her mother could see the truth by looking at the white stripe on Mani’s back. After this happened several times, her mother began to question Mani even when she was telling the truth.</p>
+                <p>Mani felt sad. She wanted her mother to trust her again, so she turned to Nini, her quiet but courageous older sister, for advice.</p>
+                <p>“What can I do to make Mum trust me again?” Mani asked. Nini explained that honesty was important in both small and big things. She then asked Mani why she had been avoiding the river.</p>
+                <p>At last, Mani admitted what was troubling her. The river was far away, and she could not yet fly. Walking there alone frightened her, especially when other young birds laughed at her for being unable to fly with them.</p>
+                <p>Nini listened carefully. She reassured Mani that every bird had once needed to learn to fly, and that their mother had good reasons for encouraging them to walk. Nini also promised to accompany her little sister to the river so she would no longer have to face the journey alone.</p>
+                <p>But Mani had another question: why did birds need strong legs when they were supposed to fly? Nini thought it was a wonderful question and suggested they ask their mother together.</p>
+                <p>Their mother explained that birds needed strong legs to land safely on branches and nests, to take off, and to search for food. Mani began to understand that the walks she disliked were helping her grow stronger.</p>
+                <p>Feeling braver, Mani told her mother why she had lied about bathing. Her mother was proud that she had finally spoken honestly and reminded her that she could always talk about her fears. Mani and Nini returned to their games feeling happy and relieved.</p>
+                <h4 className="text-xl font-semibold text-black">The Beginning of Troubles</h4>
+                <p>The next morning, Mani’s family rose early to sing with the other birds and gently wake the forest. The rainy season had returned after a long, hot drought, and the trees were becoming green again. Food was easier to find, and Mani’s feathers and wings were growing.</p>
+                <p>One evening, Mani refused the fruit her mother brought because she wanted her favourite beetles instead. Nini helped her understand why different foods mattered for growing strong and healthy. Mani apologised, learning another important lesson from her family.</p>
+                <p>Yet Mani’s greatest adventure was still ahead. One day, while her mother was away and Nini went exploring with a friend, dark clouds began gathering above the forest. Mani was alone in the nest, and the sound of distant thunder filled her with fear. Would she find the courage to face what came next?</p>
+                <p className="text-sm italic text-neutral-500">Preview adapted from the opening chapters of the supplied manuscript. The full book continues the story of Mani and the animals of the forest.</p>
               </div>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a href="/payment" className="inline-flex items-center gap-2 rounded-full bg-[#F4C542] px-6 py-3 text-sm font-bold text-black hover:bg-[#EABF32]">Order the Book <ArrowUpRight className="h-4 w-4" /></a>
