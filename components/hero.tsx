@@ -79,7 +79,7 @@ export function Hero() {
                 <a href="/payment" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the book <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
               </div>
               <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#f5f1e8] shadow-sm">
-                <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 640px) 45vw, (max-width: 1024px) 40vw, 310px" priority={index === 0} className="object-cover transition-transform duration-300 hover:scale-[1.02]" />
+                <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 640px) 45vw, (max-width: 1024px) 40vw, 310px" priority={index === 0} className="object-contain p-2 transition-transform duration-300 hover:scale-[1.02]" />
                 {index === 0 && <button type="button" onClick={() => setSampleOpen(true)} aria-label="Read a sample of The Breeze of the Forest" className="absolute inset-0 z-10 cursor-pointer focus-visible:outline-4 focus-visible:outline-yellow-500" />}
               </div>
             </article>
