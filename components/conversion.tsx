@@ -111,7 +111,7 @@ export function MobileOrderBar() {
           <p className="truncate text-xs font-semibold uppercase tracking-[0.14em] text-moss">The Breeze of the Forest</p>
           <p className="text-sm font-medium text-forest">Ready to order?</p>
         </div>
-        <Link href="/payment" className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-emerald px-5 text-sm font-bold text-forest-deep shadow-lg shadow-emerald/20">
+        <Link href="/payment" className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-[#F4C542] px-4 text-sm font-bold text-black shadow-sm">
           Order the Book
         </Link>
       </div>
@@ -127,7 +127,7 @@ export function FloatingWhatsApp() {
       rel="noopener noreferrer"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
-      className="fixed bottom-24 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-emerald text-forest-deep shadow-xl shadow-forest/20 ring-4 ring-background sm:bottom-5 sm:right-5"
+      className="fixed bottom-24 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#F4C542] text-black shadow-xl shadow-forest/20 ring-4 ring-background sm:bottom-5 sm:right-5"
       aria-label="Chat with Sage Publishers on WhatsApp"
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.96 }}
