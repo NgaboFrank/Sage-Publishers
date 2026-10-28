@@ -244,3 +244,32 @@ main section:not(#top) { background-color: #ffffff; }
 
 /* Keep the homepage Our Books label golden yellow despite legacy hero paragraph overrides. */
 #top p.our-books-label { color: #D4A017 !important; }
+
+
+/* Sage Publishers typography: consistent editorial hierarchy and mobile readability. */
+main {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+main h1,
+main h2,
+main h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+main h1 { line-height: 1.12; }
+main h2 { line-height: 1.18; }
+main h3 { line-height: 1.25; }
+main p { overflow-wrap: break-word; }
+main .font-\\[cursive\\] {
+  font-family: 'Comic Sans MS', 'Segoe Print', cursive;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+@media (max-width: 639px) {
+  #top h1 { font-size: clamp(2rem, 8vw, 2.75rem); }
+  #top article h2 { font-size: clamp(1.5rem, 6vw, 1.875rem); }
+  main p { line-height: 1.7; }
+}
