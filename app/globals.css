@@ -238,3 +238,6 @@ main section:not(#top) { background-color: #ffffff; }
 /* Ensure all homepage hero copy is black on white, including legacy hero markup. */
 #top h1, #top h1 *, #top h2, #top h2 *, #top p:not(.text-emerald), #top p:not(.text-emerald) *, #top .text-cream, #top .text-cream\/80, #top .text-cream\/85 { color: #111111 !important; }
 #top .text-emerald, #top .text-emerald * { color: #35b96b !important; }
+
+/* Homepage publisher eyebrow: override older forced black hero paragraph rules. */
+#top p.publisher-eyebrow { color: #E0A000 !important; }
