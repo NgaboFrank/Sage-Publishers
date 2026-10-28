@@ -81,9 +81,9 @@ export function GalleryPage() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <span className="text-sm font-semibold uppercase tracking-[0.25em] text-moss">Gallery</span>
-            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-forest sm:text-5xl">Step inside the forest</h2>
-            <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">Explore the hand-painted world and beautiful illustrations from The Breeze of the Forest.</p>
+            <span className="font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Sage Publishers</span>
+            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-black sm:text-5xl">Find your next story.</h2>
+            <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">Explore beautiful illustrations and memorable moments from The Breeze of the Forest.</p>
           </Reveal>
         </div>
 
