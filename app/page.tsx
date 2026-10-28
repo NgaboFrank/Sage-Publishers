@@ -27,7 +27,7 @@ export default function Page() {
         <section aria-labelledby="gallery-preview-heading" className="bg-white py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D4A017]">From our gallery</p>
+              <p className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">From Our Gallery</p>
               <h2 id="gallery-preview-heading" className="mt-3 font-serif text-3xl font-semibold text-black sm:text-5xl">A glimpse inside the story</h2>
               <p className="mt-4 text-base leading-relaxed text-neutral-700">Explore the characters and illustrated moments that bring The Breeze of the Forest to life.</p>
             </div>
