@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, BookOpen } from 'lucide-react'
+import { ArrowUpRight, BookOpen, X } from 'lucide-react'
 
 const slides = [
   {
@@ -36,6 +36,7 @@ const slides = [
 
 export function Hero() {
   const [slideImages, setSlideImages] = useState<Record<string, string>>({})
+  const [sampleOpen, setSampleOpen] = useState(false)
 
   useEffect(() => {
     fetch('/api/home-content', { cache: 'no-store' })
@@ -47,6 +48,13 @@ export function Hero() {
       })
       .catch(() => {})
   }, [])
+
+  useEffect(() => {
+    if (!sampleOpen) return
+    const onEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setSampleOpen(false) }
+    window.addEventListener('keydown', onEscape)
+    return () => window.removeEventListener('keydown', onEscape)
+  }, [sampleOpen])
 
   const imageKeys = ['home_slide_breeze', 'home_slide_animal_tales', 'home_slide_animal_tales_fr']
 
@@ -65,10 +73,12 @@ export function Hero() {
                 
                 <h2 className="font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">{book.title} {book.accent}</h2>
                 <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-600">{book.subtitle}</p>
+                {index === 0 && <button type="button" onClick={() => setSampleOpen(true)} className="mt-5 rounded-full border border-[#E3B52D] px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-[#FFF6D8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Read a Sample</button>}
                 <a href="/payment" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the book <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
               </div>
               <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#f5f1e8]">
                 <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 768px) 45vw, 320px" priority={index === 0} className="object-cover" />
+                {index === 0 && <button type="button" onClick={() => setSampleOpen(true)} aria-label="Read a sample of The Breeze of the Forest" className="absolute inset-0 z-10 cursor-pointer focus-visible:outline-4 focus-visible:outline-yellow-500" />}
               </div>
             </article>
           ))}
@@ -83,6 +93,27 @@ export function Hero() {
           </article>
         </div>
       </div>
+        {sampleOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4" onMouseDown={(event) => { if (event.target === event.currentTarget) setSampleOpen(false) }}>
+            <div role="dialog" aria-modal="true" aria-labelledby="sample-title" className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-10">
+              <button type="button" onClick={() => setSampleOpen(false)} aria-label="Close book sample" className="absolute right-4 top-4 rounded-full p-2 text-black hover:bg-neutral-100"><X className="h-6 w-6" /></button>
+              <p className="text-xs font-bold uppercase tracking-widest text-[#B88400]">A peek inside the book</p>
+              <h2 id="sample-title" className="mt-3 pr-8 font-serif text-3xl font-bold text-black">The Breeze of the Forest</h2>
+              <p className="mt-2 text-sm text-neutral-500">Sample story · Mani’s Family and Ntumi the Snake</p>
+              <div className="mt-6 space-y-4 border-y border-neutral-200 py-6 font-serif text-lg leading-8 text-neutral-800">
+                <h3 className="text-2xl font-semibold text-black">Meet Mani, the brave little bird</h3>
+                <p>Every morning, Mani watches her family leave the nest. Her mother and siblings have important work to do, but Mani is still too young to fly. She wishes she could join them.</p>
+                <p>Mani has a secret: she is afraid of walking alone to the river. Instead of telling her mother, she has sometimes pretended to have taken her bath. When her sister Nini discovers what is troubling her, she gently helps Mani understand why honesty matters.</p>
+                <p>With Nini’s encouragement, Mani finds the courage to tell her mother the truth. Her family reminds her that growing up takes patience, kindness, and a little bravery.</p>
+                <p className="text-sm italic text-neutral-500">This is a short retelling of the opening story, not the complete chapter.</p>
+              </div>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <a href="/payment" className="inline-flex items-center gap-2 rounded-full bg-[#F4C542] px-6 py-3 text-sm font-bold text-black hover:bg-[#EABF32]">Order the Book <ArrowUpRight className="h-4 w-4" /></a>
+                <button type="button" onClick={() => setSampleOpen(false)} className="rounded-full border border-neutral-300 px-6 py-3 text-sm font-semibold text-black">Close Preview</button>
+              </div>
+            </div>
+          </div>
+        )}
     </section>
   )
 }
