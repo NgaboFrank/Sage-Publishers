@@ -26,6 +26,13 @@ export function SiteNav() {
     return () => document.removeEventListener('keydown', onKey)
   }, [])
 
+  useEffect(() => { setMobileOpen(false) }, [pathname])
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
     onScroll()
@@ -35,7 +42,7 @@ export function SiteNav() {
 
   const isActive = (href: string) => {
     if (href.includes('#')) return false
-    return href === '/' ? pathname === '/' : pathname.startsWith(href)
+    return href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`)
   }
 
   return (
@@ -56,7 +63,7 @@ export function SiteNav() {
         <ul className="hidden items-center gap-0.5 lg:flex">
           {links.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className={`rounded-xl px-3.5 py-2.5 text-[13px] font-medium transition-all ${isActive(link.href) ? 'bg-cream/10 text-cream' : 'text-cream/70 hover:bg-cream/6 hover:text-cream'}`}>
+              <Link href={link.href} aria-current={isActive(link.href) ? "page" : undefined} className={`rounded-xl px-3.5 py-2.5 text-[13px] font-medium transition-all ${isActive(link.href) ? 'bg-cream/10 text-cream' : 'text-cream/70 hover:bg-cream/6 hover:text-cream'}`}>
                 {link.label}
               </Link>
             </li>
@@ -67,7 +74,7 @@ export function SiteNav() {
           <Link href="/payment" className="hidden items-center gap-2 rounded-xl bg-[#F4C542] px-4 py-2.5 text-sm font-semibold text-forest-deep shadow-none transition-transform hover:-translate-y-0.5 sm:inline-flex">
             Order the Book <ArrowUpRight className="h-4 w-4" />
           </Link>
-          <button onClick={() => setMobileOpen((v) => !v)} className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-cream hover:bg-cream/10 lg:hidden" aria-label="Toggle menu">
+          <button onClick={() => setMobileOpen((v) => !v)} className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-cream hover:bg-cream/10 lg:hidden" aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation">
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
@@ -75,11 +82,11 @@ export function SiteNav() {
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mx-3 mt-2 max-h-[calc(100dvh-5rem)] overflow-y-auto rounded-2xl border border-cream/10 bg-[#2E2921] p-3 shadow-2xl shadow-black/20 backdrop-blur-xl lg:hidden">
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} id="mobile-navigation" className="mx-3 mt-2 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain rounded-2xl border border-cream/10 bg-[#2E2921] p-3 shadow-2xl shadow-black/20 backdrop-blur-xl lg:hidden">
             <ul className="flex flex-col gap-1">
               {links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} onClick={() => setMobileOpen(false)} className={`block rounded-xl px-4 py-3 text-sm ${isActive(link.href) ? 'bg-emerald/15 text-emerald' : 'text-cream/75 hover:bg-cream/6 hover:text-cream'}`}>
+                  <Link href={link.href} onClick={() => setMobileOpen(false)} aria-current={isActive(link.href) ? 'page' : undefined} className={`block rounded-xl px-4 py-3 text-sm font-medium transition-colors ${isActive(link.href) ? 'bg-[#F4C542]/15 text-[#F4C542]' : 'text-cream/80 hover:bg-cream/10 hover:text-cream'}`}>
                     {link.label}
                   </Link>
                 </li>
