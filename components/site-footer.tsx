@@ -25,7 +25,7 @@ export function SiteFooter() {
   }, [])
 
   return (
-    <footer className="bg-black text-cream">
+    <footer className="bg-[#2D2820] text-cream">
       <div className="relative mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-18">
         <div className="grid gap-10 md:grid-cols-[1.1fr_1fr_0.9fr]">
           <div>
