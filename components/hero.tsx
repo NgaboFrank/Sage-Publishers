@@ -37,6 +37,7 @@ const slides = [
 export function Hero() {
   const [slideImages, setSlideImages] = useState<Record<string, string>>({})
   const [sampleOpen, setSampleOpen] = useState(false)
+  const [pendingSample, setPendingSample] = useState<number | null>(null)
 
   useEffect(() => {
     fetch('/api/home-content', { cache: 'no-store' })
@@ -74,7 +75,7 @@ export function Hero() {
                 <h2 className="font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">{book.title} {book.accent}</h2>
                 <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-600">{book.subtitle}</p>
                 <p className="mt-3 text-sm leading-relaxed text-neutral-700">{index === 0 ? 'Meet Mani, a little bird with big questions and a brave heart. Discover how her forest adventure begins in a free sneak peek.' : index === 1 ? 'Step into a starry African night where wild animals and unforgettable adventures await. A glimpse of these magical stories is coming soon.' : 'Entrez dans une nuit africaine étoilée, où les animaux et leurs aventures éveillent la curiosité. Un aperçu de ces histoires arrive bientôt.'}</p>
-                {index === 0 && <button type="button" onClick={() => setSampleOpen(true)} className="mt-5 rounded-full border border-[#E3B52D] px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-[#FFF6D8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Read a Sample</button>}
+                <button type="button" onClick={() => index === 0 ? setSampleOpen(true) : setPendingSample(index)} className="mt-5 rounded-full border border-[#E3B52D] px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-[#FFF6D8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Read a Sample</button>
                 <a href="/payment" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the book <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
               </div>
               <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#f5f1e8] shadow-sm">
@@ -94,6 +95,17 @@ export function Hero() {
           </article>
         </div>
       </div>
+        {pendingSample !== null && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4" onMouseDown={(event) => { if (event.target === event.currentTarget) setPendingSample(null) }}>
+            <div role="dialog" aria-modal="true" aria-labelledby="pending-sample-title" className="relative w-full max-w-md rounded-2xl bg-white p-7 shadow-2xl sm:p-9">
+              <button type="button" onClick={() => setPendingSample(null)} aria-label="Close sample preview" className="absolute right-4 top-4 rounded-full p-2 text-black hover:bg-neutral-100"><X className="h-6 w-6" /></button>
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#B88400]">Book preview</p>
+              <h2 id="pending-sample-title" className="mt-3 pr-8 font-serif text-2xl font-bold text-black">{slides[pendingSample].title} {slides[pendingSample].accent}</h2>
+              <p className="mt-4 text-base leading-relaxed text-neutral-700">The reading sample for this book will be available soon.</p>
+              <button type="button" onClick={() => setPendingSample(null)} className="mt-6 rounded-full bg-[#F4C542] px-6 py-3 text-sm font-semibold text-black">Close</button>
+            </div>
+          </div>
+        )}
         {sampleOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4" onMouseDown={(event) => { if (event.target === event.currentTarget) setSampleOpen(false) }}>
             <div role="dialog" aria-modal="true" aria-labelledby="sample-title" className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-10">
