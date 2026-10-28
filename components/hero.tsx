@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, BookOpen, X } from 'lucide-react'
+import { ArrowUpRight, X } from 'lucide-react'
 
 const slides = [
   {
@@ -85,13 +85,26 @@ export function Hero() {
             </article>
           ))}
           <article className="grid min-h-[340px] grid-cols-[minmax(0,1fr)_minmax(0,48%)] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
-            <div className="flex flex-col items-start">
-              
-              <h2 className="font-serif text-xl font-semibold text-black sm:text-2xl">More stories to explore</h2>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-600">Browse our books and discover your next favorite story.</p>
-              <a href="/gallery" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline">Explore books <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
+            <div className="flex min-w-0 flex-col items-start">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#B88400]">Keep exploring</p>
+              <h2 className="mt-3 font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">Your next favorite story awaits</h2>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-700">Every book opens a new world. Explore our illustrated stories, meet unforgettable characters, and find a story to share together.</p>
+              <a href="/gallery" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Explore books <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
             </div>
-            <div className="flex items-center justify-center rounded-xl bg-[#f5f1e8] p-4"><BookOpen className="h-20 w-20 text-[#B88400]/60" aria-hidden="true" /></div>
+            <a href="/gallery" aria-label="Explore the Sage Publishers book gallery" className="group relative flex min-h-[300px] items-center justify-center overflow-hidden rounded-xl bg-[#f8f4e8] p-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">
+              <div className="absolute -right-10 -top-12 h-44 w-44 rounded-full bg-[#F4C542]/20" />
+              <div className="absolute -bottom-14 -left-10 h-44 w-44 rounded-full bg-[#E9D9A9]/40" />
+              <div className="relative flex w-full max-w-[240px] flex-col gap-3 transition-transform duration-300 group-hover:-translate-y-1">
+                <div className="flex items-center gap-3 rounded-lg border border-[#e7dfcc] bg-white p-3 shadow-sm">
+                  <div className="relative h-24 w-16 shrink-0 overflow-hidden rounded"><Image src={slideImages[imageKeys[0]] || slides[0].image} alt="" fill sizes="64px" className="object-cover" /></div>
+                  <div className="min-w-0"><p className="text-xs font-semibold text-black">The Breeze of the Forest</p><p className="mt-1 text-[11px] text-neutral-600">Discover the forest</p></div>
+                </div>
+                <div className="ml-5 flex items-center gap-3 rounded-lg border border-[#e7dfcc] bg-white p-3 shadow-sm">
+                  <div className="relative h-24 w-16 shrink-0 overflow-hidden rounded"><Image src={slideImages[imageKeys[1]] || slides[1].image} alt="" fill sizes="64px" className="object-cover" /></div>
+                  <div className="min-w-0"><p className="text-xs font-semibold text-black">Animal Tales</p><p className="mt-1 text-[11px] text-neutral-600">Stories under the stars</p></div>
+                </div>
+              </div>
+            </a>
           </article>
         </div>
       </div>
