@@ -91,18 +91,12 @@ export function Hero() {
               <p className="mt-3 text-sm leading-relaxed text-neutral-700">Every book opens a new world. Explore our illustrated stories, meet unforgettable characters, and find a story to share together.</p>
               <a href="/gallery" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Explore books <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
             </div>
-            <a href="/gallery" aria-label="Explore the Sage Publishers book gallery" className="group relative flex min-h-[300px] items-center justify-center overflow-hidden rounded-xl bg-[#f8f4e8] p-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">
-              <div className="absolute -right-10 -top-12 h-44 w-44 rounded-full bg-[#F4C542]/20" />
-              <div className="absolute -bottom-14 -left-10 h-44 w-44 rounded-full bg-[#E9D9A9]/40" />
-              <div className="relative flex w-full max-w-[240px] flex-col gap-3 transition-transform duration-300 group-hover:-translate-y-1">
-                <div className="flex items-center gap-3 rounded-lg border border-[#e7dfcc] bg-white p-3 shadow-sm">
-                  <div className="relative h-24 w-16 shrink-0 overflow-hidden rounded"><Image src={slideImages[imageKeys[0]] || slides[0].image} alt="" fill sizes="64px" className="object-cover" /></div>
-                  <div className="min-w-0"><p className="text-xs font-semibold text-black">The Breeze of the Forest</p><p className="mt-1 text-[11px] text-neutral-600">Discover the forest</p></div>
-                </div>
-                <div className="ml-5 flex items-center gap-3 rounded-lg border border-[#e7dfcc] bg-white p-3 shadow-sm">
-                  <div className="relative h-24 w-16 shrink-0 overflow-hidden rounded"><Image src={slideImages[imageKeys[1]] || slides[1].image} alt="" fill sizes="64px" className="object-cover" /></div>
-                  <div className="min-w-0"><p className="text-xs font-semibold text-black">Animal Tales</p><p className="mt-1 text-[11px] text-neutral-600">Stories under the stars</p></div>
-                </div>
+            <a href="/gallery" aria-label="Explore the Sage Publishers illustration gallery" className="group relative grid min-h-[300px] grid-rows-2 gap-2 overflow-hidden rounded-xl bg-[#f8f4e8] p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">
+              <div className="relative min-h-0 overflow-hidden rounded-lg bg-white">
+                <Image src="/gallery/illustration-9.jpg" alt="Illustration of a shepherd with his flock" fill sizes="(max-width: 640px) 45vw, 300px" className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]" />
+              </div>
+              <div className="relative min-h-0 overflow-hidden rounded-lg bg-white">
+                <Image src="/gallery/illustration-11.jpg" alt="Illustration of a shepherd and sheep near a tent" fill sizes="(max-width: 640px) 45vw, 300px" className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]" />
               </div>
             </a>
           </article>
