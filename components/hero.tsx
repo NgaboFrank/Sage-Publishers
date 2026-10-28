@@ -60,19 +60,19 @@ export function Hero() {
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {slides.map((book, index) => (
-            <article key={book.image} className="grid min-h-[340px] grid-cols-[1fr_42%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
+            <article key={book.image} className="grid min-h-[340px] grid-cols-[1fr_50%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
               <div className="flex min-w-0 flex-col items-start">
                 
                 <h2 className="font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">{book.title} {book.accent}</h2>
                 <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-600">{book.subtitle}</p>
                 <a href="/payment" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the book <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
               </div>
-              <div className="relative min-h-[270px] overflow-hidden rounded-xl bg-[#f5f1e8]">
-                <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 768px) 38vw, 220px" priority={index === 0} className="object-contain p-2" />
+              <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#f5f1e8]">
+                <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 768px) 45vw, 320px" priority={index === 0} className="object-cover" />
               </div>
             </article>
           ))}
-          <article className="grid min-h-[340px] grid-cols-[1fr_42%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
+          <article className="grid min-h-[340px] grid-cols-[1fr_50%] gap-4 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
             <div className="flex flex-col items-start">
               
               <h2 className="font-serif text-xl font-semibold text-black sm:text-2xl">More stories to explore</h2>
