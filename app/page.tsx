@@ -64,7 +64,7 @@ export default function Page() {
                   { icon: '✿', title: 'The Joy of Reading', text: 'Create meaningful reading moments that children will remember.' },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-4 rounded-2xl border border-[#eee6d9] bg-white px-4 py-4 shadow-[0_3px_14px_rgba(39,32,22,0.035)] sm:px-5 sm:py-5">
-                    <span aria-hidden="true" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#fbf1dc] text-xl text-[#b47d0e]">{item.icon}</span>
+                    
                     <div className="min-w-0">
                       <h3 className="font-serif text-lg font-semibold leading-snug text-[#211e19] sm:text-xl">{item.title}</h3>
                       <p className="mt-1 text-sm leading-6 text-[#625d54]">{item.text}</p>
