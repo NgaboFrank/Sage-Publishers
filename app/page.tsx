@@ -50,30 +50,30 @@ export default function Page() {
             </div>
           </div>
         </section>
-        <section aria-labelledby="discover-heading" className="bg-[#f8f2e8] py-16 sm:py-20">
-          <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-            <div>
-              <p className="font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Discover the Magic</p>
-              <h2 id="discover-heading" className="mt-4 font-serif text-3xl font-semibold leading-tight text-[#211e19] sm:text-4xl">What Young Readers Will Discover</h2>
-              <p className="mt-4 max-w-xl text-base leading-7 text-[#5c5b56]">Every story opens a world of imagination, learning, and memorable moments for children and families.</p>
-              <div className="mt-9 space-y-6">
+        <section aria-labelledby="discover-heading" className="bg-[#faf7f1] py-16 sm:py-20 lg:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+            <div className="min-w-0">
+              <p className="font-[cursive] text-2xl font-bold text-[#c58b12] sm:text-3xl">Discover the Magic</p>
+              <h2 id="discover-heading" className="mt-4 max-w-2xl font-serif text-3xl font-semibold leading-[1.15] tracking-tight text-[#211e19] sm:text-4xl lg:text-[2.65rem]">What Young Readers Will Discover</h2>
+              <p className="mt-5 max-w-xl text-base leading-7 text-[#625d54]">Every story opens a world of imagination, learning, and memorable moments for children and families.</p>
+              <div className="mt-9 grid gap-3 sm:gap-4">
                 {[
                   { icon: '✦', title: 'Courage & Confidence', text: 'Meet brave characters who discover the strength to try something new.' },
                   { icon: '♡', title: 'Kindness & Friendship', text: 'Explore thoughtful stories about caring, sharing, and growing together.' },
                   { icon: '✧', title: 'Imagination & Wonder', text: 'Step into colorful worlds filled with curious animals and exciting adventures.' },
                   { icon: '✿', title: 'The Joy of Reading', text: 'Create meaningful reading moments that children will remember.' },
                 ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-4">
-                    <span aria-hidden="true" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f4e7ce] text-xl text-[#ae7f18]">{item.icon}</span>
-                    <div>
-                      <h3 className="font-serif text-lg font-semibold text-[#211e19] sm:text-xl">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-6 text-[#5c5b56]">{item.text}</p>
+                  <div key={item.title} className="flex items-start gap-4 rounded-2xl border border-[#eee6d9] bg-white px-4 py-4 shadow-[0_3px_14px_rgba(39,32,22,0.035)] sm:px-5 sm:py-5">
+                    <span aria-hidden="true" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#fbf1dc] text-xl text-[#b47d0e]">{item.icon}</span>
+                    <div className="min-w-0">
+                      <h3 className="font-serif text-lg font-semibold leading-snug text-[#211e19] sm:text-xl">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-[#625d54]">{item.text}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="mx-auto w-full max-w-lg overflow-hidden rounded-2xl bg-white p-3 shadow-[0_12px_40px_rgba(36,31,22,0.1)]">
+            <div className="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-[#eae2d6] bg-white p-2.5 shadow-[0_14px_45px_rgba(36,31,22,0.09)] sm:p-3">
               <Image src="/2%20image.png" alt="Girl holding The Breeze of the Forest book" width={640} height={640} sizes="(max-width: 639px) calc(100vw - 64px), (max-width: 1023px) 480px, 480px" quality={65} loading="lazy" className="h-auto w-full rounded-xl object-contain" />
             </div>
           </div>
