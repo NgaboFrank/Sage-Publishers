@@ -54,7 +54,7 @@ export default function Page() {
           <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
             <div className="min-w-0">
               <p className="font-[cursive] text-2xl font-bold text-[#c58b12] sm:text-3xl">Discover the Magic</p>
-              <h2 id="discover-heading" className="mt-4 max-w-2xl font-serif text-3xl font-semibold leading-[1.15] tracking-tight text-[#211e19] sm:text-4xl lg:text-[2.65rem]">What Young Readers Will Discover</h2>
+              <h2 id="discover-heading" className="mt-4 max-w-2xl font-serif text-2xl font-semibold leading-[1.2] tracking-tight text-[#211e19] sm:text-3xl lg:text-4xl">What Young Readers Will Discover</h2>
               <p className="mt-5 max-w-xl text-base leading-7 text-[#625d54]">Every story opens a world of imagination, learning, and memorable moments for children and families.</p>
               <div className="mt-9 grid gap-3 sm:gap-4">
                 {[
