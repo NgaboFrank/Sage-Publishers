@@ -273,9 +273,3 @@ main .font-\\[cursive\\] {
   #top article h2 { font-size: clamp(1.5rem, 6vw, 1.875rem); }
   main p { line-height: 1.7; }
 }
-
-/* Make the Discover section divider visible above the warm cream background. */
-main section[aria-labelledby="discover-heading"] {
-  border-top: 2px solid #3b342b !important;
-  background-color: #faf7f1;
-}
