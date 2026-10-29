@@ -36,6 +36,7 @@ const slides = [
 
 export function Hero() {
   const [slideImages, setSlideImages] = useState<Record<string, string>>({})
+  const [copy, setCopy] = useState<Record<string, string>>({})
   const [sampleOpen, setSampleOpen] = useState(false)
   const [pendingSample, setPendingSample] = useState<number | null>(null)
 
@@ -44,8 +45,13 @@ export function Hero() {
       .then((res) => res.json())
       .then((data) => {
         const map: Record<string, string> = {}
-        for (const item of data.content || []) if (item.image_url) map[item.content_key] = item.image_url
+        const texts: Record<string, string> = {}
+        for (const item of data.content || []) {
+          if (item.image_url) map[item.content_key] = item.image_url
+          if (item.value) texts[item.content_key] = item.value
+        }
         setSlideImages(map)
+        setCopy(texts)
       })
       .catch(() => {})
   }, [])
@@ -64,8 +70,8 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mb-10 max-w-3xl">
           <p className="publisher-eyebrow text-xs font-semibold uppercase tracking-[0.16em] text-[#E0A000]">Sage Publishers</p>
-          <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight tracking-tight text-[#111111] sm:text-5xl">Where Little Stories Inspire Big Imaginations.</h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#555555]">Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.</p>
+          <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight tracking-tight text-[#111111] sm:text-5xl">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#555555]">{copy.hero_description || 'Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.'}</p>
           <p className="our-books-label mt-6 font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Our Books</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
