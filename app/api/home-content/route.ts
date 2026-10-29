@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '../../../lib/supabase-admin'
 
 const HOME_KEYS = [
+  'hero_title',
+  'hero_description',
+  'about_title',
+  'about_description',
   'home_slide_breeze',
   'home_slide_animal_tales',
   'home_slide_animal_tales_fr',
