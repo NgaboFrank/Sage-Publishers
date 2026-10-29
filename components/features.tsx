@@ -17,36 +17,36 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="relative overflow-hidden bg-forest py-14 text-black sm:py-16 lg:py-20">
-      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-10%,_rgba(82,200,120,0.14),_transparent_42%)]" />
+    <section id="features" className="relative overflow-hidden bg-white py-16 text-black sm:py-20 lg:py-24">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#fbfaf7] to-white" />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#D4A017]">Why Children Love It</span>
-            <h2 className="mt-4 font-serif text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-balance sm:text-5xl">
+            <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">Why It Matters</span>
+            <h2 className="mt-4 font-serif text-3xl font-semibold leading-tight tracking-tight text-balance text-black sm:text-4xl lg:text-5xl">
               Stories that grow with your child
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-neutral-700 sm:text-base">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-neutral-600">
               Thoughtful stories that entertain, inspire curiosity and introduce values children can carry into everyday life.
             </p>
           </div>
         </Reveal>
 
-        <div className="mx-auto mt-9 grid max-w-6xl gap-3 sm:grid-cols-2 lg:mt-10 lg:grid-cols-4 lg:gap-4">
+        <div className="mx-auto mt-12 grid max-w-6xl gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
           {features.map((feature, i) => {
             const Icon = feature.icon
             return (
               <Reveal key={feature.title} delay={(i % 4) * 0.06}>
                 <motion.article
-                  whileHover={{ y: -4 }}
+                  whileHover={{ y: -3 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-                  className="group h-full min-h-[150px] rounded-[1.25rem] border border-neutral-200 bg-white p-5 shadow-[0_12px_32px_rgba(4,20,13,0.08)] backdrop-blur-sm transition-all duration-300 hover:border-[#D4A017]/30 hover:bg-neutral-50"
+                  className="group flex h-full min-h-[210px] flex-col rounded-2xl border border-[#e8e5de] bg-white p-6 shadow-[0_6px_24px_rgba(36,31,22,0.045)] transition-all duration-300 hover:border-[#e0c77a] hover:shadow-[0_12px_30px_rgba(36,31,22,0.08)]"
                 >
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full border border-emerald/20 bg-emerald/10 text-emerald transition-transform duration-300 group-hover:scale-105">
-                    <Icon className="h-4 w-4" strokeWidth={1.6} />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#f0e2b6] bg-[#fff8e4] text-[#a77c0a] transition-transform duration-300 group-hover:scale-105">
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </div>
-                  <h3 className="mt-4 font-serif text-xl font-semibold leading-tight tracking-[-0.01em] text-black">{feature.title}</h3>
-                  <p className="mt-2 text-[13px] leading-5 text-neutral-700">{feature.text}</p>
+                  <h3 className="mt-6 font-serif text-xl font-semibold leading-snug tracking-tight text-[#211e19]">{feature.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#5c5b56]">{feature.text}</p>
                 </motion.article>
               </Reveal>
             )
