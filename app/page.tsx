@@ -74,7 +74,7 @@ export default function Page() {
               </div>
             </div>
             <div className="mx-auto w-full max-w-lg overflow-hidden rounded-2xl bg-white p-3 shadow-[0_12px_40px_rgba(36,31,22,0.1)]">
-              <Image src="/2%20image.png" alt="Girl holding The Breeze of the Forest book" width={640} height={640} sizes="(max-width: 1024px) 90vw, 40vw" className="h-auto w-full rounded-xl object-contain" />
+              <Image src="/2%20image.png" alt="Girl holding The Breeze of the Forest book" width={640} height={640} sizes="(max-width: 639px) calc(100vw - 64px), (max-width: 1023px) 480px, 480px" quality={65} loading="lazy" className="h-auto w-full rounded-xl object-contain" />
             </div>
           </div>
         </section>
