@@ -50,7 +50,7 @@ export default function Page() {
             </div>
           </div>
         </section>
-        <section aria-labelledby="discover-heading" className="bg-[#faf7f1] py-16 sm:py-20 lg:py-24">
+        <section aria-labelledby="discover-heading" className="border-t border-[#3b342b] bg-[#faf7f1] py-16 sm:py-20 lg:py-24">
           <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
             <div className="min-w-0">
               <p className="font-[cursive] text-2xl font-bold text-[#c58b12] sm:text-3xl">Discover the Magic</p>
