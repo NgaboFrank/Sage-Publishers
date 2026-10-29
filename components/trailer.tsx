@@ -57,7 +57,7 @@ export function Trailer() {
             <span className="text-sm font-semibold uppercase tracking-[0.25em] text-emerald">
               Watch the Trailer
             </span>
-            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance sm:text-5xl">
+            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-black sm:text-5xl">
               See the magic in motion
             </h2>
           </Reveal>
