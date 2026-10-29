@@ -50,6 +50,34 @@ export default function Page() {
             </div>
           </div>
         </section>
+        <section aria-labelledby="discover-heading" className="bg-[#f8f2e8] py-16 sm:py-20">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+            <div>
+              <p className="font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Discover the Magic</p>
+              <h2 id="discover-heading" className="mt-4 font-serif text-3xl font-semibold leading-tight text-[#211e19] sm:text-4xl">What Young Readers Will Discover</h2>
+              <p className="mt-4 max-w-xl text-base leading-7 text-[#5c5b56]">Every story opens a world of imagination, learning, and memorable moments for children and families.</p>
+              <div className="mt-9 space-y-6">
+                {[
+                  { icon: '✦', title: 'Courage & Confidence', text: 'Meet brave characters who discover the strength to try something new.' },
+                  { icon: '♡', title: 'Kindness & Friendship', text: 'Explore thoughtful stories about caring, sharing, and growing together.' },
+                  { icon: '✧', title: 'Imagination & Wonder', text: 'Step into colorful worlds filled with curious animals and exciting adventures.' },
+                  { icon: '✿', title: 'The Joy of Reading', text: 'Create meaningful reading moments that children will remember.' },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-4">
+                    <span aria-hidden="true" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f4e7ce] text-xl text-[#ae7f18]">{item.icon}</span>
+                    <div>
+                      <h3 className="font-serif text-lg font-semibold text-[#211e19] sm:text-xl">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-[#5c5b56]">{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mx-auto w-full max-w-lg overflow-hidden rounded-2xl bg-white p-3 shadow-[0_12px_40px_rgba(36,31,22,0.1)]">
+              <Image src="/book-cover.jpeg" alt="The Breeze of the Forest book by Sage Publishers" width={640} height={640} sizes="(max-width: 1024px) 90vw, 40vw" className="h-auto w-full rounded-xl object-contain" />
+            </div>
+          </div>
+        </section>
         <Testimonials />
         <Contact />
       </main>
