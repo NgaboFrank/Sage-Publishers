@@ -273,3 +273,14 @@ main .font-\\[cursive\\] {
   #top article h2 { font-size: clamp(1.5rem, 6vw, 1.875rem); }
   main p { line-height: 1.7; }
 }
+
+/* Homepage: alternating white and soft gray sections, without divider lines. */
+main > section {
+  border-top: 0 !important;
+}
+main > section:nth-of-type(odd) {
+  background-color: #ffffff !important;
+}
+main > section:nth-of-type(even) {
+  background-color: #f5f5f5 !important;
+}
