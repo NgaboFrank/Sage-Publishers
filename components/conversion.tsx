@@ -108,7 +108,7 @@ export function MobileOrderBar() {
     <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card/95 p-3 shadow-[0_-12px_35px_rgba(7,31,20,0.12)] backdrop-blur-xl sm:hidden" style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}>
       <div className="mx-auto flex max-w-lg items-center gap-3">
         <div className="min-w-0 flex-1">
-          <p className="truncate text-xs font-semibold uppercase tracking-[0.14em] text-moss">The Breeze of the Forest</p>
+          <p className="truncate text-xs font-semibold uppercase tracking-[0.14em] text-moss">Sage Publishers</p>
           <p className="text-sm font-medium text-forest">Ready to order?</p>
         </div>
         <Link href="/payment" className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-[#F4C542] px-4 text-sm font-bold text-black shadow-sm">
