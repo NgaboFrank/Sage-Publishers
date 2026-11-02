@@ -67,7 +67,7 @@ export function Hero() {
 
   return (
     <section id="top" aria-label="Featured books" className="bg-white pb-12 sm:pb-16">
-      <div id="featured-books" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-10 sm:px-8 sm:pt-12">
+      <div id="featured-books" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-28 sm:px-8 sm:pt-32">
         <p className="our-books-label mb-8 font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Our Books</p>
         <div className="grid gap-4 md:grid-cols-2">
           {slides.map((book, index) => (
