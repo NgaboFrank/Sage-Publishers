@@ -68,10 +68,10 @@ export function Hero() {
   return (
     <section id="top" aria-label="Featured books" className="bg-white pb-12 sm:pb-16">
       <div className="sage-hero-banner relative overflow-hidden bg-[#5548c9] pt-20 text-center sm:pt-24">
-        <div className="mx-auto max-w-5xl px-5 pb-3 sm:px-8 sm:pb-4">
+        <div className="mx-auto max-w-5xl px-5 pb-5 sm:px-8 sm:pb-6">
           <p className="publisher-eyebrow text-xs font-semibold uppercase tracking-[0.22em] text-white/80">Sage Publishers</p>
-          <h1 className="mx-auto mt-3 max-w-4xl font-serif text-3xl font-semibold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-5xl">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
-          <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-white/90 sm:text-lg">{copy.hero_description || 'Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.'}</p>
+          <h1 className="mx-auto mt-3 max-w-4xl font-serif text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-white sm:text-4xl lg:text-[3.25rem]">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-white/90 sm:text-base">{copy.hero_description || 'Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.'}</p>
           <a href="#featured-books" className="mt-4 inline-flex min-h-10 items-center justify-center rounded-full bg-[#F4C542] px-7 py-3 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#eab72c]">Explore Our Books <ArrowUpRight className="ml-2 h-4 w-4" /></a>
         </div>
         <div className="mx-auto flex max-w-7xl items-end justify-center gap-3 overflow-hidden px-3 sm:gap-5 sm:px-8">
@@ -80,8 +80,8 @@ export function Hero() {
             { src: '/gallery/illustration-10.jpg', alt: 'Animal illustration from a Sage Publishers story' },
             { src: '/gallery/illustration-11.jpg', alt: 'Illustrated scene from a Sage Publishers book' },
           ].map((item, index) => (
-            <div key={item.src} className={`relative h-20 w-20 shrink-0 overflow-hidden rounded-t-lg border-[5px] border-white bg-white shadow-[0_8px_25px_rgba(15,12,70,0.25)] sm:h-28 sm:w-28 lg:h-32 lg:w-36 ${index === 1 ? 'translate-y-3' : 'translate-y-6'}`}>
-              <Image src={item.src} alt={item.alt} fill sizes="(max-width: 639px) 80px, (max-width: 1023px) 112px, 144px" className="object-cover" priority={index === 1} />
+            <div key={item.src} className={`relative h-32 w-28 shrink-0 overflow-hidden rounded-t-xl border-[4px] border-white bg-white shadow-[0_12px_30px_rgba(15,12,70,0.3)] sm:h-44 sm:w-40 lg:h-48 lg:w-44 ${index === 1 ? 'translate-y-1' : 'translate-y-3'}`}>
+              <Image src={item.src} alt={item.alt} fill sizes="(max-width: 639px) 112px, (max-width: 1023px) 160px, 176px" className="object-contain object-top" quality={90} priority={index === 1} />
             </div>
           ))}
         </div>
