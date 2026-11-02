@@ -69,10 +69,9 @@ export function Hero() {
     <section id="top" aria-label="Featured books" className="bg-white pb-12 sm:pb-16">
       <div className="sage-hero-banner relative overflow-hidden bg-[#5548c9] pt-20 text-center sm:pt-24">
         <div className="mx-auto max-w-5xl px-5 pb-5 sm:px-8 sm:pb-6">
-          <p className="publisher-eyebrow text-xs font-semibold uppercase tracking-[0.22em] text-white/80">Sage Publishers</p>
-          <h1 className="mx-auto mt-3 max-w-4xl font-serif text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-white sm:text-4xl lg:text-[3.25rem]">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
-          <p className="mx-auto mt-4 max-w-xl font-sans text-sm font-normal leading-relaxed tracking-normal text-white/90 sm:text-[15px]">{copy.hero_description || 'Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.'}</p>
-          <a href="#featured-books" className="mt-4 inline-flex min-h-10 items-center justify-center rounded-full bg-[#F4C542] px-7 py-3 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#eab72c]">Explore Our Books <ArrowUpRight className="ml-2 h-4 w-4" /></a>
+          <h1 className="mx-auto max-w-4xl font-serif text-3xl font-semibold leading-[1.13] tracking-[-0.025em] text-white sm:text-4xl lg:text-[3.25rem]">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
+          <p className="mx-auto mt-4 max-w-xl font-sans text-sm font-normal leading-7 tracking-normal text-white/90 sm:text-[15px]">{copy.hero_description || 'Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.'}</p>
+          <a href="#featured-books" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-[#F4C542] px-7 py-3 text-sm font-semibold text-[#211e19] shadow-sm transition-colors hover:bg-[#eab72c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Explore Our Books <ArrowUpRight className="ml-2 h-4 w-4" /></a>
         </div>
         <div className="mx-auto flex max-w-7xl items-end justify-center gap-3 overflow-hidden px-3 sm:gap-5 sm:px-8">
           {[
