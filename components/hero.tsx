@@ -71,7 +71,7 @@ export function Hero() {
         <p className="our-books-label mb-7 font-[cursive] text-2xl font-bold text-[#D4A017] sm:mb-9 sm:text-3xl">Our Books</p>
         <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
           {slides.map((book, index) => (
-            <article key={book.image} className="grid min-h-[340px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden rounded-2xl border border-[#e8e4dc] bg-white p-5 shadow-[0_4px_22px_rgba(28,25,20,0.045)] sm:p-7">
+            <article key={book.image} className="grid min-h-[340px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden group rounded-2xl border border-[#e8e4dc] bg-white p-5 shadow-[0_4px_22px_rgba(28,25,20,0.045)] transition-[background-color,border-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:border-[#e4bc3b] hover:bg-[#fff4c9] hover:shadow-[0_16px_36px_rgba(28,25,20,0.12)] motion-reduce:transform-none motion-reduce:transition-none sm:p-7">
               <div className="flex min-w-0 flex-col items-start">
                 
                 <h2 className="font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">{book.title} {book.accent}</h2>
@@ -81,12 +81,12 @@ export function Hero() {
                 <a href={`/payment?book=${encodeURIComponent(`${book.title} ${book.accent}`)}`} className="mt-3 inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full bg-[#F4C542] px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-[#E9B72D] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the Book <ArrowUpRight className="h-4 w-4" /></a>
               </div>
               <div className="relative min-h-[260px] overflow-hidden rounded-xl bg-[#f5f1e8] sm:min-h-[300px]">
-                <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 639px) 85vw, (max-width: 1024px) 40vw, 310px" priority={index === 0} className="object-contain p-2 transition-transform duration-300 hover:scale-[1.02]" />
+                <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 639px) 85vw, (max-width: 1024px) 40vw, 310px" priority={index === 0} className="object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-[1.045] motion-reduce:transform-none motion-reduce:transition-none" />
                 {index === 0 && <button type="button" onClick={() => setSampleOpen(true)} aria-label="Read a sample of The Breeze of the Forest" className="absolute inset-0 z-10 cursor-pointer focus-visible:outline-4 focus-visible:outline-yellow-500" />}
               </div>
             </article>
           ))}
-          <article className="grid min-h-[340px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden rounded-2xl border border-[#e8e4dc] bg-white p-5 shadow-[0_4px_22px_rgba(28,25,20,0.045)] sm:p-7">
+          <article className="grid min-h-[340px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden group rounded-2xl border border-[#e8e4dc] bg-white p-5 shadow-[0_4px_22px_rgba(28,25,20,0.045)] transition-[background-color,border-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:border-[#e4bc3b] hover:bg-[#fff4c9] hover:shadow-[0_16px_36px_rgba(28,25,20,0.12)] motion-reduce:transform-none motion-reduce:transition-none sm:p-7">
             <div className="flex min-w-0 flex-col items-start">
               <p className="text-xs font-semibold uppercase tracking-wider text-[#B88400]">Keep exploring</p>
               <h2 className="mt-3 font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">Your next favorite story awaits</h2>
