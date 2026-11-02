@@ -67,12 +67,12 @@ export function Hero() {
 
   return (
     <section id="top" aria-label="Featured books" className="bg-white pb-12 sm:pb-16">
-      <div className="sage-hero-banner relative overflow-hidden bg-[#5548c9] pt-24 text-center sm:pt-28">
-        <div className="mx-auto max-w-5xl px-5 pb-5 sm:px-8 sm:pb-7">
+      <div className="sage-hero-banner relative overflow-hidden bg-[#5548c9] pt-20 text-center sm:pt-24">
+        <div className="mx-auto max-w-5xl px-5 pb-3 sm:px-8 sm:pb-4">
           <p className="publisher-eyebrow text-xs font-semibold uppercase tracking-[0.22em] text-white/80">Sage Publishers</p>
-          <h1 className="mx-auto mt-3 max-w-4xl font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
+          <h1 className="mx-auto mt-3 max-w-4xl font-serif text-3xl font-semibold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-5xl">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
           <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-white/90 sm:text-lg">{copy.hero_description || 'Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.'}</p>
-          <a href="#featured-books" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-[#F4C542] px-7 py-3 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#eab72c]">Explore Our Books <ArrowUpRight className="ml-2 h-4 w-4" /></a>
+          <a href="#featured-books" className="mt-4 inline-flex min-h-10 items-center justify-center rounded-full bg-[#F4C542] px-7 py-3 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#eab72c]">Explore Our Books <ArrowUpRight className="ml-2 h-4 w-4" /></a>
         </div>
         <div className="mx-auto flex max-w-7xl items-end justify-center gap-3 overflow-hidden px-3 sm:gap-5 sm:px-8">
           {[
@@ -80,8 +80,8 @@ export function Hero() {
             { src: '/gallery/illustration-10.jpg', alt: 'Animal illustration from a Sage Publishers story' },
             { src: '/gallery/illustration-11.jpg', alt: 'Illustrated scene from a Sage Publishers book' },
           ].map((item, index) => (
-            <div key={item.src} className={`relative h-24 w-24 shrink-0 overflow-hidden rounded-t-lg border-[5px] border-white bg-white shadow-[0_8px_25px_rgba(15,12,70,0.25)] sm:h-36 sm:w-36 lg:h-40 lg:w-44 ${index === 1 ? 'translate-y-3' : 'translate-y-6'}`}>
-              <Image src={item.src} alt={item.alt} fill sizes="(max-width: 639px) 96px, (max-width: 1023px) 144px, 176px" className="object-cover" priority={index === 1} />
+            <div key={item.src} className={`relative h-20 w-20 shrink-0 overflow-hidden rounded-t-lg border-[5px] border-white bg-white shadow-[0_8px_25px_rgba(15,12,70,0.25)] sm:h-28 sm:w-28 lg:h-32 lg:w-36 ${index === 1 ? 'translate-y-3' : 'translate-y-6'}`}>
+              <Image src={item.src} alt={item.alt} fill sizes="(max-width: 639px) 80px, (max-width: 1023px) 112px, 144px" className="object-cover" priority={index === 1} />
             </div>
           ))}
         </div>
