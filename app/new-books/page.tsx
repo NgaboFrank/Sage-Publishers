@@ -53,7 +53,7 @@ export default function NewBooksPage() {
               <Reveal key={book.title} delay={Math.min(index * 0.08, 0.16)} y={22}>
               <article key={book.title} className="grid gap-6 py-8 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-8 lg:grid-cols-[180px_minmax(0,1fr)_170px] lg:items-start lg:gap-9 lg:py-10">
                 <div className="relative mx-auto h-[230px] w-[160px] overflow-hidden rounded-md bg-[#f7f6f3] sm:mx-0 sm:h-[250px] sm:w-[180px]">
-                  <Image src={book.image} alt={book.alt} fill sizes="(max-width: 639px) 160px, 180px" className="object-contain" />
+                  <Image src={book.image} alt={book.alt} fill sizes="(max-width: 639px) 160px, 180px" className="object-cover object-center" />
                 </div>
                 <div className="min-w-0">
                   <h2 className="font-serif text-2xl font-semibold leading-tight text-[#211e19] sm:text-3xl">{book.title}</h2>
