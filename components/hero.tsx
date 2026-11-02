@@ -67,24 +67,6 @@ export function Hero() {
 
   return (
     <section id="top" aria-label="Featured books" className="bg-white pb-12 sm:pb-16">
-      <div className="sage-hero-banner relative overflow-hidden bg-[#5548c9] pt-20 text-center sm:pt-24">
-        <div className="mx-auto max-w-5xl px-5 pb-5 sm:px-8 sm:pb-6">
-          <h1 className="mx-auto max-w-4xl font-serif text-3xl font-semibold leading-[1.13] tracking-[-0.025em] text-white sm:text-4xl lg:text-[3.25rem]">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
-          <p className="mx-auto mt-4 max-w-xl font-sans text-sm font-normal leading-7 tracking-normal text-white/90 sm:text-[15px]">{copy.hero_description || 'Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.'}</p>
-          <a href="#featured-books" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-[#F4C542] px-7 py-3 text-sm font-semibold text-[#211e19] shadow-sm transition-colors hover:bg-[#eab72c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Explore Our Books <ArrowUpRight className="ml-2 h-4 w-4" /></a>
-        </div>
-        <div className="mx-auto flex max-w-7xl items-end justify-center gap-3 overflow-hidden px-3 sm:gap-5 sm:px-8">
-          {[
-            { src: '/gallery/illustration-1.jpg', alt: 'Illustrated story scene from Sage Publishers' },
-            { src: '/gallery/illustration-10.jpg', alt: 'Animal illustration from a Sage Publishers story' },
-            { src: '/gallery/illustration-11.jpg', alt: 'Illustrated scene from a Sage Publishers book' },
-          ].map((item, index) => (
-            <div key={item.src} className={`relative h-32 w-28 shrink-0 overflow-hidden rounded-t-xl border-[4px] border-white bg-white shadow-[0_12px_30px_rgba(15,12,70,0.3)] sm:h-44 sm:w-40 lg:h-48 lg:w-44 ${index === 1 ? 'translate-y-1' : 'translate-y-3'}`}>
-              <Image src={item.src} alt={item.alt} fill sizes="(max-width: 639px) 112px, (max-width: 1023px) 160px, 176px" className="object-contain object-top" quality={90} priority={index === 1} />
-            </div>
-          ))}
-        </div>
-      </div>
       <div id="featured-books" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-10 sm:px-8 sm:pt-12">
         <p className="our-books-label mb-8 font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Our Books</p>
         <div className="grid gap-4 md:grid-cols-2">
