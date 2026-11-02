@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowUpRight, ShoppingBag } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
+import { Reveal } from '@/components/reveal'
 
 export const metadata: Metadata = {
   title: 'New Books',
@@ -41,13 +42,14 @@ export default function NewBooksPage() {
       <SiteNav />
       <main className="min-h-screen bg-white pb-20 pt-28 sm:pt-32">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="border-b border-[#e9e6e0] pb-7 sm:pb-9">
+          <Reveal className="border-b border-[#e9e6e0] pb-7 sm:pb-9">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#b58613]">Sage Publishers</p>
             <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-[#211e19] sm:text-5xl">New Books</h1>
             <p className="mt-3 max-w-xl text-base leading-7 text-[#625d54]">Explore our illustrated stories and find your next great read.</p>
-          </div>
+          </Reveal>
           <div className="divide-y divide-[#e9e6e0]">
-            {books.map((book) => (
+            {books.map((book, index) => (
+              <Reveal key={book.title} delay={Math.min(index * 0.08, 0.16)} y={22}>
               <article key={book.title} className="grid gap-6 py-8 sm:grid-cols-[160px_minmax(0,1fr)] sm:gap-8 lg:grid-cols-[180px_minmax(0,1fr)_170px] lg:items-start lg:gap-9 lg:py-10">
                 <div className="relative mx-auto h-[230px] w-[160px] overflow-hidden rounded-md bg-[#f7f6f3] sm:mx-0 sm:h-[250px] sm:w-[180px]">
                   <Image src={book.image} alt={book.alt} fill sizes="(max-width: 639px) 160px, 180px" className="object-contain" />
@@ -66,6 +68,7 @@ export default function NewBooksPage() {
                   <ShoppingBag className="h-4 w-4" /> Order the Book
                 </Link>
               </article>
+              </Reveal>
             ))}
           </div>
         </div>
