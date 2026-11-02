@@ -66,14 +66,28 @@ export function Hero() {
   const imageKeys = ['home_slide_breeze', 'home_slide_animal_tales', 'home_slide_animal_tales_fr']
 
   return (
-    <section id="top" aria-label="Featured books" className="bg-[#f7f7f5] pt-28 pb-16 sm:pt-36 sm:pb-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="mb-10 max-w-3xl">
-          <p className="publisher-eyebrow text-xs font-semibold uppercase tracking-[0.16em] text-[#E0A000]">Sage Publishers</p>
-          <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight tracking-tight text-[#111111] sm:text-5xl">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#555555]">{copy.hero_description || 'Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.'}</p>
-          <p className="our-books-label mt-6 font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Our Books</p>
+    <section id="top" aria-label="Featured books" className="bg-white pb-16 sm:pb-24">
+      <div className="sage-hero-banner relative overflow-hidden bg-[#5548c9] pt-32 text-center sm:pt-40">
+        <div className="mx-auto max-w-5xl px-5 pb-9 sm:px-8 sm:pb-12">
+          <p className="publisher-eyebrow text-xs font-semibold uppercase tracking-[0.22em] text-white/80">Sage Publishers</p>
+          <h1 className="mx-auto mt-5 max-w-4xl font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">{copy.hero_title || 'Where Little Stories Inspire Big Imaginations.'}</h1>
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-white/90 sm:text-lg">{copy.hero_description || 'Discover beautifully illustrated books that spark curiosity, inspire kindness, and make every reading moment memorable.'}</p>
+          <a href="#featured-books" className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full bg-[#F4C542] px-7 py-3 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#eab72c]">Explore Our Books <ArrowUpRight className="ml-2 h-4 w-4" /></a>
         </div>
+        <div className="mx-auto flex max-w-7xl items-end justify-center gap-3 overflow-hidden px-3 sm:gap-5 sm:px-8">
+          {[
+            { src: '/gallery/illustration-1.jpg', alt: 'Illustrated story scene from Sage Publishers' },
+            { src: '/gallery/illustration-10.jpg', alt: 'Animal illustration from a Sage Publishers story' },
+            { src: '/gallery/illustration-11.jpg', alt: 'Illustrated scene from a Sage Publishers book' },
+          ].map((item, index) => (
+            <div key={item.src} className={`relative h-32 w-28 shrink-0 overflow-hidden rounded-t-lg border-[5px] border-white bg-white shadow-[0_8px_25px_rgba(15,12,70,0.25)] sm:h-52 sm:w-44 lg:h-60 lg:w-56 ${index === 1 ? 'translate-y-3' : 'translate-y-6'}`}>
+              <Image src={item.src} alt={item.alt} fill sizes="(max-width: 639px) 112px, (max-width: 1023px) 176px, 224px" className="object-cover" priority={index === 1} />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div id="featured-books" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-14 sm:px-8 sm:pt-20">
+        <p className="our-books-label mb-8 font-[cursive] text-2xl font-bold text-[#D4A017] sm:text-3xl">Our Books</p>
         <div className="grid gap-4 md:grid-cols-2">
           {slides.map((book, index) => (
             <article key={book.image} className="grid min-h-[340px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
