@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowUpRight, ShoppingBag } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
+import { BackButton } from '@/components/back-button'
 import { Reveal } from '@/components/reveal'
 
 export const metadata: Metadata = {
@@ -42,8 +43,8 @@ export default function NewBooksPage() {
       <SiteNav />
       <main className="min-h-screen bg-white pb-20 pt-28 sm:pt-32">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mb-5"><BackButton /></div>
           <Reveal className="border-b border-[#e9e6e0] pb-7 sm:pb-9">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#b58613]">Sage Publishers</p>
             <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-[#211e19] sm:text-5xl">New Books</h1>
             <p className="mt-3 max-w-xl text-base leading-7 text-[#625d54]">Explore our illustrated stories and find your next great read.</p>
           </Reveal>
