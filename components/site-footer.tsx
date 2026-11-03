@@ -6,6 +6,7 @@ import { ArrowUpRight, Mail, MessageCircle } from 'lucide-react'
 
 const links = [
   { label: 'About', href: '/about' },
+  { label: 'New Books', href: '/new-books' },
   { label: 'Why It Matters', href: '/features' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Trailer', href: '/trailer' },
