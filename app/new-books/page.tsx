@@ -58,7 +58,7 @@ export default function NewBooksPage() {
                 <div className="min-w-0">
                   <h2 className="font-serif text-2xl font-semibold leading-tight text-[#211e19] sm:text-3xl">{book.title}</h2>
                   <p className="mt-2 text-sm text-[#625d54]">{book.subtitle}</p>
-                  {index < 2 && <p className="mt-3 text-lg font-bold text-[#211e19]">40,000 RWF</p>}
+                  <p className="mt-3 text-lg font-bold text-[#211e19]">40,000 RWF</p>
                   <div className="mt-5 max-w-2xl rounded-xl bg-[#f5f5f7] px-5 py-5">
                     <p className="text-sm leading-7 text-[#36333a]">{book.description}</p>
                   </div>
