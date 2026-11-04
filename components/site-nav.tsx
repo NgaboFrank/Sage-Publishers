@@ -53,7 +53,7 @@ export function SiteNav() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-0 z-50 px-0 pt-0"
     >
-      <nav className={`mx-auto flex w-full items-center justify-between rounded-none border px-5 py-3 transition-all duration-300 sm:px-8 md:px-12 md:py-3 ${scrolled ? 'border-white/15 bg-[#2E2921] shadow-2xl shadow-black/15 backdrop-blur-xl' : 'border-white/10 bg-[#2E2921] backdrop-blur-md'}`}>
+      <nav className={`mx-auto flex h-[62px] w-full items-center justify-between rounded-none border px-5 py-0 transition-all duration-300 sm:px-8 lg:px-[max(32px,calc((100vw-1120px)/2))] ${scrolled ? 'border-white/15 bg-[#2E2921] shadow-2xl shadow-black/15 backdrop-blur-xl' : 'border-white/10 bg-[#2E2921] backdrop-blur-md'}`}>
         <Link href="/" className="flex min-w-0 items-center gap-2 rounded-lg py-1 text-white">
           <span className="min-w-0">
             <span className="block truncate font-sans text-lg font-bold tracking-tight md:text-xl">Sage Publishers</span>
