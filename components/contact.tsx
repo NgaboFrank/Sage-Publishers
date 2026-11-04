@@ -81,11 +81,11 @@ export function Contact() {
 
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">
+            <span className="font-[cursive] text-[1.4rem] font-bold normal-case tracking-normal text-[#D4A017] sm:text-[1.65rem]">
               Get Your Copy
             </span>
 
-            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-balance text-black sm:text-5xl">
+            <h2 className="mt-4 font-serif text-[1.9rem] font-semibold leading-tight text-balance text-black sm:text-[2.4rem]">
               Order &amp; Pay with Ease
             </h2>
 
