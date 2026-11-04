@@ -79,12 +79,6 @@ export function Hero() {
             <Link href="/new-books" className="inline-flex min-h-9 items-center rounded-lg bg-[#F4C542] px-4 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#e9b72d]">New Books <span aria-hidden="true" className="ml-2">↗</span></Link>
           </div>
         </div>
-        <div id="featured-books-list" className="mb-6 scroll-mt-24 rounded-xl border border-[#e8e4dc] bg-[#f7f7f7] p-1">
-          <div className="grid grid-cols-2 gap-1 text-center text-sm font-semibold">
-            <span aria-current="page" className="rounded-lg bg-white px-4 py-3 text-[#211e19] shadow-sm">Our Books</span>
-            <Link href="/new-books" className="rounded-lg px-4 py-3 text-[#625d54] transition-colors hover:bg-white hover:text-[#211e19]">New Books</Link>
-          </div>
-        </div>
         <p className="our-books-label mb-6 font-[cursive] text-2xl font-bold text-[#D4A017] sm:mb-8 sm:text-[1.75rem]">Our Books</p>
         <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
           {slides.map((book, index) => (
