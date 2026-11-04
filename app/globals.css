@@ -248,15 +248,15 @@ main section:not(#top) { background-color: #ffffff; }
 
 /* Sage Publishers typography: consistent editorial hierarchy and mobile readability. */
 main {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.6;
 }
 main h1,
 main h2,
 main h3 {
-  font-family: Georgia, 'Times New Roman', serif;
-  letter-spacing: -0.025em;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  letter-spacing: -0.035em;
   text-wrap: balance;
 }
 main h1 { line-height: 1.12; }
@@ -292,3 +292,7 @@ main > section:nth-of-type(even) {
 #top .sage-hero-banner p,
 #top .sage-hero-banner p * { color: #ffffff !important; }
 #top .sage-hero-banner a { color: #211e19 !important; }
+
+/* Unified modern typography across public pages and navigation. */
+body, button, input, textarea, select { font-family: var(--font-inter), Arial, Helvetica, sans-serif; }
+.font-serif { font-family: var(--font-inter), Arial, Helvetica, sans-serif; }
