@@ -70,8 +70,8 @@ export function Hero() {
     <section id="top" aria-label="Featured books" className="bg-white pb-14 sm:pb-20">
       <div id="featured-books" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-28 sm:px-8 sm:pt-32">
         <div className="mb-3 rounded-2xl border border-[#e8e4dc] bg-[#f8f5ef] px-5 py-4 shadow-[0_5px_18px_rgba(36,31,22,0.04)] sm:px-7 sm:py-5">
-          <h1 className="font-serif text-[1.55rem] font-semibold leading-[1.2] tracking-tight text-[#211e19] sm:text-[1.85rem]">A new story starts here.</h1>
-          <p className="mt-2 max-w-2xl text-[15px] leading-6 text-[#625d54]">Discover beautifully illustrated books that spark imagination and make every reading moment special.</p>
+          <h1 className="font-sans text-[1.4rem] font-extrabold leading-[1.25] tracking-[-0.035em] text-[#211e19] sm:text-[1.6rem]">A new story starts here.</h1>
+          <p className="mt-2 max-w-2xl font-sans text-[14px] font-normal leading-[1.6] tracking-[-0.01em] text-[#625d54]">Discover beautifully illustrated books that spark imagination and make every reading moment special.</p>
           <div className="mt-3">
             <Link href="/new-books" className="inline-flex min-h-9 items-center rounded-lg bg-[#F4C542] px-4 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#e9b72d]">New Books <span aria-hidden="true" className="ml-2">↗</span></Link>
           </div>
