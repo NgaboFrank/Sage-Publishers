@@ -13,7 +13,7 @@ export function About() {
   }, [])
   return (
     <section id="about" aria-labelledby="about-heading" className="bg-[#f8f5ec] py-20 sm:py-24 lg:py-28">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
+      <div className="mx-auto grid max-w-[960px] items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
         <Reveal>
           <div className="max-w-xl">
             <p className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">About Sage Publishers</p>
