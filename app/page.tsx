@@ -52,9 +52,9 @@ export default function Page() {
         </section>
         <section aria-labelledby="discover-heading" className="bg-[#faf7f1] py-14 sm:py-20 lg:py-24">
           <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
-            <div className="min-w-0">
+            <div className="min-w-0 lg:order-2">
               <p className="font-[cursive] text-[1.15rem] font-bold text-[#c58b12] sm:text-[1.3rem]">Discover the Magic</p>
-              <h2 id="discover-heading" className="mt-3 max-w-2xl font-serif text-[1.5rem] font-semibold leading-[1.25] tracking-tight text-[#211e19] sm:text-[1.7rem] lg:text-[1.9rem]">What Young Readers Will Discover</h2>
+              <h2 id="discover-heading" className="mt-3 max-w-2xl font-serif text-[1.35rem] font-semibold leading-[1.3] tracking-tight text-[#211e19] sm:text-[1.5rem] lg:text-[1.65rem]">What Young Readers Will Discover</h2>
               <p className="mt-3 max-w-xl text-[14px] leading-6 text-[#625d54]">Every story opens a world of imagination, learning, and memorable moments for children and families.</p>
               <div className="mt-5 grid gap-2 sm:gap-3">
                 {[
@@ -63,7 +63,7 @@ export default function Page() {
                   { title: 'Imagination & Wonder', text: 'Step into colorful worlds filled with curious animals and exciting adventures.' },
                   { title: 'The Joy of Reading', text: 'Create meaningful reading moments that children will remember.' },
                 ].map((item) => (
-                  <div key={item.title} className="py-2 sm:py-3">
+                  <div key={item.title} className="py-1.5 sm:py-2">
                     <div className="min-w-0">
                       <h3 className="font-serif text-[1rem] font-semibold leading-snug text-[#211e19] sm:text-[1.1rem]">{item.title}</h3>
                       <p className="mt-1 text-[13px] leading-5 text-[#625d54]">{item.text}</p>
@@ -72,7 +72,7 @@ export default function Page() {
                 ))}
               </div>
             </div>
-            <div className="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-[#eae2d6] bg-white p-2.5 shadow-[0_14px_45px_rgba(36,31,22,0.09)] sm:p-3">
+            <div className="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-[#eae2d6] lg:order-1 bg-white p-2.5 shadow-[0_14px_45px_rgba(36,31,22,0.09)] sm:p-3">
               <Image src="/2%20image.png" alt="Girl holding The Breeze of the Forest book" width={640} height={640} sizes="(max-width: 639px) calc(100vw - 64px), (max-width: 1023px) 480px, 480px" quality={65} loading="lazy" className="h-auto w-full rounded-xl object-contain" />
             </div>
           </div>
