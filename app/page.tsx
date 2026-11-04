@@ -27,8 +27,8 @@ export default function Page() {
         <section aria-labelledby="gallery-preview-heading" className="bg-white py-14 sm:py-20">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">From Our Gallery</p>
-              <h2 id="gallery-preview-heading" className="mt-3 font-serif text-3xl font-semibold leading-tight tracking-tight text-[#211e19] sm:text-4xl">A glimpse inside the story</h2>
+              <p className="font-[cursive] text-[1.4rem] font-bold normal-case tracking-normal text-[#D4A017] sm:text-[1.65rem]">From Our Gallery</p>
+              <h2 id="gallery-preview-heading" className="mt-3 font-serif text-[1.8rem] font-semibold leading-tight tracking-tight text-[#211e19] sm:text-[2.25rem]">A glimpse inside the story</h2>
               <p className="mt-4 text-base leading-relaxed text-neutral-700">Explore the characters and illustrated moments that bring The Breeze of the Forest to life.</p>
             </div>
             <div className="mt-9 grid gap-5 sm:grid-cols-3">
@@ -53,8 +53,8 @@ export default function Page() {
         <section aria-labelledby="discover-heading" className="bg-[#faf7f1] py-14 sm:py-20 lg:py-24">
           <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
             <div className="min-w-0">
-              <p className="font-[cursive] text-2xl font-bold text-[#c58b12] sm:text-3xl">Discover the Magic</p>
-              <h2 id="discover-heading" className="mt-4 max-w-2xl font-serif text-2xl font-semibold leading-[1.2] tracking-tight text-[#211e19] sm:text-3xl lg:text-4xl">What Young Readers Will Discover</h2>
+              <p className="font-[cursive] text-[1.4rem] font-bold text-[#c58b12] sm:text-[1.65rem]">Discover the Magic</p>
+              <h2 id="discover-heading" className="mt-4 max-w-2xl font-serif text-[1.75rem] font-semibold leading-[1.2] tracking-tight text-[#211e19] sm:text-[2rem] lg:text-[2.3rem]">What Young Readers Will Discover</h2>
               <p className="mt-5 max-w-xl text-base leading-7 text-[#625d54]">Every story opens a world of imagination, learning, and memorable moments for children and families.</p>
               <div className="mt-7 grid gap-3 sm:gap-4">
                 {[
