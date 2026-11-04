@@ -1,6 +1,9 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import { Poppins } from 'next/font/google'
+
+const siteFont = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap' })
 
 const siteUrl = 'https://sagepublishersltd.com'
 
@@ -99,11 +102,11 @@ export default function RootLayout({
       style={
         {
           '--font-cormorant': 'Georgia, serif',
-          '--font-inter': 'Arial, Helvetica, sans-serif',
+          '--font-inter': siteFont.style.fontFamily,
         } as React.CSSProperties
       }
     >
-      <body className="font-sans antialiased">
+      <body className={`${siteFont.className} font-sans antialiased`}>
         {children}
 
         {process.env.NODE_ENV === 'production' && <Analytics />}
