@@ -49,10 +49,10 @@ export function Testimonials() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">
+            <span className="font-[cursive] text-[1.4rem] font-bold normal-case tracking-normal text-[#D4A017] sm:text-[1.65rem]">
               Loved by Families
             </span>
-            <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-black sm:text-4xl">
+            <h2 className="mt-3 font-serif text-[1.8rem] font-semibold leading-tight text-black sm:text-[2.25rem]">
               What parents are saying
             </h2>
           </Reveal>
