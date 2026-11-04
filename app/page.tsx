@@ -25,7 +25,7 @@ export default function Page() {
         <Hero />
         <About />
         <section aria-labelledby="gallery-preview-heading" className="bg-white py-14 sm:py-20">
-          <div className="mx-auto max-w-[960px] px-5 md:px-8">
+          <div className="mx-auto max-w-7xl px-5 md:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <p className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">From Our Gallery</p>
               <h2 id="gallery-preview-heading" className="mt-3 font-serif text-3xl font-semibold leading-tight tracking-tight text-[#211e19] sm:text-4xl">A glimpse inside the story</h2>
@@ -51,7 +51,7 @@ export default function Page() {
           </div>
         </section>
         <section aria-labelledby="discover-heading" className="bg-[#faf7f1] py-14 sm:py-20 lg:py-24">
-          <div className="mx-auto grid max-w-[960px] items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
             <div className="min-w-0">
               <p className="font-[cursive] text-2xl font-bold text-[#c58b12] sm:text-3xl">Discover the Magic</p>
               <h2 id="discover-heading" className="mt-4 max-w-2xl font-serif text-2xl font-semibold leading-[1.2] tracking-tight text-[#211e19] sm:text-3xl lg:text-4xl">What Young Readers Will Discover</h2>
