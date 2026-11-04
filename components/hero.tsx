@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, X } from 'lucide-react'
 
@@ -68,6 +69,20 @@ export function Hero() {
   return (
     <section id="top" aria-label="Featured books" className="bg-white pb-14 sm:pb-20">
       <div id="featured-books" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-28 sm:px-8 sm:pt-32">
+        <div className="mb-5 rounded-2xl bg-[#2E2921] px-6 py-7 text-white shadow-[0_12px_28px_rgba(36,31,22,0.12)] sm:px-9 sm:py-8">
+          <h1 className="font-serif text-2xl font-semibold leading-tight sm:text-3xl">A new story starts here.</h1>
+          <p className="mt-2 max-w-xl text-sm leading-6 text-white/85">Discover beautifully illustrated books that spark imagination and make every reading moment special.</p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            <a href="#featured-books-list" className="inline-flex min-h-10 items-center rounded-lg bg-[#F4C542] px-5 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#e9b72d]">Explore Books <span aria-hidden="true" className="ml-2">↗</span></a>
+            <Link href="/new-books" className="inline-flex min-h-10 items-center rounded-lg border border-white/40 px-5 text-sm font-semibold text-white transition-colors hover:bg-white/10">New Books</Link>
+          </div>
+        </div>
+        <div id="featured-books-list" className="mb-6 scroll-mt-24 rounded-xl border border-[#e8e4dc] bg-[#f7f7f7] p-1">
+          <div className="grid grid-cols-2 gap-1 text-center text-sm font-semibold">
+            <span aria-current="page" className="rounded-lg bg-white px-4 py-3 text-[#211e19] shadow-sm">Our Books</span>
+            <Link href="/new-books" className="rounded-lg px-4 py-3 text-[#625d54] transition-colors hover:bg-white hover:text-[#211e19]">New Books</Link>
+          </div>
+        </div>
         <p className="our-books-label mb-7 font-[cursive] text-2xl font-bold text-[#D4A017] sm:mb-9 sm:text-3xl">Our Books</p>
         <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
           {slides.map((book, index) => (
