@@ -53,10 +53,10 @@ export default function Page() {
         <section aria-labelledby="discover-heading" className="bg-[#faf7f1] py-14 sm:py-20 lg:py-24">
           <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
             <div className="min-w-0">
-              <p className="font-[cursive] text-[1.4rem] font-bold text-[#c58b12] sm:text-[1.65rem]">Discover the Magic</p>
-              <h2 id="discover-heading" className="mt-4 max-w-2xl font-serif text-[1.75rem] font-semibold leading-[1.2] tracking-tight text-[#211e19] sm:text-[2rem] lg:text-[2.3rem]">What Young Readers Will Discover</h2>
-              <p className="mt-5 max-w-xl text-base leading-7 text-[#625d54]">Every story opens a world of imagination, learning, and memorable moments for children and families.</p>
-              <div className="mt-7 grid gap-3 sm:gap-4">
+              <p className="font-[cursive] text-[1.15rem] font-bold text-[#c58b12] sm:text-[1.3rem]">Discover the Magic</p>
+              <h2 id="discover-heading" className="mt-3 max-w-2xl font-serif text-[1.5rem] font-semibold leading-[1.25] tracking-tight text-[#211e19] sm:text-[1.7rem] lg:text-[1.9rem]">What Young Readers Will Discover</h2>
+              <p className="mt-3 max-w-xl text-[14px] leading-6 text-[#625d54]">Every story opens a world of imagination, learning, and memorable moments for children and families.</p>
+              <div className="mt-5 grid gap-2 sm:gap-3">
                 {[
                   { title: 'Courage & Confidence', text: 'Meet brave characters who discover the strength to try something new.' },
                   { title: 'Kindness & Friendship', text: 'Explore thoughtful stories about caring, sharing, and growing together.' },
@@ -65,8 +65,8 @@ export default function Page() {
                 ].map((item) => (
                   <div key={item.title} className="py-2 sm:py-3">
                     <div className="min-w-0">
-                      <h3 className="font-serif text-lg font-semibold leading-snug text-[#211e19] sm:text-xl">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-6 text-[#625d54]">{item.text}</p>
+                      <h3 className="font-serif text-[1rem] font-semibold leading-snug text-[#211e19] sm:text-[1.1rem]">{item.title}</h3>
+                      <p className="mt-1 text-[13px] leading-5 text-[#625d54]">{item.text}</p>
                     </div>
                   </div>
                 ))}
