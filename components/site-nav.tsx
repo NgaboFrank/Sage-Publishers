@@ -62,7 +62,7 @@ export function SiteNav() {
         </Link>
 
         <div className="flex items-center gap-2">
-          <Link href="/payment" className="hidden items-center gap-2 rounded-xl bg-[#F4C542] px-4 py-2.5 text-sm font-semibold text-forest-deep shadow-none transition-transform hover:-translate-y-0.5">
+          <Link href="/payment" className="hidden items-center gap-2 rounded-xl bg-[#2677C9] px-4 py-2.5 text-sm font-semibold text-white shadow-none transition-transform hover:-translate-y-0.5">
             Order the Book <ArrowUpRight className="h-4 w-4" />
           </Link>
           <button onClick={() => setMobileOpen((v) => !v)} className="inline-flex h-9 w-10 items-center justify-center rounded-md text-white transition-colors hover:bg-white/15" aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation">
@@ -77,13 +77,13 @@ export function SiteNav() {
             <ul className="flex flex-col gap-1">
               {links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} onClick={() => setMobileOpen(false)} aria-current={isActive(link.href) ? 'page' : undefined} className={`block rounded-xl px-4 py-3 text-sm font-medium transition-colors ${isActive(link.href) ? 'bg-[#F4C542]/15 text-[#F4C542]' : 'text-white/85 hover:bg-white/10 hover:text-white'}`}>
+                  <Link href={link.href} onClick={() => setMobileOpen(false)} aria-current={isActive(link.href) ? 'page' : undefined} className={`block rounded-xl px-4 py-3 text-sm font-medium transition-colors ${isActive(link.href) ? 'bg-[#2677C9]/15 text-[#B8DCFF]' : 'text-white/85 hover:bg-white/10 hover:text-white'}`}>
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <Link href="/payment" onClick={() => setMobileOpen(false)} className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#F4C542] px-4 py-3 font-semibold text-forest-deep">
+            <Link href="/payment" onClick={() => setMobileOpen(false)} className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#2677C9] px-4 py-3 font-semibold text-white">
               Order the Book <ArrowUpRight className="h-4 w-4" />
             </Link>
           </motion.div>
