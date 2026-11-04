@@ -69,11 +69,11 @@ export function Hero() {
   return (
     <section id="top" aria-label="Featured books" className="bg-white pb-14 sm:pb-20">
       <div id="featured-books" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-28 sm:px-8 sm:pt-32">
-        <div className="mb-5 rounded-2xl border border-[#e8e4dc] bg-[#f8f5ef] px-6 py-7 shadow-[0_5px_18px_rgba(36,31,22,0.04)] sm:px-9 sm:py-8">
-          <h1 className="font-serif text-2xl font-semibold leading-tight text-[#211e19] sm:text-3xl">A new story starts here.</h1>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-[#625d54]">Discover beautifully illustrated books that spark imagination and make every reading moment special.</p>
-          <div className="mt-5">
-            <Link href="/new-books" className="inline-flex min-h-10 items-center rounded-lg bg-[#F4C542] px-5 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#e9b72d]">New Books <span aria-hidden="true" className="ml-2">↗</span></Link>
+        <div className="mb-3 rounded-2xl border border-[#e8e4dc] bg-[#f8f5ef] px-5 py-4 shadow-[0_5px_18px_rgba(36,31,22,0.04)] sm:px-7 sm:py-5">
+          <h1 className="font-serif text-xl font-semibold leading-tight text-[#211e19] sm:text-2xl">A new story starts here.</h1>
+          <p className="mt-1 max-w-xl text-sm leading-5 text-[#625d54]">Discover beautifully illustrated books that spark imagination and make every reading moment special.</p>
+          <div className="mt-3">
+            <Link href="/new-books" className="inline-flex min-h-9 items-center rounded-lg bg-[#F4C542] px-4 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#e9b72d]">New Books <span aria-hidden="true" className="ml-2">↗</span></Link>
           </div>
         </div>
         <div id="featured-books-list" className="mb-6 scroll-mt-24 rounded-xl border border-[#e8e4dc] bg-[#f7f7f7] p-1">
