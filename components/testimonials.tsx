@@ -46,7 +46,7 @@ export function Testimonials() {
 
   return (
     <section className="relative bg-background py-14 md:py-18">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+      <div className="mx-auto max-w-[960px] px-5 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <span className="font-[cursive] text-2xl font-bold normal-case tracking-normal text-[#D4A017] sm:text-3xl">
@@ -58,7 +58,7 @@ export function Testimonials() {
           </Reveal>
         </div>
 
-        <div className="mx-auto mt-8 grid max-w-6xl gap-4 md:grid-cols-3">
+        <div className="mx-auto mt-8 grid max-w-[900px] gap-4 md:grid-cols-3">
           {visibleTestimonials.map((t, i) => (
             <Reveal key={`${t.name}-${offset}`} delay={i * 0.08}>
               <motion.figure
