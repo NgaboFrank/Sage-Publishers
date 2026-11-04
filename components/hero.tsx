@@ -67,33 +67,33 @@ export function Hero() {
 
   return (
     <section id="top" aria-label="Featured books" className="bg-white pb-14 sm:pb-20">
-      <div id="featured-books" className="mx-auto max-w-[960px] scroll-mt-24 px-5 pt-28 sm:px-8 sm:pt-32">
-        <p className="our-books-label mb-7 font-[cursive] text-2xl font-bold text-[#D4A017] sm:mb-9 sm:text-[26px]">Our Books</p>
+      <div id="featured-books" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-28 sm:px-8 sm:pt-32">
+        <p className="our-books-label mb-7 font-[cursive] text-2xl font-bold text-[#D4A017] sm:mb-9 sm:text-3xl">Our Books</p>
         <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
           {slides.map((book, index) => (
-            <article key={book.image} className="grid min-h-[300px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden rounded-2xl border border-[#e8e4dc] bg-white p-5 shadow-[0_4px_22px_rgba(28,25,20,0.045)] sm:p-5">
+            <article key={book.image} className="grid min-h-[340px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden rounded-2xl border border-[#e8e4dc] bg-white p-5 shadow-[0_4px_22px_rgba(28,25,20,0.045)] sm:p-7">
               <div className="flex min-w-0 flex-col items-start">
                 
-                <h2 className="font-serif text-2xl font-semibold leading-snug text-black sm:text-[26px]">{book.title} {book.accent}</h2>
+                <h2 className="font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">{book.title} {book.accent}</h2>
                 <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-600">{book.subtitle}</p>
                 <p className="mt-3 text-sm leading-relaxed text-neutral-700">{index === 0 ? 'Meet Mani, a little bird with big questions and a brave heart. Discover how her forest adventure begins in a free sneak peek.' : index === 1 ? 'Step into a starry African night where wild animals and unforgettable adventures await. Discover the magic of these stories and explore the book today.' : 'Entrez dans une nuit africaine étoilée, où les animaux et leurs aventures éveillent la curiosité. Découvrez la magie de ces histoires et explorez le livre dès aujourd’hui.'}</p>
                 <button type="button" onClick={() => index === 0 ? setSampleOpen(true) : setPendingSample(index)} className="mt-5 inline-flex min-h-10 items-center justify-center rounded-full border border-[#E3B52D] px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Read a Sample</button>
                 <a href={`/payment?book=${encodeURIComponent(`${book.title} ${book.accent}`)}`} className="mt-3 inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full bg-[#F4C542] px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-[#E9B72D] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Order the Book <ArrowUpRight className="h-4 w-4" /></a>
               </div>
-              <div className="relative min-h-[260px] overflow-hidden rounded-xl bg-white sm:min-h-[260px]">
+              <div className="relative min-h-[260px] overflow-hidden rounded-xl bg-white sm:min-h-[300px]">
                 <Image src={slideImages[imageKeys[index]] || book.image} alt={book.alt} fill sizes="(max-width: 639px) 85vw, (max-width: 1024px) 40vw, 310px" priority={index === 0} className="object-contain p-2 transition-transform duration-300 hover:scale-[1.02]" />
                 {index === 0 && <button type="button" onClick={() => setSampleOpen(true)} aria-label="Read a sample of The Breeze of the Forest" className="absolute inset-0 z-10 cursor-pointer focus-visible:outline-4 focus-visible:outline-yellow-500" />}
               </div>
             </article>
           ))}
-          <article className="grid min-h-[300px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden rounded-2xl border border-[#e8e4dc] bg-white p-5 shadow-[0_4px_22px_rgba(28,25,20,0.045)] sm:p-5">
+          <article className="grid min-h-[340px] grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,48%)] overflow-hidden rounded-2xl border border-[#e8e4dc] bg-white p-5 shadow-[0_4px_22px_rgba(28,25,20,0.045)] sm:p-7">
             <div className="flex min-w-0 flex-col items-start">
               <p className="text-xs font-semibold uppercase tracking-wider text-[#B88400]">Keep exploring</p>
-              <h2 className="mt-3 font-serif text-2xl font-semibold leading-snug text-black sm:text-[26px]">Your next favorite story awaits</h2>
+              <h2 className="mt-3 font-serif text-2xl font-semibold leading-snug text-black sm:text-3xl">Your next favorite story awaits</h2>
               <p className="mt-3 text-sm leading-relaxed text-neutral-700">Every book opens a new world. Explore our illustrated stories, meet unforgettable characters, and find a story to share together.</p>
               <a href="/gallery" className="mt-auto inline-flex min-h-11 items-center gap-2 pt-5 text-sm font-semibold text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Explore books <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#F4C542]"><ArrowUpRight className="h-4 w-4" /></span></a>
             </div>
-            <a href="/gallery" aria-label="Explore the Sage Publishers illustration gallery" className="group relative grid min-h-[300px] grid-rows-2 gap-2 overflow-hidden rounded-xl bg-[#f8f4e8] p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">
+            <a href="/gallery" aria-label="Explore the Sage Publishers illustration gallery" className="group relative grid min-h-[340px] grid-rows-2 gap-2 overflow-hidden rounded-xl bg-[#f8f4e8] p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">
               <div className="relative min-h-0 overflow-hidden rounded-lg bg-white">
                 <Image src="/gallery/illustration-9.jpg" alt="Illustration of a shepherd with his flock" fill sizes="(max-width: 640px) 45vw, 300px" className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]" />
               </div>
