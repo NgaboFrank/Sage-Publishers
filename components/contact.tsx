@@ -165,7 +165,7 @@ export function Contact() {
                   Ordering in bulk? Contact us for special rates and arrangements.
                 </p>
               </div>
-              <p className="mt-auto w-full min-w-0 break-words font-sans text-[clamp(0.8rem,1.05vw,1rem)] font-semibold leading-snug tracking-tight text-black [overflow-wrap:anywhere]">
+              <p className="mt-auto w-full min-w-0 break-words font-sans text-[clamp(1rem,1.35vw,1.125rem)] font-semibold leading-snug tracking-tight text-black [overflow-wrap:anywhere]">
                 mugaboan@gmail.com
               </p>
             </motion.a>
