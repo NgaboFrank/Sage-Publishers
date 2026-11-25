@@ -50,30 +50,36 @@ export default function Page() {
             </div>
           </div>
         </section>
-        <section aria-labelledby="discover-heading" className="bg-[#faf7f1] py-14 sm:py-20 lg:py-24">
-          <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+        <section aria-labelledby="discover-heading" className="bg-[#faf7f1] py-16 sm:py-20 lg:py-24">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16 xl:gap-20">
             <div className="min-w-0 lg:order-2">
-              <p className="font-[cursive] text-[1.15rem] font-bold text-[#c58b12] sm:text-[1.3rem]">Discover the Magic</p>
-              <h2 id="discover-heading" className="mt-3 max-w-2xl font-serif text-[1.35rem] font-semibold leading-[1.3] tracking-tight text-[#211e19] sm:text-[1.5rem] lg:text-[1.65rem]">What Young Readers Will Discover</h2>
-              <p className="mt-3 max-w-xl text-[14px] leading-6 text-[#625d54]">Every story opens a world of imagination, learning, and memorable moments for children and families.</p>
-              <div className="mt-5 grid gap-2 sm:gap-3">
+              <p className="font-[cursive] text-[1.2rem] font-bold text-[#c58b12] sm:text-[1.35rem]">Discover the Magic</p>
+              <h2 id="discover-heading" className="mt-2 max-w-xl font-serif text-[1.75rem] font-semibold leading-tight tracking-tight text-[#211e19] sm:text-[2rem]">What Young Readers Will Discover</h2>
+              <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#625d54]">
+                Our stories invite children to explore new ideas, connect with memorable characters, and discover the joy of reading.
+              </p>
+              <div className="mt-7 divide-y divide-[#e5dfd5]">
                 {[
-                  { title: 'Courage & Confidence', text: 'Meet brave characters who discover the strength to try something new.' },
-                  { title: 'Kindness & Friendship', text: 'Explore thoughtful stories about caring, sharing, and growing together.' },
-                  { title: 'Imagination & Wonder', text: 'Step into colorful worlds filled with curious animals and exciting adventures.' },
-                  { title: 'The Joy of Reading', text: 'Create meaningful reading moments that children will remember.' },
+                  { number: '01', title: 'Courage & Confidence', text: 'Follow characters who face challenges, make choices, and learn to believe in themselves.' },
+                  { number: '02', title: 'Kindness & Friendship', text: 'Discover the importance of empathy, helping others, and building meaningful friendships.' },
+                  { number: '03', title: 'Imagination & Curiosity', text: 'Explore imaginative adventures that encourage children to ask questions and discover new possibilities.' },
+                  { number: '04', title: 'A Love for Reading', text: 'Enjoy engaging stories that make reading a rewarding experience for children and families.' },
                 ].map((item) => (
-                  <div key={item.title} className="py-1.5 sm:py-2">
+                  <div key={item.number} className="flex gap-4 py-4 first:pt-0 sm:gap-5">
+                    <span aria-hidden="true" className="pt-0.5 text-sm font-semibold tabular-nums text-[#b68116]">{item.number}</span>
                     <div className="min-w-0">
-                      <h3 className="font-serif text-[1rem] font-semibold leading-snug text-[#211e19] sm:text-[1.1rem]">{item.title}</h3>
-                      <p className="mt-1 text-[13px] leading-5 text-[#625d54]">{item.text}</p>
+                      <h3 className="font-serif text-[1.05rem] font-semibold leading-snug text-[#211e19] sm:text-[1.15rem]">{item.title}</h3>
+                      <p className="mt-1.5 max-w-md text-sm leading-6 text-[#625d54]">{item.text}</p>
                     </div>
                   </div>
                 ))}
               </div>
+              <Link href="/new-books" className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[#F4C542] px-6 py-3 text-sm font-semibold text-[#211e19] transition-colors hover:bg-[#E9B72D] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">
+                Explore Our Books <span aria-hidden="true" className="ml-2">↗</span>
+              </Link>
             </div>
-            <div className="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-[#eae2d6] lg:order-1 bg-white p-2.5 shadow-[0_14px_45px_rgba(36,31,22,0.09)] sm:p-3">
-              <Image src="/2%20image.png" alt="Girl holding The Breeze of the Forest book" width={640} height={640} sizes="(max-width: 639px) calc(100vw - 64px), (max-width: 1023px) 480px, 480px" quality={65} loading="lazy" className="h-auto w-full rounded-xl object-contain" />
+            <div className="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-[#eae2d6] bg-white p-2.5 shadow-[0_14px_45px_rgba(36,31,22,0.09)] sm:p-3 lg:order-1">
+              <Image src="/2%20image.png" alt="Young reader holding The Breeze of the Forest book" width={640} height={640} sizes="(max-width: 639px) calc(100vw - 64px), (max-width: 1023px) 480px, 480px" quality={65} loading="lazy" className="h-auto w-full rounded-xl object-contain" />
             </div>
           </div>
         </section>
