@@ -26,13 +26,16 @@ export function About() {
           </div>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="rounded-none bg-[#2E2921] px-7 py-12 sm:px-11 sm:py-14">
-            <h3 className="font-serif text-[1.65rem] leading-tight text-[#fffdf6] sm:text-[2rem]">
+          <div className="relative mx-auto w-full max-w-xl pb-[9%] pl-[9%] pr-[2%]">
+            <div aria-hidden="true" className="absolute bottom-0 left-0 h-[85%] w-[98%] -rotate-12 rounded-[48%_52%_46%_54%] bg-[#FFE36A]" />
+            <div className="relative flex min-h-[340px] flex-col justify-center rounded-[48%] bg-[#2E2921] px-[12%] py-16 text-center sm:aspect-square sm:min-h-0 sm:px-[14%] sm:py-12">
+            <h3 className="font-serif text-[1.35rem] leading-tight text-[#fffdf6] sm:text-[1.65rem]">
               Stories that stay with you.
             </h3>
-            <p className="mt-5 text-base leading-7 text-[#e1ebe3]">
+            <p className="mt-4 text-sm leading-6 text-[#e1ebe3]">
               Our books bring imagination and learning together through memorable characters, thoughtful storytelling, and illustrations that invite children to explore. Created for families, classrooms, and curious young minds, each story encourages kindness, courage, friendship, and the joy of discovering something new.
             </p>
+            </div>
           </div>
         </Reveal>
       </div>
