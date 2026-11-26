@@ -37,14 +37,11 @@ export default function Page() {
                 { src: '/forest-snake.jpg', title: 'Ntumi and the birds', alt: 'Snake and bird in the forest' },
                 { src: '/forest-birds-flight.jpg', title: 'Across the forest', alt: 'Birds flying through the forest' },
               ].map((item) => (
-                <Link href="/gallery" key={item.src} className="group block min-w-0 text-center">
-                  <div className="relative mx-auto w-full max-w-[340px] pb-[8%] pl-[8%] pr-[2%]">
-                    <div aria-hidden="true" className="absolute bottom-0 left-0 h-[85%] w-[98%] -rotate-12 rounded-[48%_52%_46%_54%] bg-[#FFF19A]" />
-                    <div className="relative aspect-square overflow-hidden rounded-full bg-white">
-                      <Image src={item.src} alt={item.alt} fill sizes="(max-width: 640px) 80vw, 320px" className="object-cover" />
-                    </div>
+                <Link href="/gallery" key={item.src} className="group overflow-hidden rounded-2xl border border-[#e8e4dc] bg-white shadow-[0_4px_20px_rgba(28,25,20,0.045)] transition-shadow hover:shadow-md">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-neutral-50">
+                    <Image src={item.src} alt={item.alt} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
                   </div>
-                  <h3 className="mt-4 font-serif text-lg font-semibold text-black">{item.title}</h3>
+                  <div className="px-5 py-4"><h3 className="font-serif text-xl font-semibold text-black">{item.title}</h3></div>
                 </Link>
               ))}
             </div>
