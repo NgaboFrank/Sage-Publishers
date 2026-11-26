@@ -78,8 +78,11 @@ export default function Page() {
                 Explore Our Books <span aria-hidden="true" className="ml-2">↗</span>
               </Link>
             </div>
-            <div className="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-[#eae2d6] bg-white p-2.5 shadow-[0_14px_45px_rgba(36,31,22,0.09)] sm:p-3 lg:order-1">
-              <Image src="/2%20image.png" alt="Young reader holding The Breeze of the Forest book" width={640} height={640} sizes="(max-width: 639px) calc(100vw - 64px), (max-width: 1023px) 480px, 480px" quality={65} loading="lazy" className="h-auto w-full rounded-xl object-contain" />
+            <div className="relative mx-auto w-full max-w-lg pb-[10%] pl-[10%] pr-[2%] lg:order-1">
+              <div aria-hidden="true" className="absolute bottom-0 left-0 h-[85%] w-[98%] -rotate-12 rounded-[48%_52%_46%_54%] bg-[#FFF19A]" />
+              <div className="relative aspect-square w-full overflow-hidden rounded-full">
+                <Image src="/2%20image.png" alt="Young reader holding The Breeze of the Forest book" fill sizes="(max-width: 639px) 85vw, 460px" quality={85} loading="lazy" className="object-cover" />
+              </div>
             </div>
           </div>
         </section>
